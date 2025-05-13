@@ -1,0 +1,321 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "clEnqueueWriteBuffer()";
+node_0[label="clEnqueueWriteBuffer"];
+}
+subgraph cluster_1 {
+label = "clEnqueueWriteBuffer()";
+node_1[label="clEnqueueWriteBuffer"];
+}
+node_0 -> node_1
+node_0 -> node_1 [label="blocking host wait" ltail=cluster_0 lhead=cluster_1];
+subgraph cluster_2 {
+label = "clWaitForEvents()";
+node_2[label="clEnqueueNDRangeKernel"];
+}
+node_1 -> node_2
+node_1 -> node_2 [label="blocking host wait" ltail=cluster_1 lhead=cluster_2];
+subgraph cluster_3 {
+label = "clEnqueueWriteBuffer()";
+node_3[label="clEnqueueWriteBuffer"];
+}
+node_2 -> node_3
+node_2 -> node_3 [label="blocking host wait" ltail=cluster_2 lhead=cluster_3];
+subgraph cluster_4 {
+label = "clWaitForEvents()";
+node_4[label="clEnqueueNDRangeKernel"];
+}
+node_3 -> node_4
+node_3 -> node_4 [label="blocking host wait" ltail=cluster_3 lhead=cluster_4];
+subgraph cluster_5 {
+label = "clEnqueueWriteBuffer()";
+node_5[label="clEnqueueWriteBuffer"];
+}
+node_4 -> node_5
+node_4 -> node_5 [label="blocking host wait" ltail=cluster_4 lhead=cluster_5];
+subgraph cluster_6 {
+label = "clWaitForEvents()";
+node_6[label="clEnqueueNDRangeKernel"];
+}
+node_5 -> node_6
+node_5 -> node_6 [label="blocking host wait" ltail=cluster_5 lhead=cluster_6];
+subgraph cluster_7 {
+label = "clEnqueueWriteBuffer()";
+node_7[label="clEnqueueWriteBuffer"];
+}
+node_6 -> node_7
+node_6 -> node_7 [label="blocking host wait" ltail=cluster_6 lhead=cluster_7];
+subgraph cluster_8 {
+label = "clWaitForEvents()";
+node_8[label="clEnqueueNDRangeKernel"];
+}
+node_7 -> node_8
+node_7 -> node_8 [label="blocking host wait" ltail=cluster_7 lhead=cluster_8];
+subgraph cluster_9 {
+label = "clEnqueueWriteBuffer()";
+node_9[label="clEnqueueWriteBuffer"];
+}
+node_8 -> node_9
+node_8 -> node_9 [label="blocking host wait" ltail=cluster_8 lhead=cluster_9];
+subgraph cluster_10 {
+label = "clEnqueueWriteBuffer()";
+node_10[label="clEnqueueWriteBuffer"];
+}
+node_9 -> node_10
+node_9 -> node_10 [label="blocking host wait" ltail=cluster_9 lhead=cluster_10];
+subgraph cluster_11 {
+label = "clEnqueueWriteBuffer()";
+node_11[label="clEnqueueWriteBuffer"];
+}
+node_10 -> node_11
+node_10 -> node_11 [label="blocking host wait" ltail=cluster_10 lhead=cluster_11];
+subgraph cluster_12 {
+label = "clEnqueueWriteBuffer()";
+node_12[label="clEnqueueWriteBuffer"];
+}
+node_11 -> node_12
+node_11 -> node_12 [label="blocking host wait" ltail=cluster_11 lhead=cluster_12];
+subgraph cluster_13 {
+label = "clEnqueueWriteBuffer()";
+node_13[label="clEnqueueWriteBuffer"];
+}
+node_12 -> node_13
+node_12 -> node_13 [label="blocking host wait" ltail=cluster_12 lhead=cluster_13];
+subgraph cluster_14 {
+label = "clWaitForEvents()";
+node_14[label="clEnqueueNDRangeKernel"];
+}
+node_13 -> node_14
+node_13 -> node_14 [label="blocking host wait" ltail=cluster_13 lhead=cluster_14];
+subgraph cluster_15 {
+label = "clEnqueueWriteBuffer()";
+node_15[label="clEnqueueWriteBuffer"];
+}
+node_14 -> node_15
+node_14 -> node_15 [label="blocking host wait" ltail=cluster_14 lhead=cluster_15];
+subgraph cluster_16 {
+label = "clWaitForEvents()";
+node_16[label="clEnqueueNDRangeKernel"];
+}
+node_15 -> node_16
+node_15 -> node_16 [label="blocking host wait" ltail=cluster_15 lhead=cluster_16];
+subgraph cluster_17 {
+label = "clEnqueueWriteBuffer()";
+node_17[label="clEnqueueWriteBuffer"];
+}
+node_16 -> node_17
+node_16 -> node_17 [label="blocking host wait" ltail=cluster_16 lhead=cluster_17];
+subgraph cluster_18 {
+label = "clWaitForEvents()";
+node_18[label="clEnqueueNDRangeKernel"];
+}
+node_17 -> node_18
+node_17 -> node_18 [label="blocking host wait" ltail=cluster_17 lhead=cluster_18];
+subgraph cluster_19 {
+label = "clFinish()";
+node_19[label="clEnqueueFillBuffer"];
+}
+node_18 -> node_19
+node_18 -> node_19 [label="blocking host wait" ltail=cluster_18 lhead=cluster_19];
+subgraph cluster_20 {
+label = "clEnqueueWriteBuffer()";
+node_20[label="clEnqueueWriteBuffer"];
+}
+node_19 -> node_20
+node_19 -> node_20 [label="blocking host wait" ltail=cluster_19 lhead=cluster_20];
+subgraph cluster_21 {
+label = "clEnqueueWriteBuffer()";
+node_21[label="clEnqueueWriteBuffer"];
+}
+node_20 -> node_21
+node_20 -> node_21 [label="blocking host wait" ltail=cluster_20 lhead=cluster_21];
+subgraph cluster_22 {
+label = "clEnqueueWriteBuffer()";
+node_22[label="clEnqueueWriteBuffer"];
+}
+node_21 -> node_22
+node_21 -> node_22 [label="blocking host wait" ltail=cluster_21 lhead=cluster_22];
+subgraph cluster_23 {
+label = "clEnqueueWriteBuffer()";
+node_23[label="clEnqueueWriteBuffer"];
+}
+node_22 -> node_23
+node_22 -> node_23 [label="blocking host wait" ltail=cluster_22 lhead=cluster_23];
+subgraph cluster_24 {
+label = "clEnqueueWriteBuffer()";
+node_24[label="clEnqueueWriteBuffer"];
+}
+node_23 -> node_24
+node_23 -> node_24 [label="blocking host wait" ltail=cluster_23 lhead=cluster_24];
+subgraph cluster_25 {
+label = "clEnqueueReadBuffer()";
+node_25[label="clEnqueueNDRangeKernel"];
+node_26[label="clEnqueueNDRangeKernel"];
+node_27[label="clEnqueueNDRangeKernel"];
+node_28[label="clEnqueueNDRangeKernel"];
+node_29[label="clEnqueueNDRangeKernel"];
+node_30[label="clEnqueueNDRangeKernel"];
+node_31[label="clEnqueueNDRangeKernel"];
+node_32[label="clEnqueueNDRangeKernel"];
+node_33[label="clEnqueueNDRangeKernel"];
+node_34[label="clEnqueueNDRangeKernel"];
+node_35[label="clEnqueueNDRangeKernel"];
+node_36[label="clEnqueueNDRangeKernel"];
+node_37[label="clEnqueueNDRangeKernel"];
+node_38[label="clEnqueueNDRangeKernel"];
+node_39[label="clEnqueueNDRangeKernel"];
+node_40[label="clEnqueueNDRangeKernel"];
+node_41[label="clEnqueueNDRangeKernel"];
+node_42[label="clEnqueueNDRangeKernel"];
+node_43[label="clEnqueueNDRangeKernel"];
+node_44[label="clEnqueueNDRangeKernel"];
+node_45[label="clEnqueueNDRangeKernel"];
+node_46[label="clEnqueueNDRangeKernel"];
+node_47[label="clEnqueueNDRangeKernel"];
+node_48[label="clEnqueueNDRangeKernel"];
+node_49[label="clEnqueueNDRangeKernel"];
+node_50[label="clEnqueueNDRangeKernel"];
+node_51[label="clEnqueueNDRangeKernel"];
+node_52[label="clEnqueueNDRangeKernel"];
+node_53[label="clEnqueueNDRangeKernel"];
+node_54[label="clEnqueueNDRangeKernel"];
+node_55[label="clEnqueueReadBuffer"];
+}
+node_24 -> node_25
+node_25 -> node_26
+node_26 -> node_27
+node_27 -> node_28
+node_28 -> node_29
+node_29 -> node_30
+node_30 -> node_31
+node_31 -> node_32
+node_32 -> node_33
+node_33 -> node_34
+node_34 -> node_35
+node_35 -> node_36
+node_36 -> node_37
+node_37 -> node_38
+node_38 -> node_39
+node_39 -> node_40
+node_40 -> node_41
+node_41 -> node_42
+node_42 -> node_43
+node_43 -> node_44
+node_44 -> node_45
+node_45 -> node_46
+node_46 -> node_47
+node_47 -> node_48
+node_48 -> node_49
+node_49 -> node_50
+node_50 -> node_51
+node_51 -> node_52
+node_52 -> node_53
+node_53 -> node_54
+node_54 -> node_55
+node_24 -> node_25 [label="blocking host wait" ltail=cluster_24 lhead=cluster_25];
+subgraph cluster_26 {
+label = "clFinish()";
+node_56[label="clEnqueueFillBuffer"];
+}
+node_55 -> node_56
+node_25 -> node_56 [label="blocking host wait" ltail=cluster_25 lhead=cluster_26];
+subgraph cluster_27 {
+label = "clEnqueueWriteBuffer()";
+node_57[label="clEnqueueWriteBuffer"];
+}
+node_56 -> node_57
+node_56 -> node_57 [label="blocking host wait" ltail=cluster_26 lhead=cluster_27];
+subgraph cluster_28 {
+label = "clEnqueueWriteBuffer()";
+node_58[label="clEnqueueWriteBuffer"];
+}
+node_57 -> node_58
+node_57 -> node_58 [label="blocking host wait" ltail=cluster_27 lhead=cluster_28];
+subgraph cluster_29 {
+label = "clEnqueueWriteBuffer()";
+node_59[label="clEnqueueWriteBuffer"];
+}
+node_58 -> node_59
+node_58 -> node_59 [label="blocking host wait" ltail=cluster_28 lhead=cluster_29];
+subgraph cluster_30 {
+label = "clEnqueueWriteBuffer()";
+node_60[label="clEnqueueWriteBuffer"];
+}
+node_59 -> node_60
+node_59 -> node_60 [label="blocking host wait" ltail=cluster_29 lhead=cluster_30];
+subgraph cluster_31 {
+label = "clEnqueueWriteBuffer()";
+node_61[label="clEnqueueWriteBuffer"];
+}
+node_60 -> node_61
+node_60 -> node_61 [label="blocking host wait" ltail=cluster_30 lhead=cluster_31];
+subgraph cluster_32 {
+label = "clEnqueueReadBuffer()";
+node_62[label="clEnqueueNDRangeKernel"];
+node_63[label="clEnqueueNDRangeKernel"];
+node_64[label="clEnqueueNDRangeKernel"];
+node_65[label="clEnqueueNDRangeKernel"];
+node_66[label="clEnqueueNDRangeKernel"];
+node_67[label="clEnqueueNDRangeKernel"];
+node_68[label="clEnqueueNDRangeKernel"];
+node_69[label="clEnqueueNDRangeKernel"];
+node_70[label="clEnqueueNDRangeKernel"];
+node_71[label="clEnqueueNDRangeKernel"];
+node_72[label="clEnqueueNDRangeKernel"];
+node_73[label="clEnqueueNDRangeKernel"];
+node_74[label="clEnqueueNDRangeKernel"];
+node_75[label="clEnqueueNDRangeKernel"];
+node_76[label="clEnqueueNDRangeKernel"];
+node_77[label="clEnqueueNDRangeKernel"];
+node_78[label="clEnqueueNDRangeKernel"];
+node_79[label="clEnqueueNDRangeKernel"];
+node_80[label="clEnqueueNDRangeKernel"];
+node_81[label="clEnqueueNDRangeKernel"];
+node_82[label="clEnqueueNDRangeKernel"];
+node_83[label="clEnqueueNDRangeKernel"];
+node_84[label="clEnqueueNDRangeKernel"];
+node_85[label="clEnqueueNDRangeKernel"];
+node_86[label="clEnqueueNDRangeKernel"];
+node_87[label="clEnqueueNDRangeKernel"];
+node_88[label="clEnqueueNDRangeKernel"];
+node_89[label="clEnqueueNDRangeKernel"];
+node_90[label="clEnqueueNDRangeKernel"];
+node_91[label="clEnqueueNDRangeKernel"];
+node_92[label="clEnqueueReadBuffer"];
+}
+node_61 -> node_62
+node_62 -> node_63
+node_63 -> node_64
+node_64 -> node_65
+node_65 -> node_66
+node_66 -> node_67
+node_67 -> node_68
+node_68 -> node_69
+node_69 -> node_70
+node_70 -> node_71
+node_71 -> node_72
+node_72 -> node_73
+node_73 -> node_74
+node_74 -> node_75
+node_75 -> node_76
+node_76 -> node_77
+node_77 -> node_78
+node_78 -> node_79
+node_79 -> node_80
+node_80 -> node_81
+node_81 -> node_82
+node_82 -> node_83
+node_83 -> node_84
+node_84 -> node_85
+node_85 -> node_86
+node_86 -> node_87
+node_87 -> node_88
+node_88 -> node_89
+node_89 -> node_90
+node_90 -> node_91
+node_91 -> node_92
+node_61 -> node_62 [label="blocking host wait" ltail=cluster_31 lhead=cluster_32];
+
+}

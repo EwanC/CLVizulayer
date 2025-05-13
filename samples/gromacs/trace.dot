@@ -1,0 +1,200 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "clReleaseCommandQueue()";
+node_0[label="clEnqueueNDRangeKernel"];
+}
+subgraph cluster_1 {
+label = "clFinish()";
+node_1[label="clEnqueueFillBuffer"];
+node_2[label="clEnqueueFillBuffer"];
+node_3[label="clEnqueueFillBuffer"];
+node_4[label="clEnqueueFillBuffer"];
+node_5[label="clEnqueueWriteBuffer"];
+node_6[label="clEnqueueWriteBuffer"];
+node_7[label="clEnqueueWriteBuffer"];
+node_8[label="clEnqueueWriteBuffer"];
+node_9[label="clEnqueueFillBuffer"];
+node_10[label="clEnqueueWriteBuffer"];
+node_11[label="clEnqueueWriteBuffer"];
+node_12[label="clEnqueueNDRangeKernel"];
+node_13[label="clEnqueueNDRangeKernel"];
+node_14[label="clEnqueueReadBuffer"];
+node_15[label="clEnqueueReadBuffer"];
+node_16[label="clEnqueueReadBuffer"];
+node_17[label="clEnqueueReadBuffer"];
+}
+node_1 -> node_2
+node_2 -> node_3
+node_3 -> node_4
+node_4 -> node_5
+node_5 -> node_6
+node_6 -> node_7
+node_7 -> node_8
+node_8 -> node_9
+node_9 -> node_10
+node_10 -> node_11
+node_11 -> node_12
+node_12 -> node_13
+node_13 -> node_14
+node_14 -> node_15
+node_15 -> node_16
+node_16 -> node_17
+node_0 -> node_1 [label="blocking host wait" ltail=cluster_0 lhead=cluster_1];
+subgraph cluster_2 {
+label = "clFinish()";
+node_18[label="clEnqueueFillBuffer"];
+node_19[label="clEnqueueFillBuffer"];
+node_20[label="clEnqueueFillBuffer"];
+node_21[label="clEnqueueFillBuffer"];
+node_22[label="clEnqueueWriteBuffer"];
+node_23[label="clEnqueueNDRangeKernel"];
+node_24[label="clEnqueueReadBuffer"];
+}
+node_17 -> node_18
+node_18 -> node_19
+node_19 -> node_20
+node_20 -> node_21
+node_21 -> node_22
+node_22 -> node_23
+node_23 -> node_24
+node_1 -> node_18 [label="blocking host wait" ltail=cluster_1 lhead=cluster_2];
+subgraph cluster_3 {
+label = "clFinish()";
+node_25[label="clEnqueueFillBuffer"];
+node_26[label="clEnqueueWriteBuffer"];
+node_27[label="clEnqueueNDRangeKernel"];
+node_28[label="clEnqueueReadBuffer"];
+}
+node_24 -> node_25
+node_25 -> node_26
+node_26 -> node_27
+node_27 -> node_28
+node_18 -> node_25 [label="blocking host wait" ltail=cluster_2 lhead=cluster_3];
+subgraph cluster_4 {
+label = "clFinish()";
+node_29[label="clEnqueueNDRangeKernel"];
+node_30[label="clEnqueueFillBuffer"];
+node_31[label="clEnqueueWriteBuffer"];
+node_32[label="clEnqueueNDRangeKernel"];
+node_33[label="clEnqueueReadBuffer"];
+}
+node_28 -> node_29
+node_29 -> node_30
+node_30 -> node_31
+node_31 -> node_32
+node_32 -> node_33
+node_25 -> node_29 [label="blocking host wait" ltail=cluster_3 lhead=cluster_4];
+subgraph cluster_5 {
+label = "clFinish()";
+node_34[label="clEnqueueFillBuffer"];
+node_35[label="clEnqueueWriteBuffer"];
+node_36[label="clEnqueueNDRangeKernel"];
+node_37[label="clEnqueueReadBuffer"];
+}
+node_33 -> node_34
+node_34 -> node_35
+node_35 -> node_36
+node_36 -> node_37
+node_29 -> node_34 [label="blocking host wait" ltail=cluster_4 lhead=cluster_5];
+subgraph cluster_6 {
+label = "clFinish()";
+node_38[label="clEnqueueNDRangeKernel"];
+node_39[label="clEnqueueFillBuffer"];
+node_40[label="clEnqueueWriteBuffer"];
+node_41[label="clEnqueueNDRangeKernel"];
+node_42[label="clEnqueueReadBuffer"];
+}
+node_37 -> node_38
+node_38 -> node_39
+node_39 -> node_40
+node_40 -> node_41
+node_41 -> node_42
+node_34 -> node_38 [label="blocking host wait" ltail=cluster_5 lhead=cluster_6];
+subgraph cluster_7 {
+label = "clFinish()";
+node_43[label="clEnqueueFillBuffer"];
+node_44[label="clEnqueueWriteBuffer"];
+node_45[label="clEnqueueNDRangeKernel"];
+node_46[label="clEnqueueReadBuffer"];
+}
+node_42 -> node_43
+node_43 -> node_44
+node_44 -> node_45
+node_45 -> node_46
+node_38 -> node_43 [label="blocking host wait" ltail=cluster_6 lhead=cluster_7];
+subgraph cluster_8 {
+label = "clFinish()";
+node_47[label="clEnqueueNDRangeKernel"];
+node_48[label="clEnqueueFillBuffer"];
+node_49[label="clEnqueueWriteBuffer"];
+node_50[label="clEnqueueNDRangeKernel"];
+node_51[label="clEnqueueReadBuffer"];
+}
+node_46 -> node_47
+node_47 -> node_48
+node_48 -> node_49
+node_49 -> node_50
+node_50 -> node_51
+node_43 -> node_47 [label="blocking host wait" ltail=cluster_7 lhead=cluster_8];
+subgraph cluster_9 {
+label = "clFinish()";
+node_52[label="clEnqueueFillBuffer"];
+node_53[label="clEnqueueWriteBuffer"];
+node_54[label="clEnqueueNDRangeKernel"];
+node_55[label="clEnqueueReadBuffer"];
+}
+node_51 -> node_52
+node_52 -> node_53
+node_53 -> node_54
+node_54 -> node_55
+node_47 -> node_52 [label="blocking host wait" ltail=cluster_8 lhead=cluster_9];
+subgraph cluster_10 {
+label = "clFinish()";
+node_56[label="clEnqueueNDRangeKernel"];
+node_57[label="clEnqueueFillBuffer"];
+node_58[label="clEnqueueWriteBuffer"];
+node_59[label="clEnqueueNDRangeKernel"];
+node_60[label="clEnqueueReadBuffer"];
+}
+node_55 -> node_56
+node_56 -> node_57
+node_57 -> node_58
+node_58 -> node_59
+node_59 -> node_60
+node_52 -> node_56 [label="blocking host wait" ltail=cluster_9 lhead=cluster_10];
+subgraph cluster_11 {
+label = "clFinish()";
+node_61[label="clEnqueueFillBuffer"];
+node_62[label="clEnqueueWriteBuffer"];
+node_63[label="clEnqueueNDRangeKernel"];
+node_64[label="clEnqueueReadBuffer"];
+node_65[label="clEnqueueReadBuffer"];
+node_66[label="clEnqueueReadBuffer"];
+node_67[label="clEnqueueReadBuffer"];
+}
+node_60 -> node_61
+node_61 -> node_62
+node_62 -> node_63
+node_63 -> node_64
+node_64 -> node_65
+node_65 -> node_66
+node_66 -> node_67
+node_56 -> node_61 [label="blocking host wait" ltail=cluster_10 lhead=cluster_11];
+subgraph cluster_12 {
+label = "clFinish()";
+node_68[label="clEnqueueNDRangeKernel"];
+node_69[label="clEnqueueFillBuffer"];
+node_70[label="clEnqueueFillBuffer"];
+node_71[label="clEnqueueFillBuffer"];
+node_72[label="clEnqueueFillBuffer"];
+}
+node_67 -> node_68
+node_68 -> node_69
+node_69 -> node_70
+node_70 -> node_71
+node_71 -> node_72
+node_61 -> node_68 [label="blocking host wait" ltail=cluster_11 lhead=cluster_12];
+
+}
