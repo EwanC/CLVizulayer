@@ -1,0 +1,158 @@
+// Copyright (c) 2025 Ewan Crawford
+= cl_ext_dot_print
+
+== Name Strings
+
+`cl_ext_dot_print`
+
+== Contact
+
+https://github.com/EwanC/CLVizulayer/issues
+
+== Contributors
+
+Ewan Crawford
+
+== Notice
+
+Copyright (c) 2025 Ewan Crawford
+
+== Status
+
+Unratified proposal, still in beta so breaking changes are possible.
+
+== Version
+
+Built On: {docdate} +
+Version: 0.1.0
+
+== Dependencies
+
+
+This extension is written against the OpenCL Specification version 3.0.19.
+
+This extension requires OpenCL 1.0.
+
+== Overview
+
+== New API Functions
+
+[source,c]
+----
+cl_dot_graph_ext clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue* queues,
+                                     const char* file_path, cl_int* errorcode_ret);
+
+cl_int clRetainDotGraphEXT(cl_dot_graph_ext dot);
+
+cl_int clReleaseDotGraphEXT(cl_dot_graph_ext dot);
+----
+
+== New API Types
+
+[source,c]
+----
+typedef struct _cl_dot_graph_ext*  cl_dot_graph_ext;
+----
+
+== Modifications to the OpenCL API Specification
+
+=== New Section 5.X - Dot Graph Printing
+
+This section defines the mechanism for creating a DOT format file on disk
+containing a graph of the asynchronous device commands submitted to one or more
+command-queues. A handle to a dot graph object representing a file is created by
+passing a list of queues to print the submissions of. All user enqueue calls to
+those queues will be tracked in the dot file until the point when the dot file
+handle is destroyed.
+
+To create a dot graph object object, use the function
+
+[source]
+----
+cl_dot_graph_ext clCreateDotGraphEXT(
+   cl_uint num_queues,
+   const cl_command_queue* queues,
+   const char* file_path,
+   cl_int* errorcode_ret);
+----
+
+_num_queues_ is the number of command-queues listed in queues.
+
+_queues_ is a pointer to a list of command-queues that a dot graph of commands
+will be created from. _queues_ must be a non-NULL value and the length of the
+list equal to _num_queues_.
+
+_file_path_ filesystem path to where dot file of commands will be created. If
+_file_path_ is `NULL`, then a file named `clviz_YYYY-MM-DD_HH:MM:SS.dot` in the
+current working directory will be created. If _file_path_ is an existing file,
+then that file will be overwritten.
+
+_errorcode_ret_ will return an appropriate error code. If _errcode_ret_ is `NULL`,
+no error code is returned.
+
+*clCreateDotGraphEXT* returns a valid non-zero dot graph object and _errcode_ret_
+is set to `CL_SUCCESS` if the object is created successfully. Otherwise, it
+returns a `NULL` value with one of the following error values returned in
+_errcode_ret_:
+
+* `CL_INVALID_COMMAND_QUEUE` if any command-queue in queues is not a valid
+   command-queue.
+* `CL_INVALID_CONTEXT` if all the command-queues in queues do not have the
+   same OpenCL context.
+* `CL_INVALID_VALUE` if queues is `NULL`.
+* `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
+   the OpenCL implementation on the device.
+* `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required
+  by the OpenCL implementation on the host.
+
+The behavior is undefined if the file pointed to be _file_path_ has already
+open in another valid `cl_dot_graph_ext` instance.
+
+To retain a dot graph, call the function:
+
+[source]
+----
+cl_int clRetainDotGraphEXT(cl_dot_graph_ext dot);
+----
+
+_dot_ is a valid handle to a dot graph.
+
+*clRetainDotGraphEXT* returns `CL_SUCCESS` if the function is executed
+successfully. Otherwise, it returns one of the following errors:
+
+* `CL_INVALID_VALUE` if _dot_ is not a valid handle.
+* `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
+  the OpenCL implementation on the device.
+* `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required by
+  the OpenCL implementation on the host.
+
+To release a dot graph, call the function:
+
+[source]
+----
+cl_int clReleaseDotGraphEXT(cl_dot_graph_ext dot);
+----
+
+_dot_ is a valid handle to a dot graph.
+
+After the reference count becomes zero and the underlying dot file has been
+closed, the underlying object is deleted.
+
+*clReleaseDotGraphEXT* returns `CL_SUCCESS` if the function is executed
+successfully. Otherwise, it returns one of the following errors:
+
+* `CL_INVALID_VALUE` if _dot_ is not a valid handle.
+* `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
+  the OpenCL implementation on the device.
+* `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required by
+  the OpenCL implementation on the host.
+
+== Version History
+
+[cols="5,15,15,70"]
+[grid="rows"]
+[options="header"]
+|====
+| Version | Date       | Author        | Changes
+| 0.1.0   | 2025-07-17 | Ewan Crawford | *Initial revision*
+|====

@@ -1,0 +1,17 @@
+# Copyright (c) 2025 Ewan Crawford
+
+import lit.formats
+
+config.main_src_root = r"@CMAKE_SOURCE_DIR@"
+config.test_source_root = os.path.join(config.main_src_root, "test")
+config.main_obj_root = r"@CMAKE_BINARY_DIR@"
+config.test_exec_root = os.path.join(config.main_obj_root, "test")
+config.ext_headers_path = os.path.join(config.main_src_root, "include")
+
+config.filecheck_path = r"@FileCheck@"
+config.ocl_headers_path = r"@OpenCLIncludeDir@"
+config.ocl_icd_path = r"@ICD_LOADER_DIR@"
+config.cxx_compiler = r"@CMAKE_CXX_COMPILER@"
+config.clinfo_path = r"@CLInfo@"
+
+lit_config.load_config(config, os.path.join(config.main_src_root, "test/lit.cfg.py"))

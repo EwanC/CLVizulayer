@@ -1,0 +1,222 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+
+      # Matrix running across 3 axis:
+      # 1. <Windows, Release, latest MSVC compiler toolchain on the default runner image, default generator>
+      # 2. <Linux, Release, latest GCC compiler toolchain on the default runner image, default generator>
+      # 3. <Linux, Release, latest Clang compiler toolchain on the default runner image, default generator>
+      # 4. <OSX, Release, latest Clang compiler toolchain on the default runner image, default generator>
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Release]
+        headers: [Default, User]
+        c_compiler: [gcc, clang, cl]
+        include:
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+          - os: ubuntu-latest
+            c_compiler: clang
+            cpp_compiler: clang++
+          - os: macos-latest
+            c_compiler: clang
+            cpp_compiler: clang++
+        exclude:
+          - os: windows-latest
+            c_compiler: gcc
+          - os: windows-latest
+            c_compiler: clang
+          - os: ubuntu-latest
+            c_compiler: cl
+          - os: macos-latest
+            c_compiler: cl
+          - os: macos-latest
+            c_compiler: gcc
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+        cache: 'pip'
+
+    - name: Set reusable strings
+      id: strings
+      shell: bash
+      run: |
+        echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+
+    - name: Install LLVM FileCheck and Lit
+      run: pip install -r requirements.txt
+
+    # Code should be clang-format clean, so don't need to use git-clang-format
+    # to hide out of scope clang-format errors/
+    - name: clang-format
+      shell: bash
+      if: matrix.os == 'ubuntu-latest'  # Don't need to run this on every target
+      run: |
+        clang-format **/*.cpp **/*.h --dry-run -Werror
+        python3 -mblack test/lit.cfg.py test/lit.site.cfg.py.in --check
+
+    - name: Ubuntu Install Doxygen
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt install -y doxygen graphviz clinfo
+
+    - name: Configure CMake with default headers
+      if: matrix.headers == 'Default'
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -S ${{ github.workspace }}
+
+    - name: Clone OpenCL-Headers
+      if: matrix.headers == 'User'
+      uses: actions/checkout@v4
+      with:
+        repository: KhronosGroup/OpenCL-Headers
+        path: external/OpenCL-Headers
+
+    - name: Unix Build OpenCL-Headers
+      if: matrix.headers == 'User' && matrix.os != 'windows-latest'
+      run: cmake
+           -S $GITHUB_WORKSPACE/external/OpenCL-Headers
+           -B $GITHUB_WORKSPACE/external/OpenCL-Headers/build
+           -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/external/OpenCL-Headers/build/install
+           &&
+           cmake --build $GITHUB_WORKSPACE/external/OpenCL-Headers/build --target install
+
+    - name: Windows Build OpenCL-Headers
+      if: matrix.headers == 'User' && matrix.os == 'windows-latest'
+      run: cmake
+           -S $env:GITHUB_WORKSPACE\external\OpenCL-Headers
+           -B $env:GITHUB_WORKSPACE\external\OpenCL-Headers\build
+           -DCMAKE_INSTALL_PREFIX=external\OpenCL-Headers\build\install
+           &&
+           cmake
+           --build $env:GITHUB_WORKSPACE\external\OpenCL-Headers\build
+           --config ${{ matrix.build_type }}
+           --target install
+
+    - name: Clone OpenCL-ICD-Loader
+      if: matrix.headers == 'User'
+      uses: actions/checkout@v4
+      with:
+        repository: KhronosGroup/OpenCL-ICD-Loader
+        path: external/OpenCL-ICD-Loader
+
+    - name: Windows Configure CMake with user defined headers
+      if: matrix.headers == 'User' && matrix.os == 'windows-latest'
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_PREFIX_PATH=$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install
+        -S ${{ github.workspace }}
+
+    - name: Unix Configure CMake with user defined headers
+      if: matrix.headers == 'User' && matrix.os != 'windows-latest'
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/external/OpenCL-Headers/build/install
+        -S ${{ github.workspace }}
+
+    - name: Build
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+
+    - name: Build Doxygen
+      if: matrix.os == 'ubuntu-latest'
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --target doxygen
+
+    - name: Cache Viz
+      if: (matrix.os == 'ubuntu-latest') && (matrix.headers == 'Default') &&  (matrix.c_compiler == 'gcc')
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.strings.outputs.build-output-dir }}
+        key: ${{github.sha}}
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+        cache: 'pip'
+
+    - name: Install LLVM FileCheck and Lit
+      run: pip install -r requirements.txt
+
+    - name: apt install dependencies
+      run: sudo apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 
+           cmake git pkg-config libclang-19-dev clang-19
+           llvm-19 make ninja-build ocl-icd-libopencl1 ocl-icd-dev
+           ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils
+           libxml2-dev libclang-cpp19-dev libclang-cpp19
+           llvm-19-dev
+
+    - name: Restore Viz
+      id: cache-viz-restore
+      uses: actions/cache/restore@v4
+      with:
+        path: ${{github.workspace}}/build
+        key: ${{github.sha}}
+        fail-on-cache-miss: true
+
+    - name: Cache POCL
+      id: cache-pocl
+      uses: actions/cache@v4
+      with:
+        path: ${{github.workspace}}/external/pocl/build/install
+        key: eb2b23544e4ed15214bbc3b4c4fc4e0cfe97e54b
+
+    - name: Clone POCL
+      if: steps.cache-pocl.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        repository: pocl/pocl
+        path: external/pocl
+        ref: eb2b23544e4ed15214bbc3b4c4fc4e0cfe97e54b
+
+    - name: Build POCL
+      if: steps.cache-pocl.outputs.cache-hit != 'true'
+      run: cmake
+           -S $GITHUB_WORKSPACE/external/pocl
+           -B $GITHUB_WORKSPACE/external/pocl/build
+           -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/external/pocl/build/install
+           &&
+           cmake --build $GITHUB_WORKSPACE/external/pocl/build --target install
+
+    - name: Set OCL_ICD_VENDORS
+      run: echo "OCL_ICD_VENDORS=${{github.workspace}}/external/pocl/build/install/etc/OpenCL/vendors" >> $GITHUB_ENV
+
+    - name: Set OCL_ICD_ENABLE_TRACE
+      run: echo "OCL_ICD_ENABLE_TRACE=1" >> $GITHUB_ENV
+
+    - name: clinfo
+      run: clinfo
+
+    - name: Test
+      run: cmake --build ${{github.workspace}}/build --target check

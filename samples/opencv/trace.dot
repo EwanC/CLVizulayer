@@ -1,0 +1,47 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "clEnqueueWriteBuffer()";
+node_0[label="clEnqueueWriteBuffer\n
+blocking = True\n
+buffer = 0x57b749aedbc0\n
+offset = 0\n
+size = 136640\n
+ptr = 0x7fc108738010"];
+}
+subgraph cluster_1 {
+label = "clEnqueueWriteBuffer()";
+node_1[label="clEnqueueWriteBuffer\n
+blocking = True\n
+buffer = 0x57b749b8a4e0\n
+offset = 0\n
+size = 520\n
+ptr = 0x57b749ae56d0"];
+}
+node_0 -> node_1
+node_0 -> node_1 [label="blocking host wait" ltail=cluster_0 lhead=cluster_1];
+subgraph cluster_2 {
+label = "clEnqueueWriteBuffer()";
+node_2[label="clEnqueueWriteBuffer\n
+blocking = True\n
+buffer = 0x57b74b0feb80\n
+offset = 0\n
+size = 163392\n
+ptr = 0x7fc100530010"];
+}
+node_1 -> node_2
+node_1 -> node_2 [label="blocking host wait" ltail=cluster_1 lhead=cluster_2];
+subgraph cluster_3 {
+label = "clEnqueueWriteBuffer()";
+node_3[label="clEnqueueWriteBuffer\n
+blocking = True\n
+buffer = 0x57b74b0ffdf0\n
+offset = 0\n
+size = 360\n
+ptr = 0x57b74ae43730"];
+}
+node_2 -> node_3
+node_2 -> node_3 [label="blocking host wait" ltail=cluster_2 lhead=cluster_3];
+
+}
