@@ -1,5 +1,7 @@
 # CLVizulayer
 
+TEST
+
 [![Build & Test](https://github.com/EwanC/CLVizulayer/actions/workflows/build_test.yml/badge.svg)](https://github.com/EwanC/CLVizulayer/actions/workflows/build_test.yml)
 
 OpenCL [layer](https://github.com/KhronosGroup/OpenCL-ICD-Loader?tab=readme-ov-file#about-layers)
