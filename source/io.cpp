@@ -2,7 +2,7 @@
 
 #include "io.h"
 #include "logger.h"
-#include "viz.h"
+#include "viz_node.h"
 #include <ctime>
 #include <filesystem>
 #include <sstream>

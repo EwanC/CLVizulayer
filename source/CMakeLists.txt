@@ -6,7 +6,7 @@ else()
     add_compile_options(-Wall -Wextra -Werror)
 endif()
 
-set(SOURCES main.cpp viz.cpp io.cpp cl_ext_dot_graph.cpp)
+set(SOURCES main.cpp viz_context.cpp viz_instance.cpp io.cpp cl_ext_dot_graph.cpp)
 if (WIN32)
     list(APPEND SOURCES CLVizulayer.def)
 endif()

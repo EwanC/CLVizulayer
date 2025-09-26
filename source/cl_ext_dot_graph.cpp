@@ -7,7 +7,7 @@
 #include <span>
 
 #include "logger.h"
-#include "viz.h"
+#include "viz_context.h"
 
 /// Forward declaration
 struct VizDotFile;
