@@ -85,12 +85,11 @@ cl_int clEnqueueNDRangeKernelShim(
       command_queue, kernel, work_dim, global_work_offset, global_work_size,
       local_work_size, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     auto &Context = getVizContext();
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\ncl_kernel = " << std::hex << kernel << std::dec;
           Stream << "\\n";
@@ -131,12 +130,11 @@ cl_int clEnqueueTaskShim(cl_command_queue command_queue, cl_kernel kernel,
   cl_int Ret = TargetDispatch->clEnqueueTask(
       command_queue, kernel, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     auto &Context = getVizContext();
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\ncl_kernel = " << std::hex << kernel << std::dec;
           Stream << "\\n";
@@ -360,11 +358,10 @@ cl_int clEnqueueFillBufferShim(cl_command_queue command_queue, cl_mem buffer,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\ncl_mem = " << std::hex << buffer;
           Stream << "\\n";
@@ -400,11 +397,10 @@ cl_int clEnqueueCopyBufferShim(cl_command_queue command_queue,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsrc_buffer = " << std::hex << src_buffer;
           Stream << "\\n";
@@ -438,12 +434,11 @@ cl_int clEnqueueReadBufferShim(cl_command_queue command_queue, cl_mem buffer,
       command_queue, buffer, blocking_read, offset, size, ptr,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     auto &Context = getVizContext();
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_read ? "True" : "False");
           Stream << "\\n";
@@ -482,11 +477,10 @@ cl_int clEnqueueWriteBufferShim(cl_command_queue command_queue, cl_mem buffer,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_write ? "True" : "False");
           Stream << "\\n";
@@ -526,11 +520,10 @@ cl_int clEnqueueCopyBufferRectShim(
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\\n";
           Stream << "\nsrc_buffer = " << std::hex << src_buffer;
@@ -580,11 +573,10 @@ clEnqueueReadBufferRectShim(cl_command_queue command_queue, cl_mem buffer,
       ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_read ? "True" : "False");
           Stream << "\\n";
@@ -637,11 +629,10 @@ cl_int clEnqueueWriteBufferRectShim(
       ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_write ? "True" : "False");
           Stream << "\\n";
@@ -693,11 +684,10 @@ void *clEnqueueMapBufferShim(cl_command_queue command_queue, cl_mem buffer,
       num_events_in_wait_list, event_wait_list, event, &Ret);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_map ? "True" : "False");
           Stream << "\\n";
@@ -740,11 +730,10 @@ cl_int clEnqueueFillImageShim(cl_command_queue command_queue, cl_mem image,
       event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\ncl_mem = " << std::hex << image << std::dec;
           Stream << "\\n";
@@ -779,11 +768,10 @@ cl_int clEnqueueCopyImageShim(cl_command_queue command_queue, cl_mem src_image,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsrc_image = " << std::hex << src_image;
           Stream << "\\n";
@@ -822,11 +810,10 @@ cl_int clEnqueueCopyImageToBufferShim(cl_command_queue command_queue,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsrc_image = " << std::hex << src_image;
           Stream << "\\n";
@@ -862,11 +849,10 @@ cl_int clEnqueueCopyBufferToImageShim(
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsrc_buffer = " << std::hex << src_buffer;
           Stream << "\\n";
@@ -906,11 +892,10 @@ void *clEnqueueMapImageShim(cl_command_queue command_queue, cl_mem image,
       event_wait_list, event, &Ret);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nimage = " << std::hex << image << std::dec;
           Stream << "\\n";
@@ -960,11 +945,10 @@ cl_int clEnqueueReadImageShim(cl_command_queue command_queue, cl_mem image,
       slice_pitch, ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nimage = " << std::hex << image << std::dec;
           Stream << "\\n";
@@ -1009,11 +993,10 @@ cl_int clEnqueueWriteImageShim(cl_command_queue command_queue, cl_mem image,
       input_slice_pitch, ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nimage = " << std::hex << image << std::dec;
           Stream << "\\n";
@@ -1056,11 +1039,10 @@ cl_int clEnqueueUnmapMemObjectShim(cl_command_queue command_queue,
       event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nmemobj = " << std::hex << memobj;
           Stream << "\\n";
@@ -1090,11 +1072,10 @@ cl_int clEnqueueMigrateMemObjectsShim(cl_command_queue command_queue,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           for (cl_uint i = 0; i < num_mem_objects; i++) {
             Stream << "\nmem_obj = " << std::hex << mem_objects[i] << std::dec;
@@ -1126,11 +1107,10 @@ cl_int clEnqueueSVMFreeShim(
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n" << std::hex;
           for (cl_uint i = 0; i < num_svm_pointers; i++) {
             Stream << "\nsvm_ptr = " << svm_pointers[i];
@@ -1165,11 +1145,10 @@ cl_int clEnqueueSVMMemcpyShim(cl_command_queue command_queue,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_copy ? "True" : "False");
           Stream << "\\n";
@@ -1204,11 +1183,10 @@ cl_int clEnqueueSVMMemFillShim(cl_command_queue command_queue, void *svm_ptr,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsvm_ptr = " << std::hex << svm_ptr;
           Stream << "\\n";
@@ -1239,11 +1217,10 @@ cl_int clEnqueueSVMMapShim(cl_command_queue command_queue, cl_bool blocking_map,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nblocking = " << (blocking_map ? "True" : "False");
           Stream << "\\n";
@@ -1275,11 +1252,10 @@ cl_int clEnqueueSVMUnmapShim(cl_command_queue command_queue, void *svm_ptr,
       command_queue, svm_ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           Stream << "\nsvm_ptr = " << std::hex << svm_ptr << std::dec;
         };
@@ -1305,11 +1281,10 @@ clEnqueueSVMMigrateMemShim(cl_command_queue command_queue,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     auto &Context = getVizContext();
-    std::function<void(VizDotFile *)> VerbosePrint{};
+    std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
-        VerbosePrint = [=](VizDotFile *DotFile) {
-          auto &Stream = DotFile->MDotFile;
+        VerbosePrint = [=](std::ofstream &Stream) {
           Stream << "\\n";
           for (cl_uint i = 0; i < num_svm_pointers; i++) {
             Stream << "\nsvm_ptr = " << std::hex << svm_pointers[i] << std::dec;

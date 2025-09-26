@@ -204,7 +204,7 @@ void VizDotFile::writeNode(VizNode *Node) {
   MDotFile << "[label=\"";
   MDotFile << Node->MName;
   if (Node->MVerbosePrint) {
-    Node->MVerbosePrint(this);
+    Node->MVerbosePrint(MDotFile);
   }
   MDotFile << "\"";
 

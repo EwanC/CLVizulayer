@@ -150,7 +150,7 @@ void VizInstance::createVizQueue(cl_command_queue CQ, bool IsInOrder) {
 
 void VizInstance::createVizNode(
     cl_command_queue CQ, const char *Name,
-    std::function<void(VizDotFile *)> VerbosePrintFunc,
+    std::function<void(std::ofstream &)> VerbosePrintFunc,
     std::span<const cl_event> Deps, cl_event *RetEvent) {
   VizQueue *VQ = getVizQueueForCLQueue(CQ);
   if (!VQ) {

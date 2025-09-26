@@ -41,7 +41,7 @@ struct VizQueue {
 struct VizNode {
   /// @brief Constructor
   VizNode(VizQueue *VQ, std::vector<VizNode *> &&Deps, const char *Name,
-          std::function<void(VizDotFile *)> VerbosePrint)
+          std::function<void(std::ofstream &)> VerbosePrint)
       : MQueue(VQ), MPreds(Deps), MName(Name), MVerbosePrint(VerbosePrint),
         MDefined(false) {
     static int ID = 0;
@@ -55,7 +55,7 @@ struct VizNode {
   /// Name of command, e.g "clEnqueueNDRangeKernel"
   const char *MName;
   /// Optional function for printing verbose node information
-  std::function<void(VizDotFile *)> MVerbosePrint;
+  std::function<void(std::ofstream &)> MVerbosePrint;
   /// Whether the node has already been defined in a dot file
   bool MDefined;
   /// Unique ID for the node
@@ -86,7 +86,7 @@ struct VizInstance {
   /// @param[in] Deps OpenCL event dependencies
   /// @param[out] RetEvent OpenCL return event
   void createVizNode(cl_command_queue CQ, const char *Name,
-                     std::function<void(VizDotFile *)> VerbosePrintFunc,
+                     std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_event> Deps, cl_event *RetEvent);
 
   /// @brief Allocates a new VizNode instance representing a barrier command,
@@ -215,7 +215,7 @@ struct VizContext {
   /// @param[in] Deps OpenCL event dependencies
   /// @param[out] RetEvent OpenCL return event
   void createVizNode(cl_command_queue CQ, const char *Name,
-                     std::function<void(VizDotFile *)> VerbosePrintFunc,
+                     std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_event> Deps, cl_event *RetEvent) {
     std::lock_guard<std::mutex> Lock(MMutex);
     for (auto &VI : MInstances) {
