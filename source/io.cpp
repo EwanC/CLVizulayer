@@ -63,13 +63,13 @@ VizDotFile::VizDotFile(bool Color, const char *FilePath)
     MDotFile << "node [style=bold]\n";
   }
 
-  VIZ_LOG("Opened dot file %s", MFileName.c_str());
+  VIZ_LOG("Opened dot file {}", MFileName.c_str());
 }
 
 VizDotFile::~VizDotFile() {
   MDotFile << "\n}";
   MDotFile.close();
-  VIZ_LOG("Closed dot file %s", MFileName.c_str());
+  VIZ_LOG("Closed dot file {}", MFileName.c_str());
 }
 
 const char *VizDotFile::newColor(VizQueue *VQ) {
@@ -184,10 +184,10 @@ const char *VizDotFile::newColor(VizQueue *VQ) {
   const char *QueueColor = Colors[ColorIndex++];
 
   if (ColorIndex > (NumColors - 1)) {
-    VIZ_ERR("Number of queues exceeded pool of %zu colors\n", NumColors);
+    VIZ_ERR("Number of queues exceeded pool of {} colors\n", NumColors);
   }
 
-  VIZ_LOG("Queue %p Color %s\n", VQ, QueueColor);
+  VIZ_LOG("Queue {} Color {}", static_cast<void *>(VQ), QueueColor);
 
   MQueueColors.insert({VQ, QueueColor});
   return QueueColor;

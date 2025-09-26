@@ -99,7 +99,7 @@ clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
       *errcode_ret = CL_SUCCESS;
     }
   } catch (std::exception &E) {
-    VIZ_ERR("Error instantiating _cl_dot_graph_ext: %s", E.what());
+    VIZ_ERR("Error instantiating _cl_dot_graph_ext: {}", E.what());
     if (errcode_ret) {
       *errcode_ret = CL_OUT_OF_HOST_MEMORY;
     }

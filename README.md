@@ -82,6 +82,9 @@ $ cmake -DCMAKE_PREFIX_PATH="/chosen/install/prefix/of/headers;/chosen/install/p
 If these packages are not detected then CMake will download and build the
 `main` branch of these repositories using `FetchContent` as part of the build.
 
+The project requires a C++20 compiler to build, as it makes use of `std::span`
+and `std::format`.
+
 ### CMake Variables
 
 Additional project defined CMake variables

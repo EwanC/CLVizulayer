@@ -100,7 +100,7 @@ cl_int clEnqueueNDRangeKernelShim(
               kernel, CL_KERNEL_FUNCTION_NAME, 0, nullptr, &Size);
 
           if (Ret != CL_SUCCESS) {
-            VIZ_ERR("Error calling clGetKernelInfo, err code %d", Ret);
+            VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
             return;
           }
 
@@ -108,7 +108,7 @@ cl_int clEnqueueNDRangeKernelShim(
           Ret = TargetDispatch->clGetKernelInfo(kernel, CL_KERNEL_FUNCTION_NAME,
                                                 Size, FuncName.data(), nullptr);
           if (Ret != CL_SUCCESS) {
-            VIZ_ERR("Error calling clGetKernelInfo, err code %d", Ret);
+            VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
             return;
           }
           Stream << "\nname = " << FuncName.data();
@@ -118,7 +118,7 @@ cl_int clEnqueueNDRangeKernelShim(
           command_queue, "clEnqueueNDRangeKernel", std::move(VerbosePrint),
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating kernel node: %s", E.what());
+      VIZ_ERR("Error creating kernel node: {}", E.what());
     }
   }
 
@@ -146,7 +146,7 @@ cl_int clEnqueueTaskShim(cl_command_queue command_queue, cl_kernel kernel,
               kernel, CL_KERNEL_FUNCTION_NAME, 0, nullptr, &Size);
 
           if (Ret != CL_SUCCESS) {
-            VIZ_ERR("Error calling clGetKernelInfo, err code %d", Ret);
+            VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
             return;
           }
 
@@ -154,7 +154,7 @@ cl_int clEnqueueTaskShim(cl_command_queue command_queue, cl_kernel kernel,
           Ret = TargetDispatch->clGetKernelInfo(kernel, CL_KERNEL_FUNCTION_NAME,
                                                 Size, FuncName.data(), nullptr);
           if (Ret != CL_SUCCESS) {
-            VIZ_ERR("Error calling clGetKernelInfo, err code %d", Ret);
+            VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
             return;
           }
           Stream << "\nname = " << FuncName.data();
@@ -164,7 +164,7 @@ cl_int clEnqueueTaskShim(cl_command_queue command_queue, cl_kernel kernel,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating kernel node: %s", E.what());
+      VIZ_ERR("Error creating kernel node: {}", E.what());
     }
   }
 
@@ -186,7 +186,7 @@ cl_int clEnqueueNativeKernelShim(
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating native node: %s", E.what());
+      VIZ_ERR("Error creating native node: {}", E.what());
     }
   }
 
@@ -206,7 +206,7 @@ clCreateCommandQueueShim(cl_context Context, cl_device_id device,
     try {
       Context.createVizQueue(CQ, IsInOrder);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating VizQueue: %s", E.what());
+      VIZ_ERR("Error creating VizQueue: {}", E.what());
     }
   }
   return CQ;
@@ -237,7 +237,7 @@ clCreateCommandQueueWithPropertiesShim(cl_context Context, cl_device_id device,
     try {
       Context.createVizQueue(CQ, IsInOrder);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating VizQueue: %s", E.what());
+      VIZ_ERR("Error creating VizQueue: {}", E.what());
     }
   }
   return CQ;
@@ -249,7 +249,7 @@ cl_int clFinishShim(cl_command_queue command_queue) {
   try {
     Context.flushQueue(command_queue, "clFinish()", false);
   } catch (std::exception &E) {
-    VIZ_ERR("Error flushing VizQueue: %s", E.what());
+    VIZ_ERR("Error flushing VizQueue: {}", E.what());
   }
   return Ret;
 }
@@ -260,7 +260,7 @@ cl_int clReleaseCommandQueueShim(cl_command_queue command_queue) {
   try {
     Context.flushQueue(command_queue, "clReleaseCommandQueue()", false);
   } catch (std::exception &E) {
-    VIZ_ERR("Error flushing VizQueue: %s", E.what());
+    VIZ_ERR("Error flushing VizQueue: {}", E.what());
   }
   return Ret;
 }
@@ -273,7 +273,7 @@ cl_int clEnqueueBarrierShim(cl_command_queue command_queue) {
       Context.createVizBarrierNode(command_queue, false,
                                    std::span<const cl_event>(), nullptr);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating barrier node: %s", E.what());
+      VIZ_ERR("Error creating barrier node: {}", E.what());
     }
   }
 
@@ -293,7 +293,7 @@ cl_int clEnqueueBarrierWithWaitListShim(cl_command_queue command_queue,
           command_queue, true,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating barrier node: %s", E.what());
+      VIZ_ERR("Error creating barrier node: {}", E.what());
     }
   }
 
@@ -311,7 +311,7 @@ cl_int clEnqueueWaitForEventsShim(cl_command_queue command_queue,
       Context.createVizNode(command_queue, "clEnqueueWaitForEvents", {},
                             std::span(event_list, num_events), nullptr);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating wait node: %s", E.what());
+      VIZ_ERR("Error creating wait node: {}", E.what());
     }
   }
   return Ret;
@@ -324,7 +324,7 @@ cl_int clEnqueueMarkerShim(cl_command_queue command_queue, cl_event *event) {
     try {
       Context.createVizMarkerNode(command_queue, event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating marker node: %s", E.what());
+      VIZ_ERR("Error creating marker node: {}", E.what());
     }
   }
   return Ret;
@@ -343,7 +343,7 @@ cl_int clEnqueueMarkerWithWaitListShim(cl_command_queue command_queue,
           command_queue, std::span(event_wait_list, num_events_in_wait_list),
           event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating marker node: %s", E.what());
+      VIZ_ERR("Error creating marker node: {}", E.what());
     }
   }
   return Ret;
@@ -383,7 +383,7 @@ cl_int clEnqueueFillBufferShim(cl_command_queue command_queue, cl_mem buffer,
                             event);
 
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating buffer fill node: %s", E.what());
+      VIZ_ERR("Error creating buffer fill node: {}", E.what());
     }
   }
   return Ret;
@@ -422,7 +422,7 @@ cl_int clEnqueueCopyBufferShim(cl_command_queue command_queue,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating buffer copy node: %s", E.what());
+      VIZ_ERR("Error creating buffer copy node: {}", E.what());
     }
   }
   return Ret;
@@ -465,7 +465,7 @@ cl_int clEnqueueReadBufferShim(cl_command_queue command_queue, cl_mem buffer,
         Context.flushQueue(command_queue, "clEnqueueReadBuffer()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating buffer read node: %s", E.what());
+      VIZ_ERR("Error creating buffer read node: {}", E.what());
     }
   }
   return Ret;
@@ -508,7 +508,7 @@ cl_int clEnqueueWriteBufferShim(cl_command_queue command_queue, cl_mem buffer,
         Context.flushQueue(command_queue, "clEnqueueWriteBuffer()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating buffer write node: %s", E.what());
+      VIZ_ERR("Error creating buffer write node: {}", E.what());
     }
   }
   return Ret;
@@ -560,7 +560,7 @@ cl_int clEnqueueCopyBufferRectShim(
           command_queue, "clEnqueueCopyBufferRect", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating copy buffer rect node: %s", E.what());
+      VIZ_ERR("Error creating copy buffer rect node: {}", E.what());
     }
   }
   return Ret;
@@ -618,7 +618,7 @@ clEnqueueReadBufferRectShim(cl_command_queue command_queue, cl_mem buffer,
         Context.flushQueue(command_queue, "clEnqueueReadBufferRect()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating read buffer rect node: %s", E.what());
+      VIZ_ERR("Error creating read buffer rect node: {}", E.what());
     }
   }
   return Ret;
@@ -675,7 +675,7 @@ cl_int clEnqueueWriteBufferRectShim(
         Context.flushQueue(command_queue, "clEnqueueWriteBufferRect()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating write buffer rect node: %s", E.what());
+      VIZ_ERR("Error creating write buffer rect node: {}", E.what());
     }
   }
   return Ret;
@@ -720,7 +720,7 @@ void *clEnqueueMapBufferShim(cl_command_queue command_queue, cl_mem buffer,
         Context.flushQueue(command_queue, "clEnqueueMapBuffer()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating buffer map node: %s", E.what());
+      VIZ_ERR("Error creating buffer map node: {}", E.what());
     }
   }
   if (errcode_ret) {
@@ -762,7 +762,7 @@ cl_int clEnqueueFillImageShim(cl_command_queue command_queue, cl_mem image,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image fill node: %s", E.what());
+      VIZ_ERR("Error creating image fill node: {}", E.what());
     }
   }
   return Ret;
@@ -804,7 +804,7 @@ cl_int clEnqueueCopyImageShim(cl_command_queue command_queue, cl_mem src_image,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image copy node: %s", E.what());
+      VIZ_ERR("Error creating image copy node: {}", E.what());
     }
   }
   return Ret;
@@ -846,7 +846,7 @@ cl_int clEnqueueCopyImageToBufferShim(cl_command_queue command_queue,
           command_queue, "clEnqueueCopyImageToBuffer", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image to buffer copy node: %s", E.what());
+      VIZ_ERR("Error creating image to buffer copy node: {}", E.what());
     }
   }
   return Ret;
@@ -886,7 +886,7 @@ cl_int clEnqueueCopyBufferToImageShim(
           command_queue, "clEnqueueCopyBufferToImage", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating copy buffer to image node: %s", E.what());
+      VIZ_ERR("Error creating copy buffer to image node: {}", E.what());
     }
   }
   return Ret;
@@ -939,7 +939,7 @@ void *clEnqueueMapImageShim(cl_command_queue command_queue, cl_mem image,
         Context.flushQueue(command_queue, "clEnqueueMapImage()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image map node: %s", E.what());
+      VIZ_ERR("Error creating image map node: {}", E.what());
     }
   }
   if (errcode_ret) {
@@ -991,7 +991,7 @@ cl_int clEnqueueReadImageShim(cl_command_queue command_queue, cl_mem image,
         Context.flushQueue(command_queue, "clEnqueueReadImage()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image read node: %s", E.what());
+      VIZ_ERR("Error creating image read node: {}", E.what());
     }
   }
   return Ret;
@@ -1040,7 +1040,7 @@ cl_int clEnqueueWriteImageShim(cl_command_queue command_queue, cl_mem image,
         Context.flushQueue(command_queue, "clEnqueueWriteImage()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating image write node: %s", E.what());
+      VIZ_ERR("Error creating image write node: {}", E.what());
     }
   }
   return Ret;
@@ -1072,7 +1072,7 @@ cl_int clEnqueueUnmapMemObjectShim(cl_command_queue command_queue,
           command_queue, "clEnqueueUnmapMemObject", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating memobj unmap node: %s", E.what());
+      VIZ_ERR("Error creating memobj unmap node: {}", E.what());
     }
   }
   return Ret;
@@ -1107,7 +1107,7 @@ cl_int clEnqueueMigrateMemObjectsShim(cl_command_queue command_queue,
           command_queue, "clEnqueueMigrateMemObjects", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating migrate memobjs node: %s", E.what());
+      VIZ_ERR("Error creating migrate memobjs node: {}", E.what());
     }
   }
   return Ret;
@@ -1148,7 +1148,7 @@ cl_int clEnqueueSVMFreeShim(
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM free node: %s", E.what());
+      VIZ_ERR("Error creating SVM free node: {}", E.what());
     }
   }
   return Ret;
@@ -1188,7 +1188,7 @@ cl_int clEnqueueSVMMemcpyShim(cl_command_queue command_queue,
         Context.flushQueue(command_queue, "clEnqueueSVMMemcpy()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM memcpy node: %s", E.what());
+      VIZ_ERR("Error creating SVM memcpy node: {}", E.what());
     }
   }
   return Ret;
@@ -1224,7 +1224,7 @@ cl_int clEnqueueSVMMemFillShim(cl_command_queue command_queue, void *svm_ptr,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM fill node: %s", E.what());
+      VIZ_ERR("Error creating SVM fill node: {}", E.what());
     }
   }
   return Ret;
@@ -1262,7 +1262,7 @@ cl_int clEnqueueSVMMapShim(cl_command_queue command_queue, cl_bool blocking_map,
         Context.flushQueue(command_queue, "clEnqueueSVMMap()", true);
       }
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM map node: %s", E.what());
+      VIZ_ERR("Error creating SVM map node: {}", E.what());
     }
   }
   return Ret;
@@ -1288,7 +1288,7 @@ cl_int clEnqueueSVMUnmapShim(cl_command_queue command_queue, void *svm_ptr,
                             std::span(event_wait_list, num_events_in_wait_list),
                             event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM unmap node: %s", E.what());
+      VIZ_ERR("Error creating SVM unmap node: {}", E.what());
     }
   }
   return Ret;
@@ -1324,7 +1324,7 @@ clEnqueueSVMMigrateMemShim(cl_command_queue command_queue,
           command_queue, "clEnqueueSVMMigrateMem", VerbosePrint,
           std::span(event_wait_list, num_events_in_wait_list), event);
     } catch (std::exception &E) {
-      VIZ_ERR("Error creating SVM migrate node: %s", E.what());
+      VIZ_ERR("Error creating SVM migrate node: {}", E.what());
     }
   }
   return Ret;
@@ -1336,7 +1336,7 @@ cl_int clWaitForEventsShim(cl_uint num_events, const cl_event *event_list) {
   try {
     Context.flushEvents(std::span(event_list, num_events));
   } catch (std::exception &E) {
-    VIZ_ERR("Error flushing VizNodes: %s", E.what());
+    VIZ_ERR("Error flushing VizNodes: {}", E.what());
   }
   return Ret;
 }
@@ -1360,7 +1360,7 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
 
   const char *EnqueuePrefix = "clEnqueue";
   if (0 == strncmp(funcname, EnqueuePrefix, strlen(EnqueuePrefix))) {
-    VIZ_ERR("Warning %s not tracked in dot graph layer", funcname);
+    VIZ_ERR("Warning {} not tracked in dot graph layer", funcname);
   }
   return RetPtr;
 }

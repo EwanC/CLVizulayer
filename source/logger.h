@@ -2,17 +2,17 @@
 
 #pragma once
 
-#include <cstdio>
+#include <format>
+#include <iostream>
 
 /// @def VIZ_LOG(...)
 /// Helper for stout debug logging using printf arguments,
 /// only enabled by CMake request
 #ifdef VIZ_DEBUG
 #define VIZ_LOG(...)                                                           \
-  fprintf(stdout, "[VIZ LOG] ");                                               \
-  fprintf(stdout, __VA_ARGS__);                                                \
-  fprintf(stdout, "\n");                                                       \
-  fflush(stdout);
+  std::cout << "[VIZ LOG] ";                                                   \
+  std::cout << std::format(__VA_ARGS__);                                       \
+  std::cout << std::endl;
 #else
 #define VIZ_LOG(...)                                                           \
   do {                                                                         \
@@ -21,6 +21,6 @@
 
 /// @brief Helper for stderr logging using printf arguments
 #define VIZ_ERR(...)                                                           \
-  fprintf(stderr, "[VIZ ERROR] ");                                             \
-  fprintf(stderr, __VA_ARGS__);                                                \
-  fprintf(stderr, "\n");
+  std::cerr << "[VIZ ERROR] ";                                                 \
+  std::cerr << std::format(__VA_ARGS__);                                       \
+  std::cerr << std::endl;

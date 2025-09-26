@@ -48,7 +48,7 @@ VizContext::VizContext() {
   } else {
     VIZ_LOG("VIZ_EXT - Disabled");
     VizInstance *VI = new VizInstance(MColor);
-    VIZ_LOG("VizInstance %p Created", VI);
+    VIZ_LOG("VizInstance {} Created", static_cast<void *>(VI));
     MInstances.push_back(VI);
   }
 }
@@ -59,7 +59,7 @@ VizContext::~VizContext() {
   }
   MInstances.clear();
 
-  VIZ_LOG("VizContext %p destroyed", this);
+  VIZ_LOG("VizContext {} destroyed", static_cast<void *>(this));
 }
 
 VizInstance *
@@ -68,7 +68,7 @@ VizContext::createVizInstance(std::span<const cl_command_queue> CLQueueList,
   std::lock_guard<std::mutex> Lock(MMutex);
   VizInstance *VI = new VizInstance(MColor, FilePath);
   MInstances.push_back(VI);
-  VIZ_LOG("VizInstance %p created", VI);
+  VIZ_LOG("VizInstance {} created", static_cast<void *>(VI));
 
   for (auto &CLQueue : CLQueueList) {
     cl_command_queue_properties QueueProps;
@@ -124,7 +124,7 @@ VizInstance::~VizInstance() {
     delete VN;
   }
 
-  VIZ_LOG("VizInstance %p destroyed", this);
+  VIZ_LOG("VizInstance {} destroyed", static_cast<void *>(this));
 }
 
 void VizInstance::createVizQueue(cl_command_queue CQ, bool IsInOrder) {
@@ -136,14 +136,16 @@ void VizInstance::createVizQueue(cl_command_queue CQ, bool IsInOrder) {
   auto Itr = MQueueMap.find(CQ);
   if (Itr != MQueueMap.end()) {
     MQueueMap.erase(Itr);
-    VIZ_LOG("Instance %p reusing CL queue %p for new Viz queue %p", this, CQ,
-            VQ);
+    VIZ_LOG("Instance {} reusing CL queue {} for new Viz queue {}",
+            static_cast<void *>(this), static_cast<void *>(CQ),
+            static_cast<void *>(VQ));
   }
 
   MQueueMap.emplace(CQ, VQ);
 
-  VIZ_LOG("Instance %p created Viz queue %p for CL queue %p, in-order: %d",
-          this, VQ, CQ, IsInOrder);
+  VIZ_LOG("Instance {} created Viz queue {} for CL queue {}, in-order: {}",
+          static_cast<void *>(this), static_cast<void *>(VQ),
+          static_cast<void *>(CQ), IsInOrder);
 }
 
 void VizInstance::createVizNode(
@@ -160,8 +162,9 @@ void VizInstance::createVizNode(
                               std::move(VerbosePrintFunc));
   NodePostCreation(Node, VQ, RetEvent);
 
-  VIZ_LOG("Instance %p created node %s: CL queue %p, Viz queue %p", this, Name,
-          CQ, VQ);
+  VIZ_LOG("Instance {} created node {}: CL queue {}, Viz queue {}",
+          static_cast<void *>(this), Name, static_cast<void *>(CQ),
+          static_cast<void *>(VQ));
 }
 
 void VizInstance::createVizMarkerNode(cl_command_queue CQ,
@@ -191,7 +194,8 @@ void VizInstance::createVizMarkerNode(cl_command_queue CQ,
 
   NodePostCreation(Node, VQ, RetEvent);
 
-  VIZ_LOG("Instance %p Marker node added: Queue - %p", this, CQ);
+  VIZ_LOG("Instance {} Marker node added: Queue - {}",
+          static_cast<void *>(this), static_cast<void *>(CQ));
 }
 
 void VizInstance::createVizMarkerNode(cl_command_queue CQ, cl_event *RetEvent) {
@@ -218,7 +222,8 @@ void VizInstance::createVizMarkerNode(cl_command_queue CQ, cl_event *RetEvent) {
 
   NodePostCreation(Node, VQ, RetEvent);
 
-  VIZ_LOG("Instance %p Marker node added: Queue - %p", this, CQ);
+  VIZ_LOG("Instance {} Marker node added: Queue - {}",
+          static_cast<void *>(this), static_cast<void *>(CQ));
 }
 
 void VizInstance::createVizBarrierNode(cl_command_queue CQ, bool HasWaitList,
@@ -250,7 +255,8 @@ void VizInstance::createVizBarrierNode(cl_command_queue CQ, bool HasWaitList,
 
   VQ->MLastBarrier = Node;
 
-  VIZ_LOG("Instance %p added node %s: Queue - %p", this, Type, CQ);
+  VIZ_LOG("Instance {} added node {}: Queue - {}", static_cast<void *>(this),
+          Type, static_cast<void *>(CQ));
 }
 
 void VizInstance::flushEvents(std::span<const cl_event> Events) {
@@ -269,7 +275,8 @@ void VizInstance::flushEvents(std::span<const cl_event> Events) {
 #ifdef VIZ_DEBUG
   // Log events flushed when in debug printing mode
   for (auto &E : Events) {
-    VIZ_LOG("Instance %p Event flushed: %p", this, E);
+    VIZ_LOG("Instance {} Event flushed: {}", static_cast<void *>(this),
+            static_cast<void *>(E));
   }
 #endif
 }
@@ -294,7 +301,8 @@ void VizInstance::flushQueue(cl_command_queue CQ, const char *Label,
   }
 
   flush(NodeStack, Label);
-  VIZ_LOG("Instance %p flushed queue %p from command %s", this, CQ, Label);
+  VIZ_LOG("Instance {} flushed queue {} from command {}",
+          static_cast<void *>(this), static_cast<void *>(CQ), Label);
 }
 
 void VizInstance::flush(std::stack<VizNode *> &NodeStack, const char *Label) {
@@ -322,7 +330,8 @@ VizQueue *VizInstance::getVizQueueForCLQueue(cl_command_queue CQ) const {
   if (Context.useExt()) {
     auto VQItr = MQueueMap.find(CQ);
     if (VQItr == MQueueMap.end()) {
-      VIZ_LOG("Instance %p couldn't find Viz queue for CL queue %p", this, CQ);
+      VIZ_LOG("Instance {} couldn't find Viz queue for CL queue {}",
+              static_cast<const void *>(this), static_cast<void *>(CQ));
       return nullptr;
     }
     return VQItr->second;
@@ -365,7 +374,8 @@ void VizInstance::NodePreCreation(VizQueue *VQ, std::span<const cl_event> Deps,
     if (Itr != MEventMap.end()) {
       DepVizNodes.push_back(Itr->second);
     } else {
-      VIZ_LOG("Instance %p couldn't find node for CL event %p", this, E);
+      VIZ_LOG("Instance {} couldn't find node for CL event {}",
+              static_cast<void *>(this), static_cast<void *>(E));
     }
   }
 
