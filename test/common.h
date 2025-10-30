@@ -2,12 +2,14 @@
 
 #pragma once
 
-#include <CL/cl.h>
+#define CL_ENABLE_BETA_EXTENSIONS
+#include <CL/cl_ext.h>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
-#define CL_ENABLE_BETA_EXTENSIONS
-#include "cl_ext_dot_graph.h"
+#include "cl_ext_command_buffer_dot_print.h"
+#include "cl_ext_dot_print.h"
 
 #define CHECK(Ret)                                                             \
   if (Ret != CL_SUCCESS) {                                                     \
@@ -20,6 +22,11 @@
     throw std::runtime_error(                                                  \
         std::string("Expected OpenCL return code " + std::to_string(ErrCode) + \
                     ", but got return code " + std::to_string(Ret)));          \
+  }
+
+#define CHECK_NOT_NULL(Ptr)                                                    \
+  if (Ptr == nullptr) {                                                        \
+    throw std::runtime_error(std::string("Unexpected nullptr"));               \
   }
 
 struct CLState {
@@ -48,6 +55,19 @@ struct CLState {
   clCreateDotGraphEXT_fn clCreateDotGraphEXT = nullptr;
   clReleaseDotGraphEXT_fn clReleaseDotGraphEXT = nullptr;
   clRetainDotGraphEXT_fn clRetainDotGraphEXT = nullptr;
+
+  clCreateCommandBufferKHR_fn clCreateCommandBufferKHR = nullptr;
+  clReleaseCommandBufferKHR_fn clReleaseCommandBufferKHR = nullptr;
+  clCommandBarrierWithWaitListKHR_fn clCommandBarrierWithWaitListKHR = nullptr;
+  clCommandCopyBufferKHR_fn clCommandCopyBufferKHR = nullptr;
+  clCommandCopyBufferRectKHR_fn clCommandCopyBufferRectKHR = nullptr;
+  clCommandCopyBufferToImageKHR_fn clCommandCopyBufferToImageKHR = nullptr;
+  clCommandCopyImageKHR_fn clCommandCopyImageKHR = nullptr;
+  clCommandCopyImageToBufferKHR_fn clCommandCopyImageToBufferKHR = nullptr;
+  clCommandFillBufferKHR_fn clCommandFillBufferKHR = nullptr;
+  clCommandFillImageKHR_fn clCommandFillImageKHR = nullptr;
+  clCommandNDRangeKernelKHR_fn clCommandNDRangeKernelKHR = nullptr;
+  clEnqueueCommandBufferKHR_fn clEnqueueCommandBufferKHR = nullptr;
 };
 
 CLState::CLState(bool ExtensionEnabled) {
@@ -129,6 +149,31 @@ CLState::CLState(bool ExtensionEnabled) {
     GET_EXTENSION_ADDRESS(clReleaseDotGraphEXT);
     GET_EXTENSION_ADDRESS(clRetainDotGraphEXT);
   }
+
+  size_t Size = 0;
+  Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, 0, nullptr, &Size);
+  CHECK(Ret);
+
+  std::vector<char> DeviceExtensions(Size);
+  Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, Size,
+                        DeviceExtensions.data(), nullptr);
+  CHECK(Ret);
+
+  if (std::string ExtensionStr(DeviceExtensions.data());
+      ExtensionStr.find("cl_khr_command_buffer") != std::string::npos) {
+    GET_EXTENSION_ADDRESS(clCreateCommandBufferKHR);
+    GET_EXTENSION_ADDRESS(clReleaseCommandBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandBarrierWithWaitListKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferRectKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferToImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyImageToBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandFillBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandFillImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandNDRangeKernelKHR);
+  }
+#undef GET_EXTENSION_FUNCTION_ADDRESS
 }
 
 CLState::~CLState() {

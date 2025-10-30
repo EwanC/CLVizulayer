@@ -103,3 +103,11 @@ for line in clinfo_sp.stdout.splitlines():
         if "CL_DEVICE_SVM_COARSE_GRAIN_BUFFER" in svm_caps.group(1):
             config.available_features.add("svm-support")
         break
+
+device_ext_str = device_str + r"\s+CL_DEVICE_EXTENSIONS\s+(.*)$"
+for line in clinfo_sp.stdout.splitlines():
+    device_exts = re.match(device_ext_str, line)
+    if device_exts:
+        if "cl_khr_command_buffer" in device_exts.group(1):
+            config.available_features.add("command-buffer")
+        break

@@ -6,7 +6,7 @@ else()
     add_compile_options(-Wall -Wextra -Werror)
 endif()
 
-set(SOURCES main.cpp viz_context.cpp viz_instance.cpp io.cpp cl_ext_dot_graph.cpp)
+set(SOURCES main.cpp viz_context.cpp viz_instance.cpp io.cpp cl_ext_dot_print.cpp)
 if (WIN32)
     list(APPEND SOURCES CLVizulayer.def)
 endif()
@@ -30,5 +30,7 @@ install(TARGETS CLVizuLayer
                 ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
                 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
                 LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES "${CMAKE_SOURCE_DIR}/include/cl_ext_dot_graph.h"
-              DESTINATION "include/cl_ext_dot_graph.h")
+install(FILES "${CMAKE_SOURCE_DIR}/include/cl_ext_dot_print.h"
+              DESTINATION "include/cl_ext_dot_print.h")
+install(FILES "${CMAKE_SOURCE_DIR}/include/cl_ext_command_buffer_dot_print.h"
+              DESTINATION "include/cl_ext_command_buffer_dot_print.h")

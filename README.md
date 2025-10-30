@@ -132,8 +132,7 @@ API.
 
 ### cl_ext_command_buffer_dot_print
 
-[cl_ext_command_buffer_dot_print](doc/cl_ext_command_buffer_dot_print.asciidoc)
-is WIP.
+[cl_ext_command_buffer_dot_print](doc/cl_ext_command_buffer_dot_print.asciidoc) is WIP.
 
 ### Environment Variables
 

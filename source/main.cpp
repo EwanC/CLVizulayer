@@ -2,7 +2,7 @@
 
 #define CL_ENABLE_BETA_EXTENSIONS
 
-#include "cl_ext_dot_graph.h"
+#include "cl_ext_dot_print.h"
 #include "io.h"
 #include "logger.h"
 #include "viz_context.h"
