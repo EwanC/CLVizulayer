@@ -1,0 +1,85 @@
+// Copyright (c) 2025 Ewan Crawford
+= cl_ext_command_buffer_dot_print
+
+== Name Strings
+
+`cl_ext_command_buffer_dot_print`
+
+== Contact
+
+https://github.com/EwanC/CLVizulayer/issues
+
+== Contributors
+
+Ewan Crawford
+
+== Notice
+
+Copyright (c) 2025 Ewan Crawford
+
+== Status
+
+Unratified proposal, still in beta so breaking changes are possible.
+
+== Version
+
+Built On: {docdate} +
+Version: 0.1.0
+
+== Dependencies
+
+
+This extension is written against the OpenCL Specification version 3.0.19.
+
+This extension requires cl_khr_command_buffer version 0.9.8.
+
+== Overview
+
+== New API Functions
+
+[source,c]
+----
+cl_int clCommandBufferDotPrintEXT(cl_command_buffer_khr command_buffer,
+                                  const char* file_path);
+----
+
+== Modifications to the OpenCL API Specification
+
+=== New Section 5.17.X - Command-Buffer Printing
+
+The commands in a command-buffer and their dependencies can be printed to
+a file in the DOT format using the function
+
+[source]
+----
+cl_int clCommandBufferDotPrintEXT(
+   cl_command_buffer_khr command_buffer,
+   const char* file_path)
+----
+
+_command_buffer_ handle to a command_buffer object to print a dot graph of
+commands.
+
+_file_path_ filesystem path to where dot file of commands will be created. If
+_file_path_ is `NULL`, then a file named `clviz_YYYY-MM-DD_HH:MM:SS.dot` in the
+current working directory will be created. If _file_path_ is an existing file,
+then that file will be overwritten.
+
+*clCommandBufferDotPrintEXT* returns `CL_SUCCESS` if command-buffer is successfully
+printed. Otherwise, it returns one of the following error values:
+
+* `CL_INVALID_COMMAND_BUFFER_KHR` if _command_buffer_ is not a valid handle.
+* `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
+   the OpenCL implementation on the device.
+* `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required
+  by the OpenCL implementation on the host.
+
+== Version History
+
+[cols="5,15,15,70"]
+[grid="rows"]
+[options="header"]
+|====
+| Version | Date       | Author        | Changes
+| 0.1.0   | 2025-10-30 | Ewan Crawford | *Initial revision*
+|====

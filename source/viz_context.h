@@ -1,7 +1,10 @@
 // Copyright (c) 2025 Ewan Crawford
 #pragma once
 
+#define CL_ENABLE_BETA_EXTENSIONS
+
 #include "viz_instance.h"
+#include <CL/cl_ext.h>
 #include <CL/cl_layer.h>
 #include <fstream>
 #include <functional>
@@ -126,6 +129,25 @@ struct VizContext {
 
   /// @brief Query for if extension environment variable is set
   bool useExt() const noexcept { return MExt; }
+
+  /*
+   * Function pointers to the cl_khr_command_buffer entry-points returned
+   * by the underlying driver from `clGetExtensionFunctionAddressForPlatform()`
+   * so that we can call them from our equivalent shim entry-points.
+   */
+  clCreateCommandBufferKHR_fn MclCreateCommandBufferKHRFnPtr = nullptr;
+  clCommandBarrierWithWaitListKHR_fn MclCommandBarrierWithWaitListKHRFnPtr =
+      nullptr;
+  clCommandCopyBufferKHR_fn MclCommandCopyBufferKHRFnPtr = nullptr;
+  clCommandCopyBufferRectKHR_fn MclCommandCopyBufferRectKHRFnPtr = nullptr;
+  clCommandCopyBufferToImageKHR_fn MclCommandCopyBufferToImageKHRFnPtr =
+      nullptr;
+  clCommandCopyImageKHR_fn MclCommandCopyImageKHRFnPtr = nullptr;
+  clCommandCopyImageToBufferKHR_fn MclCommandCopyImageToBufferKHRFnPtr =
+      nullptr;
+  clCommandFillBufferKHR_fn MclCommandFillBufferKHRFnPtr = nullptr;
+  clCommandFillImageKHR_fn MclCommandFillImageKHRFnPtr = nullptr;
+  clCommandNDRangeKernelKHR_fn MclCommandNDRangeKernelKHRFnPtr = nullptr;
 
 private:
   /// Verbose environment variable set

@@ -65,7 +65,7 @@ passing a list of queues to print the submissions of. All user enqueue calls to
 those queues will be tracked in the dot file until the point when the dot file
 handle is destroyed.
 
-To create a dot graph object object, use the function
+To create a dot graph object, use the function
 
 [source]
 ----
@@ -105,7 +105,7 @@ _errcode_ret_:
 * `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required
   by the OpenCL implementation on the host.
 
-The behavior is undefined if the file pointed to be _file_path_ has already
+The behavior is undefined if the file pointed to be _file_path_ is already
 open in another valid `cl_dot_graph_ext` instance.
 
 To retain a dot graph, call the function:

@@ -115,11 +115,13 @@ $ sudo apt install libgraph-easy-perl
 $ sudo apt install graphviz
 ```
 
-## Extension
+## Extensions
+
+### cl_ext_dot_print
 
 Tracing the device commands at the application level can be too noisy for
 non-trivial applications. To give users finer grained control over what
-is captured in the DOT graph the [cl_ext_dot_print](doc/cl_ext_dot_print)
+is captured in the DOT graph the [cl_ext_dot_print](doc/cl_ext_dot_print.asciidoc)
 extension has been defined.
 
 This allows users to modify their application to mark what queues they
@@ -127,6 +129,11 @@ want to capture and for what commands. This extension is reported when
 the `VIZ_EXT` environment variable is set, and it will ignore any
 path set in `VIZ_DOT_FILE` in favor of the path passed in the extension
 API.
+
+### cl_ext_command_buffer_dot_print
+
+[cl_ext_command_buffer_dot_print](doc/cl_ext_command_buffer_dot_print.asciidoc)
+is WIP.
 
 ### Environment Variables
 

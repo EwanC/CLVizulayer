@@ -1,13 +1,14 @@
 // Copyright (c) 2025 Ewan Crawford
 
+#define CL_ENABLE_BETA_EXTENSIONS
+
+#include "cl_ext_dot_graph.h"
 #include "io.h"
 #include "logger.h"
 #include "viz_context.h"
+#include <cassert>
 #include <cstring>
 #include <iostream>
-
-#define CL_ENABLE_BETA_EXTENSIONS
-#include "cl_ext_dot_graph.h"
 
 CL_API_ENTRY cl_int CL_API_CALL clGetLayerInfo(cl_layer_info param_name,
                                                size_t param_value_size,
@@ -1316,6 +1317,165 @@ cl_int clWaitForEventsShim(cl_uint num_events, const cl_event *event_list) {
   return Ret;
 }
 
+#if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
+
+cl_command_buffer_khr
+clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
+                             const cl_command_buffer_properties_khr *properties,
+                             cl_int *errcode_ret) {
+  auto &Context = getVizContext();
+  assert(Context.MclCreateCommandBufferKHRFnPtr);
+  auto &TargetFunction = Context.MclCreateCommandBufferKHRFnPtr;
+  return TargetFunction(num_queues, queues, properties, errcode_ret);
+}
+
+cl_int CL_API_CALL clCommandBarrierWithWaitListKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandBarrierWithWaitListKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandBarrierWithWaitListKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandCopyBufferKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem src_buffer,
+    cl_mem dst_buffer, size_t src_offset, size_t dst_offset, size_t size,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandCopyBufferKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandCopyBufferKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
+                        dst_buffer, src_offset, dst_offset, size,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandCopyBufferRectKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem src_buffer,
+    cl_mem dst_buffer, const size_t *src_origin, const size_t *dst_origin,
+    const size_t *region, size_t src_row_pitch, size_t src_slice_pitch,
+    size_t dst_row_pitch, size_t dst_slice_pitch,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandCopyBufferRectKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandCopyBufferRectKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
+                        dst_buffer, src_origin, dst_origin, region,
+                        src_row_pitch, src_slice_pitch, dst_row_pitch,
+                        dst_slice_pitch, num_sync_points_in_wait_list,
+                        sync_point_wait_list, sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandCopyBufferToImageKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem src_buffer,
+    cl_mem dst_image, size_t src_offset, const size_t *dst_origin,
+    const size_t *region, cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandCopyBufferToImageKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandCopyBufferToImageKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
+                        dst_image, src_offset, dst_origin, region,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandCopyImageKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem src_image,
+    cl_mem dst_image, const size_t *src_origin, const size_t *dst_origin,
+    const size_t *region, cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandCopyImageKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandCopyImageKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, src_image,
+                        dst_image, src_origin, dst_origin, region,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandCopyImageToBufferKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem src_image,
+    cl_mem dst_buffer, const size_t *src_origin, const size_t *region,
+    size_t dst_offset, cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandCopyImageToBufferKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandCopyImageToBufferKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, src_image,
+                        dst_buffer, src_origin, region, dst_offset,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandFillBufferKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem buffer,
+    const void *pattern, size_t pattern_size, size_t offset, size_t size,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandFillBufferKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandFillBufferKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, buffer,
+                        pattern, pattern_size, offset, size,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandFillImageKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_mem image,
+    const void *fill_color, const size_t *origin, const size_t *region,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandFillImageKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandFillImageKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, image,
+                        fill_color, origin, region,
+                        num_sync_points_in_wait_list, sync_point_wait_list,
+                        sync_point, mutable_handle);
+}
+
+cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
+    cl_command_buffer_khr command_buffer, cl_command_queue command_queue,
+    const cl_command_properties_khr *properties, cl_kernel kernel,
+    cl_uint work_dim, const size_t *global_work_offset,
+    const size_t *global_work_size, const size_t *local_work_size,
+    cl_uint num_sync_points_in_wait_list,
+    const cl_sync_point_khr *sync_point_wait_list,
+    cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
+  auto &Context = getVizContext();
+  assert(Context.MclCommandNDRangeKernelKHRFnPtr);
+  auto &TargetFunction = Context.MclCommandNDRangeKernelKHRFnPtr;
+  return TargetFunction(command_buffer, command_queue, properties, kernel,
+                        work_dim, global_work_offset, global_work_size,
+                        local_work_size, num_sync_points_in_wait_list,
+                        sync_point_wait_list, sync_point, mutable_handle);
+}
+#endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
+
 void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
                                                    const char *funcname) {
 #define GET_EXTENSION_FUNCTION(FUNC)                                           \
@@ -1329,9 +1489,33 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_EXTENSION_FUNCTION(clReleaseDotGraphEXT);
     GET_EXTENSION_FUNCTION(clRetainDotGraphEXT);
   }
+#undef GET_EXTENSION_FUNCTION
 
   void *RetPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
       platform, funcname);
+
+#if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
+#define GET_SHIM(FUNC)                                                         \
+  if (0 == strcmp(funcname, #FUNC)) {                                          \
+    if (!Context.M##FUNC##FnPtr) {                                             \
+      Context.M##FUNC##FnPtr = (typeof(Context.M##FUNC##FnPtr))RetPtr;         \
+    }                                                                          \
+    return (void *)FUNC##Shim;                                                 \
+  }
+
+  GET_SHIM(clCreateCommandBufferKHR);
+  GET_SHIM(clCommandBarrierWithWaitListKHR);
+  GET_SHIM(clCommandCopyBufferKHR);
+  GET_SHIM(clCommandCopyBufferRectKHR);
+  GET_SHIM(clCommandCopyBufferToImageKHR);
+  GET_SHIM(clCommandCopyImageKHR);
+  GET_SHIM(clCommandCopyImageToBufferKHR);
+  GET_SHIM(clCommandFillBufferKHR);
+  GET_SHIM(clCommandFillImageKHR);
+  GET_SHIM(clCommandNDRangeKernelKHR);
+
+#undef GET_SHIM
+#endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
 
   const char *EnqueuePrefix = "clEnqueue";
   if (0 == strncmp(funcname, EnqueuePrefix, strlen(EnqueuePrefix))) {
