@@ -55,6 +55,7 @@ struct CLState {
   clCreateDotGraphEXT_fn clCreateDotGraphEXT = nullptr;
   clReleaseDotGraphEXT_fn clReleaseDotGraphEXT = nullptr;
   clRetainDotGraphEXT_fn clRetainDotGraphEXT = nullptr;
+  clDotPrintCommandBufferEXT_fn clDotPrintCommandBufferEXT = nullptr;
 
   clCreateCommandBufferKHR_fn clCreateCommandBufferKHR = nullptr;
   clReleaseCommandBufferKHR_fn clReleaseCommandBufferKHR = nullptr;
@@ -161,6 +162,7 @@ CLState::CLState(bool ExtensionEnabled) {
 
   if (std::string ExtensionStr(DeviceExtensions.data());
       ExtensionStr.find("cl_khr_command_buffer") != std::string::npos) {
+    GET_EXTENSION_ADDRESS(clDotPrintCommandBufferEXT);
     GET_EXTENSION_ADDRESS(clCreateCommandBufferKHR);
     GET_EXTENSION_ADDRESS(clReleaseCommandBufferKHR);
     GET_EXTENSION_ADDRESS(clCommandBarrierWithWaitListKHR);

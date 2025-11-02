@@ -2,8 +2,8 @@
 
 // REQUIRES: command-buffer
 
-// RUN: %build -o %t
-// RUN: VIZ_DOT_FILE=%T/%basename_t.dot %t
+// RUN: %build -DVIZ_TEST_FILE_NAME=\"%T/%basename_t.dot\"
+// RUN: %t
 // RUN: FileCheck --input_file %T/%basename_t.dot %s
 
 // CHECK: digraph CLVizulayer {
@@ -22,6 +22,9 @@ int main() {
       State.clCreateCommandBufferKHR(1, &State.OutOfOrderQueue, nullptr, &Ret);
   CHECK(Ret);
   CHECK_NOT_NULL(command_buffer);
+
+  Ret = State.clDotPrintCommandBufferEXT(command_buffer, VIZ_TEST_FILE_NAME);
+  CHECK(Ret);
 
   CHECK(State.clReleaseCommandBufferKHR(command_buffer));
 

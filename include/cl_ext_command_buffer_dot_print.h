@@ -11,12 +11,12 @@
 
 #define CL_EXT_DOT_GRAPH_EXTENSION_VERSION CL_MAKE_VERSION(0, 9, 1)
 
-typedef cl_int CL_API_CALL clCommandBufferDotPrintEXT_t(
+typedef cl_int CL_API_CALL clDotPrintCommandBufferEXT_t(
     cl_command_buffer_khr command_buffer, const char *file_path);
-typedef clCommandBufferDotPrintEXT_t *clCommandBufferDotPrintEXT_fn;
+typedef clDotPrintCommandBufferEXT_t *clDotPrintCommandBufferEXT_fn;
 
 #if !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES)
-extern CL_API_ENTRY cl_int CL_API_CALL clCommandBufferDotPrintEXT(
+extern CL_API_ENTRY cl_int CL_API_CALL clDotPrintCommandBufferEXT(
     cl_command_buffer_khr command_buffer, const char *file_path);
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 #endif // CL_ENABLE_BETA_EXTENSIONS

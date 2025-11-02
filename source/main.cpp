@@ -1476,6 +1476,14 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
 }
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
 
+cl_int CL_API_CALL clDotPrintCommandBufferEXT(
+    cl_command_buffer_khr command_buffer, const char file_path) {
+  // TODO
+  (void)command_buffer;
+  (void)file_path;
+  return CL_SUCCESS;
+}
+
 void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
                                                    const char *funcname) {
 #define GET_EXTENSION_FUNCTION(FUNC)                                           \
@@ -1489,6 +1497,7 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_EXTENSION_FUNCTION(clReleaseDotGraphEXT);
     GET_EXTENSION_FUNCTION(clRetainDotGraphEXT);
   }
+  GET_EXTENSION_FUNCTION(clDotPrintCommandBufferEXT);
 #undef GET_EXTENSION_FUNCTION
 
   void *RetPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
@@ -1498,7 +1507,7 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
 #define GET_SHIM(FUNC)                                                         \
   if (0 == strcmp(funcname, #FUNC)) {                                          \
     if (!Context.M##FUNC##FnPtr) {                                             \
-      Context.M##FUNC##FnPtr = (typeof(Context.M##FUNC##FnPtr))RetPtr;         \
+      Context.M##FUNC##FnPtr = (decltype(Context.M##FUNC##FnPtr))RetPtr;       \
     }                                                                          \
     return (void *)FUNC##Shim;                                                 \
   }
