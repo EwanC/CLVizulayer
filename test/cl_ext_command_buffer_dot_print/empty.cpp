@@ -2,7 +2,7 @@
 
 // REQUIRES: command-buffer
 
-// RUN: %build -DVIZ_TEST_FILE_NAME=\"%T/%basename_t.dot\"
+// RUN: %build -DVIZ_TEST_FILE_NAME=\"%T/%basename_t.dot\" -o %t
 // RUN: %t
 // RUN: FileCheck --input_file %T/%basename_t.dot %s
 

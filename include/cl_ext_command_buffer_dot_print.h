@@ -2,7 +2,7 @@
 #ifndef CL_EXT_COMMAND_BUFFER_DOT_PRINT_
 #define CL_EXT_COMMAND_BUFFER_DOT_PRINT_
 
-#include <CL/cl.h>
+#include <CL/cl_ext.h>
 
 #if defined(CL_ENABLE_BETA_EXTENSIONS)
 

@@ -2,6 +2,7 @@
 
 #define CL_ENABLE_BETA_EXTENSIONS
 
+#include "cl_ext_command_buffer_dot_print.h"
 #include "cl_ext_dot_print.h"
 #include "io.h"
 #include "logger.h"
@@ -1325,8 +1326,17 @@ clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
                              cl_int *errcode_ret) {
   auto &Context = getVizContext();
   assert(Context.MclCreateCommandBufferKHRFnPtr);
+
   auto &TargetFunction = Context.MclCreateCommandBufferKHRFnPtr;
-  return TargetFunction(num_queues, queues, properties, errcode_ret);
+  auto CB = TargetFunction(num_queues, queues, properties, errcode_ret);
+  if (CB != nullptr) {
+    try {
+      Context.createVizInstance(CB);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return CB;
 }
 
 cl_int CL_API_CALL clCommandBarrierWithWaitListKHRShim(
@@ -1475,14 +1485,6 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
                         sync_point_wait_list, sync_point, mutable_handle);
 }
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
-
-cl_int CL_API_CALL clDotPrintCommandBufferEXT(
-    cl_command_buffer_khr command_buffer, const char file_path) {
-  // TODO
-  (void)command_buffer;
-  (void)file_path;
-  return CL_SUCCESS;
-}
 
 void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
                                                    const char *funcname) {

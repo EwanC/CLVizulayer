@@ -50,8 +50,6 @@ private:
   VizInstance *MInstance;
 };
 
-// TODO return extension from platform/device info query
-
 CL_API_ENTRY cl_dot_graph_ext CL_API_CALL
 clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
                     const char *file_path, cl_int *errcode_ret) {

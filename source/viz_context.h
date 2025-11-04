@@ -10,6 +10,7 @@
 #include <functional>
 #include <mutex>
 #include <span>
+#include <unordered_map>
 
 /// See main.cpp for initalization
 extern const struct _cl_icd_dispatch *TargetDispatch;
@@ -30,9 +31,15 @@ struct VizContext {
   VizInstance *createVizInstance(std::span<const cl_command_queue> CLQueueList,
                                  const char *FilePath);
 
+  /// @brief TODO
+  void createVizInstance(cl_command_buffer_khr CB);
+
   /// @brief Frees heap allocated VizInstance and removes it from @a MInstances
   /// @param[in] VI Pointer to VizInstance object to free and erase.
   void destroyVizInstance(VizInstance *VI);
+
+  /// @brief TODO
+  void destroyVizInstance(cl_command_buffer_khr CB);
 
   /// @brief For each instance, allocates a new VizQueue instance.
   /// @param[in] CQ OpenCL command-queue
@@ -124,6 +131,9 @@ struct VizContext {
     }
   }
 
+  /// @brief TODO
+  void flushCommandBuffer(cl_command_buffer_khr CB, const char *FilePath);
+
   /// @brief Query for if verbose environment variable is set
   bool verbose() const noexcept { return MVerbose; }
 
@@ -162,6 +172,10 @@ private:
   /// List of heap allocated Viz instance objects,
   /// must be freed on context destruction
   std::vector<VizInstance *> MInstances;
+
+  /// TODO
+  std::unordered_map<cl_command_buffer_khr, VizInstance *>
+      MCommandBufferInstanceMap;
 
   /// Only one thread can access the context at a time.
   std::mutex MMutex;

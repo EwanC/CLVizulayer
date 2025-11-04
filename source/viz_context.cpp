@@ -52,6 +52,11 @@ VizContext::~VizContext() {
   }
   MInstances.clear();
 
+  for (auto &Itr : MCommandBufferInstanceMap) {
+    delete Itr.second;
+  }
+  MCommandBufferInstanceMap.clear();
+
   VIZ_LOG("VizContext {} destroyed", static_cast<void *>(this));
 }
 
@@ -88,4 +93,36 @@ void VizContext::destroyVizInstance(VizInstance *VI) {
   // Erase pointer from std::vector
   MInstances.erase(std::remove(MInstances.begin(), MInstances.end(), VI),
                    MInstances.end());
+}
+
+void VizContext::flushCommandBuffer(cl_command_buffer_khr CB,
+                                    const char *FilePath) {
+
+  std::lock_guard<std::mutex> Lock(MMutex);
+  auto Itr = MCommandBufferInstanceMap.find(CB);
+  if (Itr != MCommandBufferInstanceMap.end()) {
+    auto &VI = Itr->second;
+    VI->flushCommandBuffer(FilePath);
+  }
+}
+
+void VizContext::createVizInstance(cl_command_buffer_khr CB) {
+  std::lock_guard<std::mutex> Lock(MMutex);
+  VizInstance *VI = new VizInstance();
+  MCommandBufferInstanceMap.emplace(CB, VI);
+  VIZ_LOG("VizInstance {} Created for CB {}", static_cast<void *>(VI),
+          static_cast<void *>(CB));
+}
+
+void VizContext::destroyVizInstance(cl_command_buffer_khr CB) {
+  std::lock_guard<std::mutex> Lock(MMutex);
+  auto Itr = MCommandBufferInstanceMap.find(CB);
+  if (Itr != MCommandBufferInstanceMap.end()) {
+    auto &VI = Itr->second;
+    delete VI; // Free heap allocated VIzInstance
+    MCommandBufferInstanceMap.erase(Itr);
+
+    VIZ_LOG("VizInstance {} destroyed for CB {}", static_cast<void *>(VI),
+            static_cast<void *>(Itr->first));
+  }
 }

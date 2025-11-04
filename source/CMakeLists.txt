@@ -6,7 +6,13 @@ else()
     add_compile_options(-Wall -Wextra -Werror)
 endif()
 
-set(SOURCES main.cpp viz_context.cpp viz_instance.cpp io.cpp cl_ext_dot_print.cpp)
+set(SOURCES
+    main.cpp
+    viz_context.cpp
+    viz_instance.cpp
+    io.cpp
+    cl_ext_dot_print.cpp
+    cl_ext_command_buffer_dot_print.cpp)
 if (WIN32)
     list(APPEND SOURCES CLVizulayer.def)
 endif()

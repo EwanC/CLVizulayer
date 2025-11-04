@@ -24,6 +24,9 @@ struct VizInstance {
   /// layer default.
   VizInstance(bool Color, const char *FilePath = nullptr);
 
+  /// TODO - command-buffer
+  VizInstance();
+
   /// @brief Destructor
   ~VizInstance();
 
@@ -79,6 +82,8 @@ struct VizInstance {
   /// or clFinish().
   void flushQueue(cl_command_queue CQ, const char *Label,
                   bool IsBlockingCommand);
+
+  void flushCommandBuffer(const char *FilePath);
 
 private:
   /// @brief Write nodes and their dependencies to dot file

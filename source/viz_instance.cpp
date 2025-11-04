@@ -11,6 +11,8 @@
 #include <cstring>
 #include <stdexcept>
 
+VizInstance::VizInstance() {}
+
 VizInstance::VizInstance(bool Color, const char *path) {
   MDotFile = std::make_unique<VizDotFile>(Color, path);
 }
@@ -307,4 +309,9 @@ void VizInstance::NodePreCreation(VizQueue *VQ, std::span<const cl_event> Deps,
                    Leaves.end());
     }
   }
+}
+
+void VizInstance::flushCommandBuffer(const char *FilePath) {
+  bool Color = false; // TODO set from env var
+  VizDotFile DotFile(Color, FilePath);
 }
