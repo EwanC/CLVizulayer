@@ -1479,10 +1479,19 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandNDRangeKernelKHRFnPtr);
   auto &TargetFunction = Context.MclCommandNDRangeKernelKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, kernel,
-                        work_dim, global_work_offset, global_work_size,
-                        local_work_size, num_sync_points_in_wait_list,
-                        sync_point_wait_list, sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties, kernel,
+                              work_dim, global_work_offset, global_work_size,
+                              local_work_size, num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+
+  if (Ret == CL_SUCCESS) {
+    try {
+      Context.createVizNode(command_buffer, "clCommandNDRangeKernelKHR");
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
 

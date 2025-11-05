@@ -79,6 +79,12 @@ void VizInstance::createVizNode(
           static_cast<void *>(VQ));
 }
 
+void VizInstance::createVizNode(cl_command_buffer_khr CB, const char *Name) {
+  (void)CB;
+  VizNode *Node = new VizNode(Name);
+  MNodes.push_back(Node);
+}
+
 void VizInstance::createVizMarkerNode(cl_command_queue CQ,
                                       std::span<const cl_event> Deps,
                                       cl_event *RetEvent) {
@@ -314,4 +320,11 @@ void VizInstance::NodePreCreation(VizQueue *VQ, std::span<const cl_event> Deps,
 void VizInstance::flushCommandBuffer(const char *FilePath) {
   bool Color = false; // TODO set from env var
   VizDotFile DotFile(Color, FilePath);
+
+  std::set<VizNode *, decltype(&vizNodeCmp)> printNodes(&vizNodeCmp);
+  for (auto &Node : MNodes) {
+    printNodes.insert(Node);
+  }
+
+  DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr");
 }

@@ -19,6 +19,11 @@ struct VizNode {
     MID = ID++;
   }
 
+  VizNode(const char *Name) : MName(Name), MDefined(false) {
+    static int ID = 0;
+    MID = ID++;
+  }
+
   /// Queue which the node belongs to
   VizQueue *MQueue;
   /// Dependencies, or predecessors, of the node

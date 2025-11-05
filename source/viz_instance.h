@@ -1,7 +1,9 @@
 // Copyright (c) 2025 Ewan Crawford
 #pragma once
 
-#include <CL/cl.h>
+#define CL_ENABLE_BETA_EXTENSIONS
+
+#include <CL/cl_ext.h>
 #include <array>
 #include <functional>
 #include <memory>
@@ -45,6 +47,8 @@ struct VizInstance {
   void createVizNode(cl_command_queue CQ, const char *Name,
                      std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_event> Deps, cl_event *RetEvent);
+
+  void createVizNode(cl_command_buffer_khr CB, const char *Name);
 
   /// @brief Allocates a new VizNode instance representing a barrier command,
   /// and stores it in @a MNodes

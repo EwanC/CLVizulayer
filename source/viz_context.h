@@ -67,6 +67,17 @@ struct VizContext {
     }
   }
 
+  void createVizNode(cl_command_buffer_khr CB, const char *Name) {
+    std::lock_guard<std::mutex> Lock(MMutex);
+
+    auto Itr = MCommandBufferInstanceMap.find(CB);
+    if (Itr != MCommandBufferInstanceMap.end()) {
+      Itr->second->createVizNode(CB, Name);
+    } else {
+      // TODO - throw?
+    }
+  }
+
   /// @brief For each instance, allocates a new VizNode instance representing a
   /// barrier command.
   /// @param[in] CQ OpenCL command-queue the node was created on
