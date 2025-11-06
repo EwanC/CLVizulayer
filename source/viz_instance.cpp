@@ -4,14 +4,16 @@
 #include "io.h"
 #include "logger.h"
 #include "viz_context.h"
+#include "viz_dag.h"
 #include "viz_node.h"
-#include "viz_queue.h"
 #include <algorithm>
 #include <cassert>
 #include <cstring>
 #include <stdexcept>
 
-VizInstance::VizInstance() {}
+VizInstance::VizInstance(cl_command_buffer_khr CB, bool IsInOrder) {
+  MCommandBuffer = std::make_unique<VizCB>(CB, IsInOrder);
+}
 
 VizInstance::VizInstance(bool Color, const char *path) {
   MDotFile = std::make_unique<VizDotFile>(Color, path);

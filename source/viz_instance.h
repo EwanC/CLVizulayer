@@ -16,6 +16,7 @@
 /// Forward declarations
 struct VizNode;
 struct VizQueue;
+struct VizCB;
 struct VizDotFile;
 
 /// @brief Context holding the state of the layer
@@ -26,8 +27,10 @@ struct VizInstance {
   /// layer default.
   VizInstance(bool Color, const char *FilePath = nullptr);
 
-  /// TODO - command-buffer
-  VizInstance();
+  /// @brief Constructor for a command-buffer instance.
+  /// @param[in] CB command-buffer handle
+  /// @oaram[in] IsInOrder whether command-buffer is in-order or not.
+  VizInstance(cl_command_buffer_khr CB, bool IsInOrder);
 
   /// @brief Destructor
   ~VizInstance();
@@ -138,4 +141,7 @@ private:
   /// List of heap allocated Viz node objects,
   /// must be freed on context destruction
   std::vector<VizNode *> MNodes;
+
+  /// Viz wrapper around cl_command_buffer_khr
+  std::unique_ptr<VizCB> MCommandBuffer;
 };

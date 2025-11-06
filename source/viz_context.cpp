@@ -108,7 +108,7 @@ void VizContext::flushCommandBuffer(cl_command_buffer_khr CB,
 
 void VizContext::createVizInstance(cl_command_buffer_khr CB) {
   std::lock_guard<std::mutex> Lock(MMutex);
-  VizInstance *VI = new VizInstance();
+  VizInstance *VI = new VizInstance(CB, true);
   MCommandBufferInstanceMap.emplace(CB, VI);
   VIZ_LOG("VizInstance {} Created for CB {}", static_cast<void *>(VI),
           static_cast<void *>(CB));

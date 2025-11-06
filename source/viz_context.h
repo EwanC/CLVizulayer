@@ -31,14 +31,16 @@ struct VizContext {
   VizInstance *createVizInstance(std::span<const cl_command_queue> CLQueueList,
                                  const char *FilePath);
 
-  /// @brief TODO
+  /// @brief Allocates a new VizInstance tied to a command-buffer
+  /// @param[in] The CB to map to the created instance.
   void createVizInstance(cl_command_buffer_khr CB);
 
   /// @brief Frees heap allocated VizInstance and removes it from @a MInstances
   /// @param[in] VI Pointer to VizInstance object to free and erase.
   void destroyVizInstance(VizInstance *VI);
 
-  /// @brief TODO
+  /// @brief Frees the heap allocated VizInstance matching a command-buffer.
+  /// @param[in] CB the command-buffer to delete the instance for.
   void destroyVizInstance(cl_command_buffer_khr CB);
 
   /// @brief For each instance, allocates a new VizQueue instance.
@@ -142,7 +144,9 @@ struct VizContext {
     }
   }
 
-  /// @brief TODO
+  /// @brief Writes out the command-buffer DAG to dot file.
+  /// @param[in] CB The command-buffer to flush.
+  /// @param[in] FilePath the path on disk to create the dot file.
   void flushCommandBuffer(cl_command_buffer_khr CB, const char *FilePath);
 
   /// @brief Query for if verbose environment variable is set
@@ -184,7 +188,8 @@ private:
   /// must be freed on context destruction
   std::vector<VizInstance *> MInstances;
 
-  /// TODO
+  /// Map from CL command-buffer handles, to the Viz instances holding their
+  /// DAG.
   std::unordered_map<cl_command_buffer_khr, VizInstance *>
       MCommandBufferInstanceMap;
 
