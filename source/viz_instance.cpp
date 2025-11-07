@@ -83,7 +83,12 @@ void VizInstance::createVizNode(
 
 void VizInstance::createVizNode(cl_command_buffer_khr CB, const char *Name) {
   (void)CB;
-  VizNode *Node = new VizNode(Name);
+
+  std::vector<VizNode *> DepVizNodes;
+  if (MCommandBuffer->MIsInOrder && !MNodes.empty()) {
+    DepVizNodes.push_back(MNodes.back());
+  }
+  VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
   MNodes.push_back(Node);
 }
 

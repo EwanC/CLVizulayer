@@ -19,7 +19,7 @@ struct VizNode {
     MID = ID++;
   }
 
-  VizNode(const char *Name) : MName(Name), MDefined(false) {
+  VizNode(const char *Name, std::vector<VizNode *> &&Deps) : MPreds(Deps), MName(Name), MDefined(false) {
     static int ID = 0;
     MID = ID++;
   }
