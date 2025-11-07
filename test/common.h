@@ -161,9 +161,9 @@ CLState::CLState(bool ExtensionEnabled) {
   CHECK(Ret);
 
   if (std::string ExtensionStr(DeviceExtensions.data());
-      ExtensionStr.find("cl_khr_command_buffer") != std::string::npos) {
-    GET_EXTENSION_ADDRESS(
-        clDotPrintCommandBufferEXT); // TODO check for extension
+      ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
+      std::string::npos) {
+    GET_EXTENSION_ADDRESS(clDotPrintCommandBufferEXT);
     GET_EXTENSION_ADDRESS(clCreateCommandBufferKHR);
     GET_EXTENSION_ADDRESS(clReleaseCommandBufferKHR);
     GET_EXTENSION_ADDRESS(clCommandBarrierWithWaitListKHR);

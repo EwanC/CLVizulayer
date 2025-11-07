@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Project defined CMake options
 option(VIZ_DEBUG "Enable CLVizlayer debug logging to stdout" OFF)
+option(VIZ_OFFLINE_BUILD "Avoids pulling dependencies from GitHub" OFF)
 
 configure_file(Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
 find_program(DOXYGEN doxygen)
@@ -26,8 +27,8 @@ else()
 endif()
 
 include(FetchContent)
-find_package(OpenCLHeaders)
-if(OpenCLHeaders_FOUND)
+if (VIZ_OFFLINE_BUILD)
+    find_package(OpenCLHeaders REQUIRED)
     get_target_property(OpenCLIncludeDir OpenCL::Headers INTERFACE_INCLUDE_DIRECTORIES)
 else()
     FetchContent_Declare(OpenCL-Headers

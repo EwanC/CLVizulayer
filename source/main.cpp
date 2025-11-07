@@ -1547,11 +1547,6 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
 cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
                            size_t param_value_size, void *param_value,
                            size_t *param_value_size_ret) {
-
-  if (auto &Context = getVizContext(); !Context.useExt()) {
-    return TargetDispatch->clGetDeviceInfo(device, param_name, param_value_size,
-                                           param_value, param_value_size_ret);
-  }
   switch (param_name) {
   case CL_DEVICE_EXTENSIONS: {
     size_t Size = 0;
@@ -1563,8 +1558,17 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
                                     DeviceExtensions.data(), nullptr);
 
     std::string ExtensionStr(DeviceExtensions.data());
-    ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
-                                                 : " cl_ext_dot_graph";
+    if (ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
+        std::string::npos) {
+      ExtensionStr += (ExtensionStr.back() == ' ')
+                          ? "cl_ext_command_buffer_dot_graph "
+                          : " cl_ext_command_buffer_dot_graph";
+    }
+
+    if (auto &Context = getVizContext(); Context.useExt()) {
+      ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
+                                                   : " cl_ext_dot_graph";
+    }
 
     const size_t StrBytes = ExtensionStr.size() + 1;
     if (param_value_size_ret) {
@@ -1588,14 +1592,31 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
     TargetDispatch->clGetDeviceInfo(device, CL_DEVICE_EXTENSIONS_WITH_VERSION,
                                     Size, DeviceExtensions.data(), nullptr);
 
-    cl_name_version DotGraphExt;
+    for (auto &Ext : DeviceExtensions) {
+      if (0 == strncmp(Ext.name, CL_KHR_COMMAND_BUFFER_EXTENSION_NAME,
+                       strlen(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME))) {
+        cl_name_version CBDotGraphExt;
 
-    // Set name
-    memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-    strcpy(DotGraphExt.name, "cl_ext_dot_graph");
-    // Set version
-    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
-    DeviceExtensions.push_back(DotGraphExt);
+        // Set name
+        memset(CBDotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_graph");
+        // Set version
+        CBDotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+        DeviceExtensions.push_back(CBDotGraphExt);
+
+        break;
+      }
+    }
+
+    if (auto &Context = getVizContext(); Context.useExt()) {
+      cl_name_version DotGraphExt;
+      // Set name
+      memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+      strcpy(DotGraphExt.name, "cl_ext_dot_graph");
+      // Set version
+      DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+      DeviceExtensions.push_back(DotGraphExt);
+    }
 
     // Copy back to user
     const size_t Bytes = DeviceExtensions.size() * sizeof(cl_name_version);
@@ -1622,12 +1643,6 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                              cl_platform_info param_name,
                              size_t param_value_size, void *param_value,
                              size_t *param_value_size_ret) {
-  if (auto &Context = getVizContext(); !Context.useExt()) {
-    return TargetDispatch->clGetPlatformInfo(platform, param_name,
-                                             param_value_size, param_value,
-                                             param_value_size_ret);
-  }
-
   switch (param_name) {
   case CL_PLATFORM_EXTENSIONS: {
     size_t Size = 0;
@@ -1639,8 +1654,17 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                                       PlatformExtensions.data(), nullptr);
 
     std::string ExtensionStr(PlatformExtensions.data());
-    ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
-                                                 : " cl_ext_dot_graph";
+    if (ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
+        std::string::npos) {
+      ExtensionStr += (ExtensionStr.back() == ' ')
+                          ? "cl_ext_command_buffer_dot_graph "
+                          : " cl_ext_command_buffer_dot_graph";
+    }
+
+    if (auto &Context = getVizContext(); Context.useExt()) {
+      ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
+                                                   : " cl_ext_dot_graph";
+    }
 
     const size_t StrBytes = ExtensionStr.size() + 1;
     if (param_value_size_ret) {
@@ -1665,14 +1689,31 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                                       CL_PLATFORM_EXTENSIONS_WITH_VERSION, Size,
                                       PlatformExtensions.data(), nullptr);
 
-    cl_name_version DotGraphExt;
+    for (auto &Ext : PlatformExtensions) {
+      if (0 == strncmp(Ext.name, CL_KHR_COMMAND_BUFFER_EXTENSION_NAME,
+                       strlen(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME))) {
+        cl_name_version CBDotGraphExt;
 
-    // Set name
-    memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-    strcpy(DotGraphExt.name, "cl_ext_dot_graph");
-    // Set version
-    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
-    PlatformExtensions.push_back(DotGraphExt);
+        // Set name
+        memset(CBDotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_graph");
+        // Set version
+        CBDotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+        PlatformExtensions.push_back(CBDotGraphExt);
+
+        break;
+      }
+    }
+
+    if (auto &Context = getVizContext(); Context.useExt()) {
+      cl_name_version DotGraphExt;
+      // Set name
+      memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+      strcpy(DotGraphExt.name, "cl_ext_dot_graph");
+      // Set version
+      DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+      PlatformExtensions.push_back(DotGraphExt);
+    }
 
     // Copy back to user
     const size_t Bytes = PlatformExtensions.size() * sizeof(cl_name_version);

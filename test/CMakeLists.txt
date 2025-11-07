@@ -16,8 +16,8 @@ else()
     message(STATUS "Found ${LIT}")
 endif()
 
-find_package(OpenCLICDLoader)
-if(OpenCLICDLoader_FOUND)
+if (VIZ_OFFLINE_BUILD)
+    find_package(OpenCLICDLoader REQUIRED)
     set(OpenCLICDLib OpenCL::OpenCL)
 else()
     FetchContent_Declare(OpenCL-ICD-Loader

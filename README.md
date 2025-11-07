@@ -68,20 +68,20 @@ $ cmake -S CLVizulayer -B CLVizulayer/build
 $ cmake --build ./CLVizulayer/build
 ```
 
-The project uses `find_package(OpenCLHeaders)` and  `find_package(OpenCLICDLoader)`
-to detect installations of the [OpenCL-Headers](https://github.com/KhronosGroup/OpenCL-Headers)
+The project requires  [OpenCL-Headers](https://github.com/KhronosGroup/OpenCL-Headers)
 and [OpenCL-ICD-Loader](https://github.com/KhronosGroup/OpenCL-ICD-Loader) to
-build against.
+build against. By default it pulls these using `FetchContent` from the `main`
+branch GitHub to get the latest code.
 
+However, if an build without downloading dependencies is preferred then
+`VIZ_OFFLINE_BUILD` can be set during CMake configure. Then
+`find_package(OpenCLHeaders)` and  `find_package(OpenCLICDLoader)`
+will be used to detect local installations of the packages.
 Search paths to these can be passed with `CMAKE_INSTALL_PREFIX`:
 
 ```sh
 $ cmake -DCMAKE_PREFIX_PATH="/chosen/install/prefix/of/headers;/chosen/install/prefix/of/loader"
 ```
-
-If these packages are not detected then CMake will download and build the
-`main` branch of these repositories using `FetchContent` as part of the build.
-
 The project requires a C++20 compiler to build, as it makes use of `std::span`
 and `std::format`.
 
@@ -89,9 +89,10 @@ and `std::format`.
 
 Additional project defined CMake variables
 
-| Name           | Description                            | Default   |
-| -------------- | -------------------------------------- | --------- |
-| `VIZ_DEBUG`    | Layer debug printing to stdout. (Bool) | `OFF`     |
+| Name                | Description                                     | Default   |
+| ------------------- | ----------------------------------------------- | --------- |
+| `VIZ_DEBUG`         | Layer debug printing to stdout. (Bool)          | `OFF`     |
+| `VIZ_OFFLINE_BUILD` | Avoids pulling dependencies from GitHub. (Bool) | `OFF`     |
 
 ## Running
 
