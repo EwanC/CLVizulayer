@@ -85,27 +85,35 @@ void VizInstance::createVizNode(const char *Name,
                                 std::span<const cl_sync_point_khr> Deps,
                                 cl_sync_point_khr *RetSyncPoint) {
   std::vector<VizNode *> DepVizNodes;
-  // Get list of explicitly passed node dependencies
-  auto &SPMap = MCommandBuffer->MSyncPointMap;
-  for (cl_sync_point_khr SP : Deps) {
-    auto Itr = SPMap.find(SP);
-    if (Itr != SPMap.end()) {
-      DepVizNodes.push_back(Itr->second);
-    } else {
-      // TODO
+  NodePreCreation(Deps, DepVizNodes);
+  VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
+  NodePostCreation(Node, RetSyncPoint);
+  // TODO - Log
+}
+
+void VizInstance::createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
+                                       cl_sync_point_khr *RetSyncPoint) {
+  std::vector<VizNode *> DepVizNodes;
+  NodePreCreation(Deps, DepVizNodes, true);
+
+  auto &Leaves = MCommandBuffer->MLeaves;
+  if (Deps.empty()) {
+    for (auto &Leaf : Leaves) {
+      DepVizNodes.push_back(Leaf);
     }
   }
 
-  if (MCommandBuffer->MIsInOrder && !MNodes.empty()) {
-    DepVizNodes.push_back(MNodes.back());
-  }
-  VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
-
-  if (RetSyncPoint) {
-    SPMap.emplace(*RetSyncPoint, Node);
+  // Remove dependencies from list of leaf nodes
+  for (VizNode *Dep : DepVizNodes) {
+    Leaves.erase(std::remove(Leaves.begin(), Leaves.end(), Dep), Leaves.end());
   }
 
-  MNodes.push_back(Node);
+  VizNode *Node =
+      new VizNode("clCommandBarrierWithWaitListKHR", std::move(DepVizNodes));
+  NodePostCreation(Node, RetSyncPoint);
+
+  MCommandBuffer->MLastBarrier = Node;
+  // TODO - Log
 }
 
 void VizInstance::createVizMarkerNode(cl_command_queue CQ,
@@ -281,6 +289,17 @@ VizQueue *VizInstance::getVizQueueForCLQueue(cl_command_queue CQ) const {
   }
 }
 
+void VizInstance::NodePostCreation(VizNode *Node,
+                                   cl_sync_point_khr *RetSyncPoint) {
+  MNodes.push_back(Node);
+  if (RetSyncPoint) {
+    MCommandBuffer->MSyncPointMap.emplace(*RetSyncPoint, Node);
+  }
+
+  // Set new leaf node
+  MCommandBuffer->MLeaves.push_back(Node);
+}
+
 void VizInstance::NodePostCreation(VizNode *Node, VizQueue *VQ,
                                    cl_event *RetEvent) {
   MNodes.push_back(Node);
@@ -302,6 +321,38 @@ void VizInstance::NodePostCreation(VizNode *Node, VizQueue *VQ,
 
   // Set new leaf node
   VQ->MLeaves.push_back(Node);
+}
+
+void VizInstance::NodePreCreation(std::span<const cl_sync_point_khr> Deps,
+                                  std::vector<VizNode *> &DepVizNodes,
+                                  bool IsBarrier) {
+  // Get list of explicitly passed node dependencies
+  auto &SPMap = MCommandBuffer->MSyncPointMap;
+  for (cl_sync_point_khr SP : Deps) {
+    auto Itr = SPMap.find(SP);
+    if (Itr != SPMap.end()) {
+      DepVizNodes.push_back(Itr->second);
+    } else {
+      // TODO
+    }
+  }
+
+  if (auto Barrier = MCommandBuffer->MLastBarrier; Barrier) {
+    DepVizNodes.push_back(Barrier);
+  }
+
+  if (MCommandBuffer->MIsInOrder && !MNodes.empty()) {
+    DepVizNodes.push_back(MNodes.back());
+  }
+
+  if (!IsBarrier) {
+    // Remove dependencies from list of leaf nodes
+    auto &Leaves = MCommandBuffer->MLeaves;
+    for (VizNode *Dep : DepVizNodes) {
+      Leaves.erase(std::remove(Leaves.begin(), Leaves.end(), Dep),
+                   Leaves.end());
+    }
+  }
 }
 
 void VizInstance::NodePreCreation(VizQueue *VQ, std::span<const cl_event> Deps,

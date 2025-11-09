@@ -55,6 +55,10 @@ struct VizInstance {
   void createVizNode(const char *Name, std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint);
 
+  // TODO
+  void createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
+                            cl_sync_point_khr *RetSyncPoint);
+
   /// @brief Allocates a new VizNode instance representing a barrier command,
   /// and stores it in @a MNodes
   /// @param[in] CQ OpenCL command-queue the node was created on
@@ -121,11 +125,19 @@ private:
                        std::vector<VizNode *> &DepVizNode,
                        bool isBarrierOrMarker = false);
 
+  /// TODO
+  void NodePreCreation(std::span<const cl_sync_point_khr> Deps,
+                       std::vector<VizNode *> &DepVizNodes,
+                       bool isBarrier = false);
+
   /// @brief Generic work after a node has been created
   /// @param[in] Node The node which has been created
   /// @param[in] VQ Queue the node was enqueued to
   /// @param[out] RetEvent The OpenCL event returned from node creation
   void NodePostCreation(VizNode *Node, VizQueue *VQ, cl_event *RetEvent);
+
+  /// TODO
+  void NodePostCreation(VizNode *Node, cl_sync_point_khr *RetSyncPoint);
 
   /// DOT file used for output
   std::unique_ptr<VizDotFile> MDotFile;

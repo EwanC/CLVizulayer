@@ -47,20 +47,25 @@ int main() {
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,
                                &State.GlobalSize, nullptr, 0, nullptr, nullptr);
+  CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,
                                &State.GlobalSize, nullptr, 0, nullptr, nullptr);
+  CHECK(Ret);
 
   Ret = clEnqueueBarrier(State.OutOfOrderQueue);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,
                                &State.GlobalSize, nullptr, 0, nullptr, nullptr);
+  CHECK(Ret);
+
   Ret = clFinish(State.OutOfOrderQueue);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1, nullptr,
                                &State.GlobalSize, nullptr, 0, nullptr, nullptr);
+  CHECK(Ret);
 
   Ret = clFinish(State.InOrderQueue);
   CHECK(Ret);

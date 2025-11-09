@@ -70,6 +70,7 @@ struct VizContext {
     }
   }
 
+  /// TODO
   void createVizNode(cl_command_buffer_khr CB, const char *Name,
                      std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint) {
@@ -78,6 +79,20 @@ struct VizContext {
     auto Itr = MCommandBufferInstanceMap.find(CB);
     if (Itr != MCommandBufferInstanceMap.end()) {
       Itr->second->createVizNode(Name, Deps, RetSyncPoint);
+    } else {
+      // TODO - throw?
+    }
+  }
+
+  /// TODO
+  void createVizBarrierNode(cl_command_buffer_khr CB,
+                            std::span<const cl_sync_point_khr> Deps,
+                            cl_sync_point_khr *RetSyncPoint) {
+    std::lock_guard<std::mutex> Lock(MMutex);
+
+    auto Itr = MCommandBufferInstanceMap.find(CB);
+    if (Itr != MCommandBufferInstanceMap.end()) {
+      Itr->second->createVizBarrierNode(Deps, RetSyncPoint);
     } else {
       // TODO - throw?
     }

@@ -1353,9 +1353,21 @@ cl_int CL_API_CALL clCommandBarrierWithWaitListKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandBarrierWithWaitListKHRFnPtr);
   auto &TargetFunction = Context.MclCommandBarrierWithWaitListKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
+                              num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+
+  if (Ret == CL_SUCCESS) {
+    try {
+      Context.createVizBarrierNode(
+          command_buffer,
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandCopyBufferKHRShim(
