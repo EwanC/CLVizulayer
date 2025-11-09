@@ -1330,10 +1330,15 @@ clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
   auto &TargetFunction = Context.MclCreateCommandBufferKHRFnPtr;
   auto CB = TargetFunction(num_queues, queues, properties, errcode_ret);
   if (CB != nullptr) {
-    try {
-      Context.createVizInstance(CB);
-    } catch (std::exception &E) {
-      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    if (num_queues > 1) {
+      VIZ_ERR("cl_ext_command_buffer_dot print doesn't support "
+              "cl_khr_command_buffer_multi_device");
+    } else {
+      try {
+        Context.createVizInstance(CB, queues[0]);
+      } catch (std::exception &E) {
+        VIZ_ERR("Error creating Viz instance: {}", E.what());
+      }
     }
   }
   return CB;
@@ -1486,7 +1491,10 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
 
   if (Ret == CL_SUCCESS) {
     try {
-      Context.createVizNode(command_buffer, "clCommandNDRangeKernelKHR");
+      Context.createVizNode(
+          command_buffer, "clCommandNDRangeKernelKHR",
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
     } catch (std::exception &E) {
       VIZ_ERR("Error creating Viz instance: {}", E.what());
     }

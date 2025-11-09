@@ -18,15 +18,15 @@ int main() {
   CLState State;
 
   cl_int Ret = CL_SUCCESS;
-  cl_command_buffer_khr command_buffer =
+  cl_command_buffer_khr CommandBuffer =
       State.clCreateCommandBufferKHR(1, &State.OutOfOrderQueue, nullptr, &Ret);
   CHECK(Ret);
-  CHECK_NOT_NULL(command_buffer);
+  CHECK_NOT_NULL(CommandBuffer);
 
-  Ret = State.clDotPrintCommandBufferEXT(command_buffer, VIZ_TEST_FILE_NAME);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME);
   CHECK(Ret);
 
-  CHECK(State.clReleaseCommandBufferKHR(command_buffer));
+  CHECK(State.clReleaseCommandBufferKHR(CommandBuffer));
 
   return 0;
 }

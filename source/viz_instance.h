@@ -51,7 +51,9 @@ struct VizInstance {
                      std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_event> Deps, cl_event *RetEvent);
 
-  void createVizNode(cl_command_buffer_khr CB, const char *Name);
+  /// TODO
+  void createVizNode(const char *Name, std::span<const cl_sync_point_khr> Deps,
+                     cl_sync_point_khr *RetSyncPoint);
 
   /// @brief Allocates a new VizNode instance representing a barrier command,
   /// and stores it in @a MNodes

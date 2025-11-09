@@ -106,9 +106,21 @@ void VizContext::flushCommandBuffer(cl_command_buffer_khr CB,
   }
 }
 
-void VizContext::createVizInstance(cl_command_buffer_khr CB) {
+void VizContext::createVizInstance(cl_command_buffer_khr CB,
+                                   cl_command_queue CQ) {
   std::lock_guard<std::mutex> Lock(MMutex);
-  VizInstance *VI = new VizInstance(CB, true);
+
+  cl_command_queue_properties QueueProps;
+  auto Ret = TargetDispatch->clGetCommandQueueInfo(
+      CQ, CL_QUEUE_PROPERTIES, sizeof(QueueProps), &QueueProps, NULL);
+  if (Ret != CL_SUCCESS) {
+    throw std::runtime_error(std::string(
+        "OpenCL error querying queue properties " + std::to_string(Ret)));
+  }
+
+  bool IsInOrder = (QueueProps & CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE) == 0;
+
+  VizInstance *VI = new VizInstance(CB, IsInOrder);
   MCommandBufferInstanceMap.emplace(CB, VI);
   VIZ_LOG("VizInstance {} Created for CB {}", static_cast<void *>(VI),
           static_cast<void *>(CB));

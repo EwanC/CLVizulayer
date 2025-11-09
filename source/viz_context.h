@@ -32,8 +32,9 @@ struct VizContext {
                                  const char *FilePath);
 
   /// @brief Allocates a new VizInstance tied to a command-buffer
-  /// @param[in] The CB to map to the created instance.
-  void createVizInstance(cl_command_buffer_khr CB);
+  /// @param[in] CB The command-buffer to map to the created instance.
+  /// @param[in] CQ The command-queue the command-buffer was created with.
+  void createVizInstance(cl_command_buffer_khr CB, cl_command_queue CQ);
 
   /// @brief Frees heap allocated VizInstance and removes it from @a MInstances
   /// @param[in] VI Pointer to VizInstance object to free and erase.
@@ -69,12 +70,14 @@ struct VizContext {
     }
   }
 
-  void createVizNode(cl_command_buffer_khr CB, const char *Name) {
+  void createVizNode(cl_command_buffer_khr CB, const char *Name,
+                     std::span<const cl_sync_point_khr> Deps,
+                     cl_sync_point_khr *RetSyncPoint) {
     std::lock_guard<std::mutex> Lock(MMutex);
 
     auto Itr = MCommandBufferInstanceMap.find(CB);
     if (Itr != MCommandBufferInstanceMap.end()) {
-      Itr->second->createVizNode(CB, Name);
+      Itr->second->createVizNode(Name, Deps, RetSyncPoint);
     } else {
       // TODO - throw?
     }

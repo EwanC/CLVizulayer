@@ -3,6 +3,7 @@
 
 #define CL_ENABLE_BETA_EXTENSIONS
 #include <CL/cl_ext.h>
+#include <unordered_map>
 #include <vector>
 
 /// Forward declarations
@@ -40,4 +41,7 @@ struct VizCB : VizDAG {
 
   /// Command-buffer being tracked
   cl_command_buffer_khr MCB;
+
+  /// Map of sync_points to VIZ nodes
+  std::unordered_map<cl_sync_point_khr, VizNode *> MSyncPointMap;
 };

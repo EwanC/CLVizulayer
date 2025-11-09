@@ -14,9 +14,12 @@
 // CHECK-NEXT: node_0[label="clCommandNDRangeKernelKHR"];
 // CHECK-NEXT: node_1[label="clCommandNDRangeKernelKHR"];
 // CHECK-NEXT: node_2[label="clCommandNDRangeKernelKHR"];
+// CHECK-NEXT: node_3[label="clCommandNDRangeKernelKHR"];
 // CHECK-NEXT: }
 // CHECK-NEXT: node_0 -> node_1
-// CHECK-NEXT: node_1 -> node_2
+// CHECK-NEXT: node_0 -> node_2
+// CHECK-NEXT: node_1 -> node_3
+// CHECK-NEXT: node_2 -> node_3
 // CHECK-EMPTY:
 // CHECK-NEXT: }
 
@@ -27,21 +30,31 @@ int main() {
 
   cl_int Ret = CL_SUCCESS;
   cl_command_buffer_khr CommandBuffer =
-      State.clCreateCommandBufferKHR(1, &State.InOrderQueue, nullptr, &Ret);
+      State.clCreateCommandBufferKHR(1, &State.OutOfOrderQueue, nullptr, &Ret);
   CHECK(Ret);
   CHECK_NOT_NULL(CommandBuffer);
 
-  Ret = State.clCommandNDRangeKernelKHR(
-      CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
-      &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
+  cl_sync_point_khr SyncPoints[3];
 
   Ret = State.clCommandNDRangeKernelKHR(
       CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
-      &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
+      &State.GlobalSize, nullptr, 0, nullptr, &SyncPoints[0], nullptr);
+  CHECK(Ret);
 
   Ret = State.clCommandNDRangeKernelKHR(
       CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
-      &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
+      &State.GlobalSize, nullptr, 1, &SyncPoints[0], &SyncPoints[1], nullptr);
+  CHECK(Ret);
+
+  Ret = State.clCommandNDRangeKernelKHR(
+      CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
+      &State.GlobalSize, nullptr, 1, &SyncPoints[0], &SyncPoints[2], nullptr);
+  CHECK(Ret);
+
+  Ret = State.clCommandNDRangeKernelKHR(
+      CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
+      &State.GlobalSize, nullptr, 2, &SyncPoints[1], nullptr, nullptr);
+  CHECK(Ret);
 
   Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME);
   CHECK(Ret);

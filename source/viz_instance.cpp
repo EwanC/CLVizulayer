@@ -81,14 +81,30 @@ void VizInstance::createVizNode(
           static_cast<void *>(VQ));
 }
 
-void VizInstance::createVizNode(cl_command_buffer_khr CB, const char *Name) {
-  (void)CB;
-
+void VizInstance::createVizNode(const char *Name,
+                                std::span<const cl_sync_point_khr> Deps,
+                                cl_sync_point_khr *RetSyncPoint) {
   std::vector<VizNode *> DepVizNodes;
+  // Get list of explicitly passed node dependencies
+  auto &SPMap = MCommandBuffer->MSyncPointMap;
+  for (cl_sync_point_khr SP : Deps) {
+    auto Itr = SPMap.find(SP);
+    if (Itr != SPMap.end()) {
+      DepVizNodes.push_back(Itr->second);
+    } else {
+      // TODO
+    }
+  }
+
   if (MCommandBuffer->MIsInOrder && !MNodes.empty()) {
     DepVizNodes.push_back(MNodes.back());
   }
   VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
+
+  if (RetSyncPoint) {
+    SPMap.emplace(*RetSyncPoint, Node);
+  }
+
   MNodes.push_back(Node);
 }
 
