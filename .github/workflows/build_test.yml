@@ -121,6 +121,29 @@ jobs:
         repository: KhronosGroup/OpenCL-ICD-Loader
         path: external/OpenCL-ICD-Loader
 
+    - name: Unix Build OpenCL-ICD-Loader
+      if: matrix.headers == 'User' && matrix.os != 'windows-latest'
+      run: cmake
+           -S $GITHUB_WORKSPACE/external/OpenCL-ICD-Loader
+           -B $GITHUB_WORKSPACE/external/OpenCL-ICD-Loader/build
+           -DCMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/external/OpenCL-Headers/build/install
+           -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/external/OpenCL-ICD-Loader/build/install
+           &&
+           cmake --build $GITHUB_WORKSPACE/external/OpenCL-ICD-Loader/build --target install
+
+    - name: Windows Build OpenCL-ICD-Loader
+      if: matrix.headers == 'User' && matrix.os == 'windows-latest'
+      run: cmake
+           -S $env:GITHUB_WORKSPACE\external\OpenCL-ICD-Loader
+           -B $env:GITHUB_WORKSPACE\external\OpenCL-ICD-Loader\build
+           -DCMAKE_PREFIX_PATH="$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install"
+           -DCMAKE_INSTALL_PREFIX=$env:GITHUB_WORKSPACE\external\OpenCL-ICD-Loader\build\install
+           &&
+           cmake
+           --build $env:GITHUB_WORKSPACE\external\OpenCL-ICD-Loader\build
+           --config ${{ matrix.build_type }}
+           --target install
+
     - name: Windows Configure CMake with user defined headers
       if: matrix.headers == 'User' && matrix.os == 'windows-latest'
       run: >
@@ -129,7 +152,7 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DCMAKE_PREFIX_PATH=$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install
+        -DCMAKE_PREFIX_PATH="$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install;$env:GITHUB_WORKSPACE\external\OpenCL-ICD-Loader\build\install"
         -S ${{ github.workspace }}
 
     - name: Unix Configure CMake with user defined headers
@@ -140,7 +163,7 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DCMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/external/OpenCL-Headers/build/install
+        -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/external/OpenCL-Headers/build/install;$GITHUB_WORKSPACE/external/OpenCL-ICD-Loader/build/install"
         -S ${{ github.workspace }}
 
     - name: Build
