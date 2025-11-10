@@ -401,4 +401,9 @@ void VizInstance::flushCommandBuffer(const char *FilePath) {
   }
 
   DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr");
+
+  // Command-buffer nodes are defined per-flush
+  for (auto &Node : MNodes) {
+    Node->MDefined = false;
+  }
 }
