@@ -3,7 +3,7 @@
 // REQUIRES: command-buffer
 
 // RUN: %build -DVIZ_TEST_FILE_NAME=\"%T/%basename_t.dot\" -o %t
-// RUN: %t
+// RUN: VIZ_EXT=1 %t
 // RUN: FileCheck --input_file %T/%basename_t.dot %s
 
 // CHECK: digraph CLVizulayer {
@@ -23,7 +23,7 @@
 #include "../common.h"
 
 int main() {
-  CLState State;
+  CLState State(true);
 
   cl_int Ret = CL_SUCCESS;
   cl_command_buffer_khr CommandBuffer =

@@ -118,22 +118,28 @@ $ sudo apt install graphviz
 
 ## Extensions
 
+CLVizulayer defines extensions that give OpenCL application developers more
+control over the DOT graph that is printed that if the layer was used
+on a precompiled OpenCL binary.
+
+When the `VIZ_EXT` environment variable is set, the extensions defined by the
+project (see [doc directory](doc)) will be reported and the layer will not
+trace the full application DAG, and instead rely on the user utilizing the
+more explicit DOT graph printing extension APIs inside their application.
+
 ### cl_ext_dot_print
 
 Tracing the device commands at the application level can be too noisy for
 non-trivial applications. To give users finer grained control over what
 is captured in the DOT graph the [cl_ext_dot_print](doc/cl_ext_dot_print.asciidoc)
-extension has been defined.
-
-This allows users to modify their application to mark what queues they
-want to capture and for what commands. This extension is reported when
-the `VIZ_EXT` environment variable is set, and it will ignore any
-path set in `VIZ_DOT_FILE` in favor of the path passed in the extension
-API.
+extension has been defined. This allows users to modify their application to
+mark what queues they want to capture and for what commands.
 
 ### cl_ext_command_buffer_dot_print
 
-[cl_ext_command_buffer_dot_print](doc/cl_ext_command_buffer_dot_print.asciidoc) is WIP.
+[cl_ext_command_buffer_dot_print](doc/cl_ext_command_buffer_dot_print.asciidoc)
+allows the user to print the DAG of commands inside a specific
+`cl_command_buffer_khr` object.
 
 ### Environment Variables
 
@@ -145,7 +151,7 @@ For variables marked Bool, `0` is OFF and a non-zero value is ON.
 | `VIZ_DOT_FILE` | Path to dot file to create.                         |  Empty  |
 | `VIZ_COLOR`    | Use color in DOT file to distinguish queues. (Bool) | `0`     |
 | `VIZ_VERBOSE`  | Enable verbose output. (Bool)                       | `0`     |
-| `VIZ_EXT`      | Enable [extension behavior](#extension). (Bool)     | `0`     |
+| `VIZ_EXT`      | Enable [extension behavior](#extensions). (Bool)    | `0`     |
 
 
 ## Tests

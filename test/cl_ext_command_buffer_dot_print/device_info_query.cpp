@@ -3,14 +3,14 @@
 // REQUIRES: command-buffer
 
 // RUN: %build -o %t
-// RUN: %t
+// RUN: VIZ_EXT=1 %t
 
 #include "../common.h"
 #include <cstring>
 #include <vector>
 
 int main() {
-  CLState State;
+  CLState State(true);
 
   size_t StrSize;
   cl_int Ret =

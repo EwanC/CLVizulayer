@@ -1517,6 +1517,8 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
 
 void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
                                                    const char *funcname) {
+  void *RetPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
+      platform, funcname);
 #define GET_EXTENSION_FUNCTION(FUNC)                                           \
   if (0 == strcmp(funcname, #FUNC)) {                                          \
     return (void *)FUNC;                                                       \
@@ -1527,12 +1529,8 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_EXTENSION_FUNCTION(clCreateDotGraphEXT);
     GET_EXTENSION_FUNCTION(clReleaseDotGraphEXT);
     GET_EXTENSION_FUNCTION(clRetainDotGraphEXT);
-  }
-  GET_EXTENSION_FUNCTION(clDotPrintCommandBufferEXT);
+    GET_EXTENSION_FUNCTION(clDotPrintCommandBufferEXT);
 #undef GET_EXTENSION_FUNCTION
-
-  void *RetPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
-      platform, funcname);
 
 #if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
 #define GET_SHIM(FUNC)                                                         \
@@ -1543,19 +1541,20 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     return (void *)FUNC##Shim;                                                 \
   }
 
-  GET_SHIM(clCreateCommandBufferKHR);
-  GET_SHIM(clCommandBarrierWithWaitListKHR);
-  GET_SHIM(clCommandCopyBufferKHR);
-  GET_SHIM(clCommandCopyBufferRectKHR);
-  GET_SHIM(clCommandCopyBufferToImageKHR);
-  GET_SHIM(clCommandCopyImageKHR);
-  GET_SHIM(clCommandCopyImageToBufferKHR);
-  GET_SHIM(clCommandFillBufferKHR);
-  GET_SHIM(clCommandFillImageKHR);
-  GET_SHIM(clCommandNDRangeKernelKHR);
+    GET_SHIM(clCreateCommandBufferKHR);
+    GET_SHIM(clCommandBarrierWithWaitListKHR);
+    GET_SHIM(clCommandCopyBufferKHR);
+    GET_SHIM(clCommandCopyBufferRectKHR);
+    GET_SHIM(clCommandCopyBufferToImageKHR);
+    GET_SHIM(clCommandCopyImageKHR);
+    GET_SHIM(clCommandCopyImageToBufferKHR);
+    GET_SHIM(clCommandFillBufferKHR);
+    GET_SHIM(clCommandFillImageKHR);
+    GET_SHIM(clCommandNDRangeKernelKHR);
 
 #undef GET_SHIM
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
+  }
 
   const char *EnqueuePrefix = "clEnqueue";
   if (0 == strncmp(funcname, EnqueuePrefix, strlen(EnqueuePrefix))) {
@@ -1567,6 +1566,12 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
 cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
                            size_t param_value_size, void *param_value,
                            size_t *param_value_size_ret) {
+
+  if (auto &Context = getVizContext(); !Context.useExt()) {
+    return TargetDispatch->clGetDeviceInfo(device, param_name, param_value_size,
+                                           param_value, param_value_size_ret);
+  }
+
   switch (param_name) {
   case CL_DEVICE_EXTENSIONS: {
     size_t Size = 0;
@@ -1585,10 +1590,8 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
                           : " cl_ext_command_buffer_dot_graph";
     }
 
-    if (auto &Context = getVizContext(); Context.useExt()) {
-      ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
-                                                   : " cl_ext_dot_graph";
-    }
+    ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
+                                                 : " cl_ext_dot_graph";
 
     const size_t StrBytes = ExtensionStr.size() + 1;
     if (param_value_size_ret) {
@@ -1628,15 +1631,13 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
       }
     }
 
-    if (auto &Context = getVizContext(); Context.useExt()) {
-      cl_name_version DotGraphExt;
-      // Set name
-      memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-      strcpy(DotGraphExt.name, "cl_ext_dot_graph");
-      // Set version
-      DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
-      DeviceExtensions.push_back(DotGraphExt);
-    }
+    cl_name_version DotGraphExt;
+    // Set name
+    memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+    strcpy(DotGraphExt.name, "cl_ext_dot_graph");
+    // Set version
+    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+    DeviceExtensions.push_back(DotGraphExt);
 
     // Copy back to user
     const size_t Bytes = DeviceExtensions.size() * sizeof(cl_name_version);
@@ -1663,6 +1664,11 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                              cl_platform_info param_name,
                              size_t param_value_size, void *param_value,
                              size_t *param_value_size_ret) {
+  if (auto &Context = getVizContext(); !Context.useExt()) {
+    return TargetDispatch->clGetPlatformInfo(platform, param_name,
+                                             param_value_size, param_value,
+                                             param_value_size_ret);
+  }
   switch (param_name) {
   case CL_PLATFORM_EXTENSIONS: {
     size_t Size = 0;
@@ -1681,10 +1687,8 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                           : " cl_ext_command_buffer_dot_graph";
     }
 
-    if (auto &Context = getVizContext(); Context.useExt()) {
-      ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
-                                                   : " cl_ext_dot_graph";
-    }
+    ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
+                                                 : " cl_ext_dot_graph";
 
     const size_t StrBytes = ExtensionStr.size() + 1;
     if (param_value_size_ret) {
@@ -1725,15 +1729,13 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
       }
     }
 
-    if (auto &Context = getVizContext(); Context.useExt()) {
-      cl_name_version DotGraphExt;
-      // Set name
-      memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-      strcpy(DotGraphExt.name, "cl_ext_dot_graph");
-      // Set version
-      DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
-      PlatformExtensions.push_back(DotGraphExt);
-    }
+    cl_name_version DotGraphExt;
+    // Set name
+    memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
+    strcpy(DotGraphExt.name, "cl_ext_dot_graph");
+    // Set version
+    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+    PlatformExtensions.push_back(DotGraphExt);
 
     // Copy back to user
     const size_t Bytes = PlatformExtensions.size() * sizeof(cl_name_version);

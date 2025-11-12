@@ -107,7 +107,7 @@ jobs:
       run: cmake
            -S $env:GITHUB_WORKSPACE\external\OpenCL-Headers
            -B $env:GITHUB_WORKSPACE\external\OpenCL-Headers\build
-           -DCMAKE_INSTALL_PREFIX=$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install
+           -DCMAKE_INSTALL_PREFIX="$env:GITHUB_WORKSPACE\external\OpenCL-Headers\build\install"
            &&
            cmake
            --build $env:GITHUB_WORKSPACE\external\OpenCL-Headers\build
