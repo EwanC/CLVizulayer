@@ -51,11 +51,17 @@ struct VizInstance {
                      std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_event> Deps, cl_event *RetEvent);
 
-  /// TODO
+  /// @brief Allocates a new VizNode instance and stores it in @a MNodes
+  /// @param[in] Name Entry-point name that created the node
+  /// @param[in] Deps cl_khr_command_buffer command dependencies
+  /// @param[out] RetSyncPoint Returned sync-point for command
   void createVizNode(const char *Name, std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint);
 
-  // TODO
+  /// @brief Allocates a new VizNode instance representing a barrier command,
+  /// and stores it in @a MNodes
+  /// @param[in] Deps cl_khr_command_buffer command dependencies
+  /// @param[out] RetSyncPoint Returned sync-point for command
   void createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
                             cl_sync_point_khr *RetSyncPoint);
 
@@ -125,7 +131,11 @@ private:
                        std::vector<VizNode *> &DepVizNode,
                        bool isBarrierOrMarker = false);
 
-  /// TODO
+  /// @brief Generic work before a node has been created for a command-buffer
+  /// command
+  /// param[in] Deps Command-buffer sync-points the node depends on
+  /// param[out] DepVizNodes Viz nodes the node will depend on
+  /// param[in] isBarrier Whether the node being created is a barrier
   void NodePreCreation(std::span<const cl_sync_point_khr> Deps,
                        std::vector<VizNode *> &DepVizNodes,
                        bool isBarrier = false);
@@ -136,7 +146,10 @@ private:
   /// @param[out] RetEvent The OpenCL event returned from node creation
   void NodePostCreation(VizNode *Node, VizQueue *VQ, cl_event *RetEvent);
 
-  /// TODO
+  /// @brief Generic work after a command-buffer node has been created
+  /// @param[in] Node The node which has been created
+  /// @param[out] RetSyncPoint The command-buffer sync-point returned from node
+  /// creation
   void NodePostCreation(VizNode *Node, cl_sync_point_khr *RetSyncPoint);
 
   /// DOT file used for output

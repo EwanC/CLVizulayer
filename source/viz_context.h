@@ -6,6 +6,7 @@
 #include "viz_instance.h"
 #include <CL/cl_ext.h>
 #include <CL/cl_layer.h>
+#include <cassert>
 #include <fstream>
 #include <functional>
 #include <mutex>
@@ -70,32 +71,35 @@ struct VizContext {
     }
   }
 
-  /// TODO
+  /// @brief Finds the VizInstance for the command-buffer, and allocates a new
+  /// VizNode instance.
+  /// @param[in] CB OpenCL command-buffer the node was created on
+  /// @param[in] Name Entry-point name that created the node
+  /// @param[in] Deps Command-buffer command sync-point dependencies
+  /// @param[out] RetSyncPoint Command-buffer command returned sync-point
   void createVizNode(cl_command_buffer_khr CB, const char *Name,
                      std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint) {
     std::lock_guard<std::mutex> Lock(MMutex);
 
     auto Itr = MCommandBufferInstanceMap.find(CB);
-    if (Itr != MCommandBufferInstanceMap.end()) {
-      Itr->second->createVizNode(Name, Deps, RetSyncPoint);
-    } else {
-      // TODO - throw?
-    }
+    assert(Itr != MCommandBufferInstanceMap.end());
+    Itr->second->createVizNode(Name, Deps, RetSyncPoint);
   }
 
-  /// TODO
+  /// @brief Finds the VizInstance for the command-buffer, and allocates a new
+  /// VizNode instance representing a barrier command
+  /// @param[in] CB OpenCL command-buffer the node was created on
+  /// @param[in] Deps Command-buffer command sync-point dependencies
+  /// @param[out] RetSyncPoint Command-buffer command returned sync-point
   void createVizBarrierNode(cl_command_buffer_khr CB,
                             std::span<const cl_sync_point_khr> Deps,
                             cl_sync_point_khr *RetSyncPoint) {
     std::lock_guard<std::mutex> Lock(MMutex);
 
     auto Itr = MCommandBufferInstanceMap.find(CB);
-    if (Itr != MCommandBufferInstanceMap.end()) {
-      Itr->second->createVizBarrierNode(Deps, RetSyncPoint);
-    } else {
-      // TODO - throw?
-    }
+    assert(Itr != MCommandBufferInstanceMap.end());
+    Itr->second->createVizBarrierNode(Deps, RetSyncPoint);
   }
 
   /// @brief For each instance, allocates a new VizNode instance representing a

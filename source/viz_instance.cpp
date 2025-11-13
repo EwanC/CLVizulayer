@@ -88,7 +88,8 @@ void VizInstance::createVizNode(const char *Name,
   NodePreCreation(Deps, DepVizNodes);
   VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
   NodePostCreation(Node, RetSyncPoint);
-  // TODO - Log
+
+  VIZ_LOG("Instance {} created node {}", static_cast<void *>(this), Name);
 }
 
 void VizInstance::createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
@@ -113,7 +114,7 @@ void VizInstance::createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
   NodePostCreation(Node, RetSyncPoint);
 
   MCommandBuffer->MLastBarrier = Node;
-  // TODO - Log
+  VIZ_LOG("Instance {} created barrier node.", static_cast<void *>(this));
 }
 
 void VizInstance::createVizMarkerNode(cl_command_queue CQ,
@@ -330,11 +331,8 @@ void VizInstance::NodePreCreation(std::span<const cl_sync_point_khr> Deps,
   auto &SPMap = MCommandBuffer->MSyncPointMap;
   for (cl_sync_point_khr SP : Deps) {
     auto Itr = SPMap.find(SP);
-    if (Itr != SPMap.end()) {
-      DepVizNodes.push_back(Itr->second);
-    } else {
-      // TODO
-    }
+    assert(Itr != SPMap.end());
+    DepVizNodes.push_back(Itr->second);
   }
 
   if (auto Barrier = MCommandBuffer->MLastBarrier; Barrier) {
