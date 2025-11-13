@@ -2,10 +2,10 @@
 
 // REQUIRES: command-buffer
 
-// RUN: %build -DVIZ_TEST_FILE_NAME1=\"%T/1_%basename_t.dot\"
-// -DVIZ_TEST_FILE_NAME2=\"%T/2_%basename_t.dot\" -o %t RUN: VIZ_EXT=1 %t RUN:
-// FileCheck --check-prefix CHECK1 --input_file %T/1_%basename_t.dot %s RUN:
-// FileCheck --check-prefix CHECK2 --input_file %T/2_%basename_t.dot %s
+// RUN: %build -DVIZ_TEST_FILE_NAME1=\"%T/1_%basename_t.dot\" -DVIZ_TEST_FILE_NAME2=\"%T/2_%basename_t.dot\" -o %t
+// RUN: VIZ_EXT=1 %t
+// RUN: FileCheck --check-prefix CHECK1 --input_file %T/1_%basename_t.dot %s
+// RUN: FileCheck --check-prefix CHECK2 --input_file %T/2_%basename_t.dot %s
 
 // CHECK1: digraph CLVizulayer {
 // CHECK1-NEXT: compound=true
