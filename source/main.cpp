@@ -1513,6 +1513,37 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
   }
   return Ret;
 }
+
+cl_int clReleaseCommandBufferKHRShim(cl_command_buffer_khr command_buffer) {
+  auto &Context = getVizContext();
+  assert(Context.MclReleaseCommandBufferKHRFnPtr);
+  auto &ReleaseFunction = Context.MclReleaseCommandBufferKHRFnPtr;
+  assert(Context.MclGetCommandBufferInfoKHRFnPtr);
+  auto &InfoFunction = Context.MclGetCommandBufferInfoKHRFnPtr;
+
+  cl_uint RefCount;
+  cl_int Ret =
+      InfoFunction(command_buffer, CL_COMMAND_BUFFER_REFERENCE_COUNT_KHR,
+                   sizeof(RefCount), &RefCount, nullptr);
+  bool WillBeFreed = false;
+  if (Ret != CL_SUCCESS) {
+    VIZ_ERR("Error querying CB {} reference count",
+            static_cast<void *>(command_buffer));
+  } else if (RefCount == 1) {
+    WillBeFreed = true;
+  }
+
+  Ret = ReleaseFunction(command_buffer);
+  if (Ret == CL_SUCCESS && WillBeFreed) {
+    VIZ_LOG("CB {} with reference count 1 is being released, "
+            "destroying viz instance",
+            static_cast<void *>(command_buffer));
+    Context.destroyVizInstance(command_buffer);
+  }
+
+  return Ret;
+}
+
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
 
 void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
@@ -1540,7 +1571,15 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     }                                                                          \
     return (void *)FUNC##Shim;                                                 \
   }
-
+    // Make sure we have the command-buffer info query function pointer, even if
+    // user didn't ask for it
+    if ((0 == strcmp(funcname, "clCreateCommandBufferKHR")) &&
+        !Context.MclGetCommandBufferInfoKHRFnPtr) {
+      void *InfoPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
+          platform, "clGetCommandBufferInfoKHR");
+      Context.MclGetCommandBufferInfoKHRFnPtr =
+          (clGetCommandBufferInfoKHR_fn)InfoPtr;
+    }
     GET_SHIM(clCreateCommandBufferKHR);
     GET_SHIM(clCommandBarrierWithWaitListKHR);
     GET_SHIM(clCommandCopyBufferKHR);
@@ -1551,8 +1590,10 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_SHIM(clCommandFillBufferKHR);
     GET_SHIM(clCommandFillImageKHR);
     GET_SHIM(clCommandNDRangeKernelKHR);
-
+    GET_SHIM(clReleaseCommandBufferKHR);
+    // GET_SHIM(clEnqueueCommandBufferKHR);
 #undef GET_SHIM
+
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
   }
 

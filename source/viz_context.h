@@ -195,6 +195,9 @@ struct VizContext {
   clCommandFillBufferKHR_fn MclCommandFillBufferKHRFnPtr = nullptr;
   clCommandFillImageKHR_fn MclCommandFillImageKHRFnPtr = nullptr;
   clCommandNDRangeKernelKHR_fn MclCommandNDRangeKernelKHRFnPtr = nullptr;
+  clReleaseCommandBufferKHR_fn MclReleaseCommandBufferKHRFnPtr = nullptr;
+  clEnqueueCommandBufferKHR_fn MclEnqueueCommandBufferKHRFnPtr = nullptr;
+  clGetCommandBufferInfoKHR_fn MclGetCommandBufferInfoKHRFnPtr = nullptr;
 
 private:
   /// Verbose environment variable set

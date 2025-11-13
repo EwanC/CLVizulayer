@@ -102,6 +102,8 @@ struct VizInstance {
   void flushQueue(cl_command_queue CQ, const char *Label,
                   bool IsBlockingCommand);
 
+  /// @brief Write all nodes for command-buffer to dot file at passed path
+  /// @param[in] FilePath Path on disk to create the dot file
   void flushCommandBuffer(const char *FilePath);
 
 private:
