@@ -95,14 +95,15 @@ void VizContext::destroyVizInstance(VizInstance *VI) {
                    MInstances.end());
 }
 
-void VizContext::flushCommandBuffer(cl_command_buffer_khr CB,
-                                    const char *FilePath) {
+void VizContext::flushCommandBuffer(
+    cl_command_buffer_khr CB, const cl_command_buffer_dot_print_flags_ext Flags,
+    const char *FilePath) {
 
   std::lock_guard<std::mutex> Lock(MMutex);
   auto Itr = MCommandBufferInstanceMap.find(CB);
   if (Itr != MCommandBufferInstanceMap.end()) {
     auto &VI = Itr->second;
-    VI->flushCommandBuffer(FilePath);
+    VI->flushCommandBuffer(Flags, FilePath);
   }
 }
 

@@ -17,7 +17,7 @@ typedef cl_properties cl_command_buffer_dot_print_properties_ext;
 
 #define CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT 0xABCD // Needs reserved in XML
 #define CL_COMMAND_BUFFER_DOT_PRINT_COLOR_EXT (1 << 0)
-#define CL_COMMAND_BUFFER_DOT_PRINTVERBOSE_EXT (1 << 1)
+#define CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT (1 << 1)
 
 typedef cl_int CL_API_CALL clDotPrintCommandBufferEXT_t(
     cl_command_buffer_khr command_buffer,

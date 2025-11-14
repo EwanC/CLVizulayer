@@ -389,8 +389,9 @@ void VizInstance::NodePreCreation(VizQueue *VQ, std::span<const cl_event> Deps,
   }
 }
 
-void VizInstance::flushCommandBuffer(const char *FilePath) {
-  bool Color = false; // TODO set from env var
+void VizInstance::flushCommandBuffer(
+    const cl_command_buffer_dot_print_flags_ext Flags, const char *FilePath) {
+  bool Color = Flags & CL_COMMAND_BUFFER_DOT_PRINT_COLOR_EXT;
   VizDotFile DotFile(Color, FilePath);
 
   std::set<VizNode *, decltype(&vizNodeCmp)> printNodes(&vizNodeCmp);

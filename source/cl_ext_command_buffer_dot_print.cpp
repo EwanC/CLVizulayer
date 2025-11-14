@@ -12,10 +12,16 @@ CL_API_ENTRY cl_int CL_API_CALL clDotPrintCommandBufferEXT(
     cl_command_buffer_khr command_buffer,
     const cl_command_buffer_dot_print_properties_ext *properties,
     const char *file_path) {
-  (void)properties; // TODO
+  cl_command_buffer_dot_print_flags_ext Flags = 0;
+  if (properties) {
+    if (properties[0] != CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT) {
+      return CL_INVALID_VALUE;
+    }
+    Flags = *((const cl_command_buffer_dot_print_flags_ext *)(properties + 1));
+  }
   auto &Context = getVizContext();
   try {
-    Context.flushCommandBuffer(command_buffer, file_path);
+    Context.flushCommandBuffer(command_buffer, Flags, file_path);
   } catch (std::exception &E) {
     VIZ_ERR("Error flushing VizCommandBuffer: {}", E.what());
   }

@@ -3,6 +3,7 @@
 
 #define CL_ENABLE_BETA_EXTENSIONS
 
+#include "cl_ext_command_buffer_dot_print.h"
 #include <CL/cl_ext.h>
 #include <array>
 #include <functional>
@@ -103,8 +104,10 @@ struct VizInstance {
                   bool IsBlockingCommand);
 
   /// @brief Write all nodes for command-buffer to dot file at passed path
+  /// @param[in] Flags Bitfield configuring printing of the dot file.
   /// @param[in] FilePath Path on disk to create the dot file
-  void flushCommandBuffer(const char *FilePath);
+  void flushCommandBuffer(const cl_command_buffer_dot_print_flags_ext Flags,
+                          const char *FilePath);
 
 private:
   /// @brief Write nodes and their dependencies to dot file

@@ -3,6 +3,7 @@
 
 #define CL_ENABLE_BETA_EXTENSIONS
 
+#include "cl_ext_command_buffer_dot_print.h"
 #include "viz_instance.h"
 #include <CL/cl_ext.h>
 #include <CL/cl_layer.h>
@@ -168,8 +169,11 @@ struct VizContext {
 
   /// @brief Writes out the command-buffer DAG to dot file.
   /// @param[in] CB The command-buffer to flush.
+  /// @param[in] Flags Bitfield configuring printing of the dot file.
   /// @param[in] FilePath the path on disk to create the dot file.
-  void flushCommandBuffer(cl_command_buffer_khr CB, const char *FilePath);
+  void flushCommandBuffer(cl_command_buffer_khr CB,
+                          const cl_command_buffer_dot_print_flags_ext Flags,
+                          const char *FilePath);
 
   /// @brief Query for if verbose environment variable is set
   bool verbose() const noexcept { return MVerbose; }
