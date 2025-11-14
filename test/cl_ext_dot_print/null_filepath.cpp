@@ -10,7 +10,7 @@ int main() {
 
   cl_int Ret = CL_SUCCESS;
   cl_dot_graph_ext Dot =
-      State.clCreateDotGraphEXT(1, &State.InOrderQueue, nullptr, &Ret);
+      State.clCreateDotGraphEXT(1, &State.InOrderQueue, nullptr, nullptr, &Ret);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1, nullptr,

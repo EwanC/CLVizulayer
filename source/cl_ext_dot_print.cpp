@@ -52,7 +52,10 @@ private:
 
 CL_API_ENTRY cl_dot_graph_ext CL_API_CALL
 clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
+                    const cl_dot_graph_properties_ext *properties,
                     const char *file_path, cl_int *errcode_ret) {
+  (void)properties; // TODO implement
+
   if (queues == nullptr) {
     if (errcode_ret) {
       *errcode_ret = CL_INVALID_VALUE;

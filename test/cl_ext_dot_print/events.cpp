@@ -26,8 +26,8 @@ int main() {
                                       nullptr, &State.GlobalSize, nullptr, 0,
                                       nullptr, &Events[0]);
 
-  cl_dot_graph_ext Dot = State.clCreateDotGraphEXT(1, &State.OutOfOrderQueue,
-                                                   VIZ_TEST_FILE_NAME, &Ret);
+  cl_dot_graph_ext Dot = State.clCreateDotGraphEXT(
+      1, &State.OutOfOrderQueue, nullptr, VIZ_TEST_FILE_NAME, &Ret);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,

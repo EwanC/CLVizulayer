@@ -11,10 +11,16 @@
 
 #define CL_EXT_DOT_GRAPH_EXTENSION_VERSION CL_MAKE_VERSION(0, 9, 1)
 
+typedef cl_bitfield cl_dot_graph_flags_ext;
+typedef cl_properties cl_dot_graph_properties_ext;
 typedef struct _cl_dot_graph_ext *cl_dot_graph_ext;
+
+#define CL_DOT_GRAPH_COLOR_EXT (1 << 0)
+#define CL_DOT_GRAPH_VERBOSE_EXT (1 << 1)
 
 typedef cl_dot_graph_ext CL_API_CALL
 clCreateDotGraphEXT_t(cl_uint num_queues, const cl_command_queue *queues,
+                      const cl_dot_graph_properties_ext *properties,
                       const char *file_path, cl_int *errcode_ret);
 typedef clCreateDotGraphEXT_t *clCreateDotGraphEXT_fn;
 
@@ -27,6 +33,7 @@ typedef clReleaseDotGraphEXT_t *clReleaseDotGraphEXT_fn;
 #if !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES)
 extern CL_API_ENTRY cl_dot_graph_ext CL_API_CALL
 clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
+                    const cl_dot_graph_properties_ext *properties,
                     const char *file_path, cl_int *errcode_ret);
 
 extern CL_API_ENTRY cl_int CL_API_CALL

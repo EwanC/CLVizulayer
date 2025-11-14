@@ -58,12 +58,12 @@ int main() {
   Threads.reserve(NumThreads);
 
   cl_int Ret = CL_SUCCESS;
-  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                    VIZ_TEST_FILE_NAME1, &Ret);
+  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME1, &Ret);
   CHECK(Ret);
 
-  cl_dot_graph_ext Dot2 = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                    VIZ_TEST_FILE_NAME2, &Ret);
+  cl_dot_graph_ext Dot2 = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME2, &Ret);
   CHECK(Ret);
 
   const unsigned CommandsPerThread = 4;

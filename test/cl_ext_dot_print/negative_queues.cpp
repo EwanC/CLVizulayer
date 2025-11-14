@@ -10,14 +10,15 @@ int main() {
 
   cl_int Ret = CL_SUCCESS;
   cl_dot_graph_ext Dot =
-      State.clCreateDotGraphEXT(0, nullptr, VIZ_TEST_FILE_NAME, &Ret);
+      State.clCreateDotGraphEXT(0, nullptr, nullptr, VIZ_TEST_FILE_NAME, &Ret);
   CHECK_ERR(Ret, CL_INVALID_VALUE);
   if (Dot != nullptr) {
     throw std::runtime_error("NULL handle not returned on error");
   }
 
   cl_command_queue BadQueue = nullptr;
-  Dot = State.clCreateDotGraphEXT(1, &BadQueue, VIZ_TEST_FILE_NAME, &Ret);
+  Dot = State.clCreateDotGraphEXT(1, &BadQueue, nullptr, VIZ_TEST_FILE_NAME,
+                                  &Ret);
   CHECK_ERR(Ret, CL_INVALID_COMMAND_QUEUE);
   if (Dot != nullptr) {
     throw std::runtime_error("NULL handle not returned on error");
@@ -32,7 +33,8 @@ int main() {
   CHECK(Ret);
 
   cl_command_queue MismatchQueues[2] = {State.InOrderQueue, OtherCtxQueue};
-  Dot = State.clCreateDotGraphEXT(2, MismatchQueues, VIZ_TEST_FILE_NAME, &Ret);
+  Dot = State.clCreateDotGraphEXT(2, MismatchQueues, nullptr,
+                                  VIZ_TEST_FILE_NAME, &Ret);
   CHECK_ERR(Ret, CL_INVALID_CONTEXT);
   if (Dot != nullptr) {
     throw std::runtime_error("NULL handle not returned on error");

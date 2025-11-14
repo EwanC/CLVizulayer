@@ -36,16 +36,16 @@ int main() {
   CLState State(true);
 
   cl_int Ret = CL_SUCCESS;
-  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                    VIZ_TEST_FILE_NAME1, &Ret);
+  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME1, &Ret);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1, nullptr,
                                &State.GlobalSize, nullptr, 0, nullptr, nullptr);
   CHECK(Ret);
 
-  cl_dot_graph_ext Dot2 = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                    VIZ_TEST_FILE_NAME2, &Ret);
+  cl_dot_graph_ext Dot2 = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME2, &Ret);
   CHECK(Ret);
 
   Ret = clEnqueueTask(State.InOrderQueue, State.Kernel, 0, nullptr, nullptr);

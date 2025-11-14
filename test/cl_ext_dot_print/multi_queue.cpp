@@ -27,7 +27,7 @@ int main() {
   cl_command_queue Queues[2] = {State.InOrderQueue, State.OutOfOrderQueue};
   cl_int Ret = CL_SUCCESS;
   cl_dot_graph_ext Dot =
-      State.clCreateDotGraphEXT(2, Queues, VIZ_TEST_FILE_NAME, &Ret);
+      State.clCreateDotGraphEXT(2, Queues, nullptr, VIZ_TEST_FILE_NAME, &Ret);
   CHECK(Ret);
 
   cl_event Events[2] = {nullptr, nullptr};

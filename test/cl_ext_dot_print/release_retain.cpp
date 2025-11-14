@@ -20,8 +20,8 @@ int main() {
   CLState State(true);
 
   cl_int Ret = CL_SUCCESS;
-  cl_dot_graph_ext Dot = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                   VIZ_TEST_FILE_NAME, &Ret);
+  cl_dot_graph_ext Dot = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME, &Ret);
   CHECK(Ret);
 
   Ret = State.clRetainDotGraphEXT(Dot);

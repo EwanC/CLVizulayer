@@ -22,8 +22,8 @@ int main() {
   CLState State(true);
 
   cl_int Ret = CL_SUCCESS;
-  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(1, &State.InOrderQueue,
-                                                    VIZ_TEST_FILE_NAME, &Ret);
+  cl_dot_graph_ext Dot1 = State.clCreateDotGraphEXT(
+      1, &State.InOrderQueue, nullptr, VIZ_TEST_FILE_NAME, &Ret);
   CHECK(Ret);
 
   // Create single node dot graph, then overwrite.
@@ -34,8 +34,8 @@ int main() {
   Ret = State.clReleaseDotGraphEXT(Dot1);
   CHECK(Ret);
 
-  Dot1 = State.clCreateDotGraphEXT(1, &State.InOrderQueue, VIZ_TEST_FILE_NAME,
-                                   &Ret);
+  Dot1 = State.clCreateDotGraphEXT(1, &State.InOrderQueue, nullptr,
+                                   VIZ_TEST_FILE_NAME, &Ret);
   CHECK(Ret);
 
   Ret = clEnqueueTask(State.InOrderQueue, State.Kernel, 0, nullptr, nullptr);
