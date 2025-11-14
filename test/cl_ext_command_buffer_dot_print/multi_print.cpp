@@ -55,7 +55,8 @@ int main() {
       &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
   CHECK(Ret);
 
-  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME1);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, nullptr,
+                                         VIZ_TEST_FILE_NAME1);
   CHECK(Ret);
 
   Ret = State.clCommandNDRangeKernelKHR(
@@ -63,7 +64,8 @@ int main() {
       &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
   CHECK(Ret);
 
-  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME2);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, nullptr,
+                                         VIZ_TEST_FILE_NAME2);
   CHECK(Ret);
 
   CHECK(State.clReleaseCommandBufferKHR(CommandBuffer));

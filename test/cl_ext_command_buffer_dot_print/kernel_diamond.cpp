@@ -56,7 +56,8 @@ int main() {
       &State.GlobalSize, nullptr, 2, &SyncPoints[1], nullptr, nullptr);
   CHECK(Ret);
 
-  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, nullptr,
+                                         VIZ_TEST_FILE_NAME);
   CHECK(Ret);
 
   CHECK(State.clReleaseCommandBufferKHR(CommandBuffer));

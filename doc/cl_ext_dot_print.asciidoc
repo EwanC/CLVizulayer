@@ -61,6 +61,8 @@ typedef struct _cl_dot_graph_ext*  cl_dot_graph_ext;
 
 [source, c]
 ----
+#define CL_DOT_GRAPH_FLAGS_EXT 0xDCBA // Needs reserved in XML
+
 #define CL_DOT_GRAPH_COLOR_EXT (1 << 0)
 #define CL_DOT_GRAPH_VERBOSE_EXT (1 << 1)
 ----

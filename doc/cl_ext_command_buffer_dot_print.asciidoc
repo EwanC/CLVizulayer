@@ -24,7 +24,7 @@ Unratified proposal, still in beta so breaking changes are possible.
 == Version
 
 Built On: {docdate} +
-Version: 0.1.0
+Version: 0.2.0
 
 == Dependencies
 
@@ -40,7 +40,26 @@ This extension requires cl_khr_command_buffer version 0.9.8.
 [source,c]
 ----
 cl_int clCommandBufferDotPrintEXT(cl_command_buffer_khr command_buffer,
+                                  const cl_command_buffer_dot_print_properties_ext* properties,
                                   const char* file_path);
+----
+
+== New API Types
+
+[source,c]
+----
+typedef cl_bitfield         cl_command_buffer_dot_print_flags_ext;
+typedef cl_properties       cl_command_buffer_dot_print_properties_ext;
+----
+
+== New Enums
+
+[source, c]
+----
+#define CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT 0xABCD // Needs reserved in XML
+
+#define CL_COMMAND_BUFFER_DOT_PRINT_COLOR_EXT (1 << 0)
+#define CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT (1 << 1)
 ----
 
 == Modifications to the OpenCL API Specification
@@ -54,21 +73,50 @@ a file in the DOT format using the function
 ----
 cl_int clCommandBufferDotPrintEXT(
    cl_command_buffer_khr command_buffer,
+   const cl_command_buffer_dot_print_properties_ext* properties,
    const char* file_path)
 ----
 
 _command_buffer_ handle to a command_buffer object to print a dot graph of
 commands.
 
+_properties_ specifies a list of properties for for configuring printing of the
+command-buffer object to the dot file, and their corresponding values. Each property
+name is immediately followed by the corresponding desired value. The list is
+terminated with 0. If a supported property and its value is not specified in
+_properties_, its default value will be used. _properties_ may be NULL, in which
+case the default values for supported properties will be used. Supported
+properties defined by extensions are defined in the
+<<command-buffer-dot-print-properties-table,
+List of supported properties by clCcommandBufferDotPrintExt>> table.
+
 _file_path_ filesystem path to where dot file of commands will be created. If
 _file_path_ is `NULL`, then a file named `clviz_YYYY-MM-DD_HH:MM:SS.dot` in the
 current working directory will be created. If _file_path_ is an existing file,
 then that file will be overwritten.
 
+[[command-buffer-dot-print-properties-table]]
+.List of supported properties by *clCommandBufferDotPrintEXT*
+[cols="3,2,10",options="header",]
+|====
+| Property | Property Value | Description
+
+| `CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT`
+| `cl_command_buffer_dot_print_flags_ext`
+| This is a bitfield and can be set to a combination of the following values
+  and defaults to zero:
+
+  * `CL_COMMAND_BUFFER_DOT_PRINT_COLOR_EXT` - Use color in dot file to distinguish queues.
+
+  * `CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT` - Enable verbose output in dot file.
+
+|====
+
 *clCommandBufferDotPrintEXT* returns `CL_SUCCESS` if command-buffer is successfully
 printed. Otherwise, it returns one of the following error values:
 
 * `CL_INVALID_COMMAND_BUFFER_KHR` if _command_buffer_ is not a valid handle.
+* `CL_INVALID_VALUE` if values specified in properties are not valid.
 * `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
    the OpenCL implementation on the device.
 * `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required
@@ -82,4 +130,5 @@ printed. Otherwise, it returns one of the following error values:
 |====
 | Version | Date       | Author        | Changes
 | 0.1.0   | 2025-10-30 | Ewan Crawford | *Initial revision*
+| 0.2.0   | 2025-11-14 | Ewan Crawford | *Add verbose and color flags*
 |====

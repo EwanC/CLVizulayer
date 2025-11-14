@@ -9,12 +9,13 @@
 #define cl_ext_dot_graph 1
 #define CL_EXT_DOT_GRAPH_NAME "cl_ext_dot_graph"
 
-#define CL_EXT_DOT_GRAPH_EXTENSION_VERSION CL_MAKE_VERSION(0, 9, 1)
+#define CL_EXT_DOT_GRAPH_EXTENSION_VERSION CL_MAKE_VERSION(0, 2, 0)
 
 typedef cl_bitfield cl_dot_graph_flags_ext;
 typedef cl_properties cl_dot_graph_properties_ext;
 typedef struct _cl_dot_graph_ext *cl_dot_graph_ext;
 
+#define CL_DOT_GRAPH_FLAGS_EXT 0xDCBA // Needs reserved in XML
 #define CL_DOT_GRAPH_COLOR_EXT (1 << 0)
 #define CL_DOT_GRAPH_VERBOSE_EXT (1 << 1)
 

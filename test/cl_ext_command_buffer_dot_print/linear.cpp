@@ -43,7 +43,8 @@ int main() {
       CommandBuffer, nullptr, nullptr, State.Kernel, 1, nullptr,
       &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
 
-  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, nullptr,
+                                         VIZ_TEST_FILE_NAME);
   CHECK(Ret);
 
   CHECK(State.clReleaseCommandBufferKHR(CommandBuffer));

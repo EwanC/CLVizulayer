@@ -23,7 +23,8 @@ int main() {
   CHECK(Ret);
   CHECK_NOT_NULL(CommandBuffer);
 
-  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, VIZ_TEST_FILE_NAME);
+  Ret = State.clDotPrintCommandBufferEXT(CommandBuffer, nullptr,
+                                         VIZ_TEST_FILE_NAME);
   CHECK(Ret);
 
   CHECK(State.clReleaseCommandBufferKHR(CommandBuffer));
