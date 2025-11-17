@@ -116,7 +116,8 @@ then that file will be overwritten.
 printed. Otherwise, it returns one of the following error values:
 
 * `CL_INVALID_COMMAND_BUFFER_KHR` if _command_buffer_ is not a valid handle.
-* `CL_INVALID_VALUE` if values specified in properties are not valid.
+* `CL_INVALID_VALUE` if values specified in properties are not valid, or if the
+   same property name is specified more than once.
 * `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
    the OpenCL implementation on the device.
 * `CL_OUT_OF_HOST_MEMORY` if there is a failure to allocate resources required

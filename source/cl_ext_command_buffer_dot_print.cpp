@@ -14,10 +14,22 @@ CL_API_ENTRY cl_int CL_API_CALL clDotPrintCommandBufferEXT(
     const char *file_path) {
   cl_command_buffer_dot_print_flags_ext Flags = 0;
   if (properties) {
-    if (properties[0] != CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT) {
-      return CL_INVALID_VALUE;
+    const cl_command_buffer_dot_print_properties_ext *CurrProp = properties;
+    bool SeenFlags = false;
+    while (CurrProp[0] != 0) {
+      if (CurrProp[0] != CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT || SeenFlags) {
+        return CL_INVALID_VALUE;
+      }
+      Flags = *((const cl_command_buffer_dot_print_flags_ext *)(CurrProp + 1));
+      cl_command_buffer_dot_print_flags_ext ValidBits =
+          CL_COMMAND_BUFFER_DOT_PRINT_COLOR_EXT |
+          CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT;
+      if (Flags > ValidBits) {
+        return CL_INVALID_VALUE;
+      }
+      SeenFlags = true;
+      CurrProp += 2;
     }
-    Flags = *((const cl_command_buffer_dot_print_flags_ext *)(properties + 1));
   }
   auto &Context = getVizContext();
   try {

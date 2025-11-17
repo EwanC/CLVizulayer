@@ -138,7 +138,8 @@ _errcode_ret_:
    command-queue.
 * `CL_INVALID_CONTEXT` if all the command-queues in queues do not have the
    same OpenCL context.
-* `CL_INVALID_VALUE` if values specified in properties are not valid.
+* `CL_INVALID_VALUE` if values specified in properties are not valid, or if the
+   same property name is specified more than once.
 * `CL_INVALID_VALUE` if queues is `NULL`.
 * `CL_OUT_OF_RESOURCES` if there is a failure to allocate resources required by
    the OpenCL implementation on the device.

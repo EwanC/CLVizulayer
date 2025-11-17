@@ -56,13 +56,27 @@ clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
                     const char *file_path, cl_int *errcode_ret) {
   cl_dot_graph_flags_ext Flags = 0;
   if (properties) {
-    if (properties[0] != CL_DOT_GRAPH_FLAGS_EXT) {
-      if (errcode_ret) {
-        *errcode_ret = CL_INVALID_VALUE;
+    const cl_dot_graph_properties_ext *CurrProp = properties;
+    bool SeenFlags = false;
+    while (CurrProp[0] != 0) {
+      if (CurrProp[0] != CL_DOT_GRAPH_FLAGS_EXT || SeenFlags) {
+        if (errcode_ret) {
+          *errcode_ret = CL_INVALID_VALUE;
+        }
+        return NULL;
       }
-      return NULL;
+      Flags = *((const cl_dot_graph_flags_ext *)(CurrProp + 1));
+      cl_dot_graph_flags_ext ValidBits =
+          CL_DOT_GRAPH_COLOR_EXT | CL_DOT_GRAPH_VERBOSE_EXT;
+      if (Flags > ValidBits) {
+        if (errcode_ret) {
+          *errcode_ret = CL_INVALID_VALUE;
+        }
+        return NULL;
+      }
+      SeenFlags = true;
+      CurrProp += 2;
     }
-    Flags = *((const cl_dot_graph_flags_ext *)(properties + 1));
   }
 
   if (queues == nullptr) {
