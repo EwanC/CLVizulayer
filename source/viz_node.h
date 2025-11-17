@@ -20,7 +20,7 @@ struct VizNode {
   }
 
   VizNode(const char *Name, std::vector<VizNode *> &&Deps)
-      : MPreds(Deps), MName(Name), MDefined(false) {
+      : MQueue(nullptr), MPreds(Deps), MName(Name), MDefined(false) {
     static int ID = 0;
     MID = ID++;
   }

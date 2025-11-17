@@ -18,10 +18,10 @@ struct _cl_dot_graph_ext {
   /// @param CLQueueList List of queues to record
   /// @param FilePath User specified path to dot file
   _cl_dot_graph_ext(std::span<const cl_command_queue> CLQueueList,
-                    const char *FilePath)
+                    const cl_dot_graph_flags_ext Flags, const char *FilePath)
       : MRefCount(1) {
     auto &Context = getVizContext();
-    MInstance = Context.createVizInstance(CLQueueList, FilePath);
+    MInstance = Context.createVizInstance(CLQueueList, Flags, FilePath);
   }
 
   /// @brief Increment reference count
@@ -54,7 +54,16 @@ CL_API_ENTRY cl_dot_graph_ext CL_API_CALL
 clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
                     const cl_dot_graph_properties_ext *properties,
                     const char *file_path, cl_int *errcode_ret) {
-  (void)properties; // TODO implement
+  cl_dot_graph_flags_ext Flags = 0;
+  if (properties) {
+    if (properties[0] != CL_DOT_GRAPH_FLAGS_EXT) {
+      if (errcode_ret) {
+        *errcode_ret = CL_INVALID_VALUE;
+      }
+      return NULL;
+    }
+    Flags = *((const cl_dot_graph_flags_ext *)(properties + 1));
+  }
 
   if (queues == nullptr) {
     if (errcode_ret) {
@@ -95,7 +104,7 @@ clCreateDotGraphEXT(cl_uint num_queues, const cl_command_queue *queues,
 
   cl_dot_graph_ext RetPtr = NULL;
   try {
-    RetPtr = new _cl_dot_graph_ext(QueueList, file_path);
+    RetPtr = new _cl_dot_graph_ext(QueueList, Flags, file_path);
     if (RetPtr != NULL && errcode_ret) {
       *errcode_ret = CL_SUCCESS;
     }

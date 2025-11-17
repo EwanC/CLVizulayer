@@ -31,6 +31,7 @@ struct VizContext {
   /// @param[in] FilePath User defined path for the DOT file, or nullptr for
   /// layer default.
   VizInstance *createVizInstance(std::span<const cl_command_queue> CLQueueList,
+                                 const cl_dot_graph_flags_ext Flags,
                                  const char *FilePath);
 
   /// @brief Allocates a new VizInstance tied to a command-buffer

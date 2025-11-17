@@ -4,6 +4,7 @@
 #define CL_ENABLE_BETA_EXTENSIONS
 
 #include "cl_ext_command_buffer_dot_print.h"
+#include "cl_ext_dot_print.h"
 #include <CL/cl_ext.h>
 #include <array>
 #include <functional>
@@ -27,6 +28,9 @@ struct VizInstance {
   /// @param[in] FilePath User defined path for the DOT file, or nullptr for
   /// layer default.
   VizInstance(bool Color, const char *FilePath = nullptr);
+
+  VizInstance(const cl_dot_graph_flags_ext Flags,
+              const char *FilePath = nullptr);
 
   /// @brief Constructor for a command-buffer instance.
   /// @param[in] CB command-buffer handle

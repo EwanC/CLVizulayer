@@ -15,8 +15,14 @@ VizInstance::VizInstance(cl_command_buffer_khr CB, bool IsInOrder) {
   MCommandBuffer = std::make_unique<VizCB>(CB, IsInOrder);
 }
 
-VizInstance::VizInstance(bool Color, const char *path) {
-  MDotFile = std::make_unique<VizDotFile>(Color, path);
+VizInstance::VizInstance(bool Color, const char *FilePath) {
+  MDotFile = std::make_unique<VizDotFile>(Color, FilePath);
+}
+
+VizInstance::VizInstance(const cl_dot_graph_flags_ext Flags,
+                         const char *FilePath) {
+  bool Color = Flags & CL_DOT_GRAPH_COLOR_EXT;
+  MDotFile = std::make_unique<VizDotFile>(Color, FilePath);
 }
 
 VizInstance::~VizInstance() {

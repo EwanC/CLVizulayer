@@ -62,9 +62,10 @@ VizContext::~VizContext() {
 
 VizInstance *
 VizContext::createVizInstance(std::span<const cl_command_queue> CLQueueList,
+                              const cl_dot_graph_flags_ext Flags,
                               const char *FilePath) {
   std::lock_guard<std::mutex> Lock(MMutex);
-  VizInstance *VI = new VizInstance(MColor, FilePath);
+  VizInstance *VI = new VizInstance(Flags, FilePath);
   MInstances.push_back(VI);
   VIZ_LOG("VizInstance {} created", static_cast<void *>(VI));
 
