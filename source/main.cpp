@@ -1319,7 +1319,6 @@ cl_int clWaitForEventsShim(cl_uint num_events, const cl_event *event_list) {
 }
 
 #if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
-
 cl_command_buffer_khr
 clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
                              const cl_command_buffer_properties_khr *properties,
@@ -1342,6 +1341,51 @@ clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
     }
   }
   return CB;
+}
+
+cl_int clEnqueueCommandBufferKHRShim(cl_uint num_queues,
+                                     cl_command_queue *queues,
+                                     cl_command_buffer_khr command_buffer,
+                                     cl_uint num_events_in_wait_list,
+                                     const cl_event *event_wait_list,
+                                     cl_event *event) {
+  auto &Context = getVizContext();
+  assert(Context.MclEnqueueCommandBufferKHRFnPtr);
+  auto &TargetFunction = Context.MclEnqueueCommandBufferKHRFnPtr;
+  assert(Context.MclGetCommandBufferInfoKHRFnPtr);
+  auto &InfoFunction = Context.MclGetCommandBufferInfoKHRFnPtr;
+  cl_int Ret = TargetFunction(num_queues, queues, command_buffer,
+                              num_events_in_wait_list, event_wait_list, event);
+  if (Ret == CL_SUCCESS) {
+    cl_command_queue enqueue_queue = queues ? queues[0] : nullptr;
+    if (!enqueue_queue) {
+      cl_int Ret = InfoFunction(command_buffer, CL_COMMAND_BUFFER_QUEUES_KHR,
+                                sizeof(enqueue_queue), &enqueue_queue, nullptr);
+
+      if (Ret != CL_SUCCESS) {
+        VIZ_ERR("Error querying CB {} queues",
+                static_cast<void *>(command_buffer));
+      }
+    }
+
+    std::function<void(std::ofstream &)> VerbosePrint{};
+    try {
+      if (Context.verbose()) {
+        VerbosePrint = [=](std::ofstream &Stream) {
+          Stream << "\\n";
+          Stream << "\ncl_command_buffer_khr = " << std::hex << command_buffer
+                 << std::dec;
+        };
+      }
+      Context.createVizNode(
+          enqueue_queue, "clEnqueueCommandBufferKHR", std::move(VerbosePrint),
+          std::span(event_wait_list, num_events_in_wait_list), event);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating command-buffer enqueue node: {}", E.what());
+    }
+  }
+
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandBarrierWithWaitListKHRShim(
@@ -1561,6 +1605,7 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_EXTENSION_FUNCTION(clReleaseDotGraphEXT);
     GET_EXTENSION_FUNCTION(clRetainDotGraphEXT);
     GET_EXTENSION_FUNCTION(clDotPrintCommandBufferEXT);
+  }
 #undef GET_EXTENSION_FUNCTION
 
 #if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
@@ -1571,15 +1616,16 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     }                                                                          \
     return (void *)FUNC##Shim;                                                 \
   }
-    // Make sure we have the command-buffer info query function pointer, even if
-    // user didn't ask for it
-    if ((0 == strcmp(funcname, "clCreateCommandBufferKHR")) &&
-        !Context.MclGetCommandBufferInfoKHRFnPtr) {
-      void *InfoPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
-          platform, "clGetCommandBufferInfoKHR");
-      Context.MclGetCommandBufferInfoKHRFnPtr =
-          (clGetCommandBufferInfoKHR_fn)InfoPtr;
-    }
+  // Make sure we have the command-buffer info query function pointer, that
+  // we use in the command-buffer release and enqueue shim implementation.
+  if (!Context.MclGetCommandBufferInfoKHRFnPtr) {
+    void *InfoPtr = TargetDispatch->clGetExtensionFunctionAddressForPlatform(
+        platform, "clGetCommandBufferInfoKHR");
+    Context.MclGetCommandBufferInfoKHRFnPtr =
+        (clGetCommandBufferInfoKHR_fn)InfoPtr;
+  }
+  GET_SHIM(clEnqueueCommandBufferKHR);
+  if (Context.useExt()) {
     GET_SHIM(clCreateCommandBufferKHR);
     GET_SHIM(clCommandBarrierWithWaitListKHR);
     GET_SHIM(clCommandCopyBufferKHR);
@@ -1591,11 +1637,10 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_SHIM(clCommandFillImageKHR);
     GET_SHIM(clCommandNDRangeKernelKHR);
     GET_SHIM(clReleaseCommandBufferKHR);
-    // GET_SHIM(clEnqueueCommandBufferKHR);
+  }
 #undef GET_SHIM
 
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
-  }
 
   const char *EnqueuePrefix = "clEnqueue";
   if (0 == strncmp(funcname, EnqueuePrefix, strlen(EnqueuePrefix))) {

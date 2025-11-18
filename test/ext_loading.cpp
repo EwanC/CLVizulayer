@@ -4,7 +4,7 @@
 // RUN: VIZ_DOT_FILE=%T/%basename_t.dot %t 2> %T/%basename_t.cerr
 // RUN: FileCheck --input_file %T/%basename_t.cerr %s
 
-// CHECK:Warning clEnqueueCommandBufferKHR not tracked in dot graph layer
+// CHECK:Warning clEnqueueMemFillINTEL not tracked in dot graph layer
 
 #include "common.h"
 
@@ -16,7 +16,7 @@ int main() {
 
   auto Func = reinterpret_cast<clEnqueueCommandBufferKHR_fn>(
       clGetExtensionFunctionAddressForPlatform(State.PlatformId,
-                                               "clEnqueueCommandBufferKHR"));
+                                               "clEnqueueMemFillINTEL"));
 
   return 0;
 }

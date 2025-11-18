@@ -69,6 +69,7 @@ struct CLState {
   clCommandFillImageKHR_fn clCommandFillImageKHR = nullptr;
   clCommandNDRangeKernelKHR_fn clCommandNDRangeKernelKHR = nullptr;
   clEnqueueCommandBufferKHR_fn clEnqueueCommandBufferKHR = nullptr;
+  clFinalizeCommandBufferKHR_fn clFinalizeCommandBufferKHR = nullptr;
 };
 
 CLState::CLState(bool ExtensionEnabled) {
@@ -149,32 +150,36 @@ CLState::CLState(bool ExtensionEnabled) {
     GET_EXTENSION_ADDRESS(clCreateDotGraphEXT);
     GET_EXTENSION_ADDRESS(clReleaseDotGraphEXT);
     GET_EXTENSION_ADDRESS(clRetainDotGraphEXT);
+  }
 
-    size_t Size = 0;
-    Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, 0, nullptr, &Size);
-    CHECK(Ret);
+  size_t Size = 0;
+  Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, 0, nullptr, &Size);
+  CHECK(Ret);
 
-    std::vector<char> DeviceExtensions(Size);
-    Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, Size,
-                          DeviceExtensions.data(), nullptr);
-    CHECK(Ret);
+  std::vector<char> DeviceExtensions(Size);
+  Ret = clGetDeviceInfo(Device, CL_DEVICE_EXTENSIONS, Size,
+                        DeviceExtensions.data(), nullptr);
+  CHECK(Ret);
 
-    if (std::string ExtensionStr(DeviceExtensions.data());
-        ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
-        std::string::npos) {
+  if (std::string ExtensionStr(DeviceExtensions.data());
+      ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
+      std::string::npos) {
+    if (ExtensionEnabled) {
       GET_EXTENSION_ADDRESS(clDotPrintCommandBufferEXT);
-      GET_EXTENSION_ADDRESS(clCreateCommandBufferKHR);
-      GET_EXTENSION_ADDRESS(clReleaseCommandBufferKHR);
-      GET_EXTENSION_ADDRESS(clCommandBarrierWithWaitListKHR);
-      GET_EXTENSION_ADDRESS(clCommandCopyBufferKHR);
-      GET_EXTENSION_ADDRESS(clCommandCopyBufferRectKHR);
-      GET_EXTENSION_ADDRESS(clCommandCopyBufferToImageKHR);
-      GET_EXTENSION_ADDRESS(clCommandCopyImageKHR);
-      GET_EXTENSION_ADDRESS(clCommandCopyImageToBufferKHR);
-      GET_EXTENSION_ADDRESS(clCommandFillBufferKHR);
-      GET_EXTENSION_ADDRESS(clCommandFillImageKHR);
-      GET_EXTENSION_ADDRESS(clCommandNDRangeKernelKHR);
     }
+    GET_EXTENSION_ADDRESS(clCreateCommandBufferKHR);
+    GET_EXTENSION_ADDRESS(clReleaseCommandBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandBarrierWithWaitListKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferRectKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyBufferToImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandCopyImageToBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandFillBufferKHR);
+    GET_EXTENSION_ADDRESS(clCommandFillImageKHR);
+    GET_EXTENSION_ADDRESS(clCommandNDRangeKernelKHR);
+    GET_EXTENSION_ADDRESS(clEnqueueCommandBufferKHR);
+    GET_EXTENSION_ADDRESS(clFinalizeCommandBufferKHR);
   }
 #undef GET_EXTENSION_FUNCTION_ADDRESS
 }
