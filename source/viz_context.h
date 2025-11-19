@@ -208,9 +208,6 @@ private:
   /// Verbose environment variable set
   bool MVerbose;
 
-  /// Color environment variable set
-  bool MColor;
-
   /// Extension environment variable set
   bool MExt;
 

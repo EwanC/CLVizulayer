@@ -19,6 +19,7 @@ endif()
 if (VIZ_OFFLINE_BUILD)
     find_package(OpenCLICDLoader REQUIRED)
     set(OpenCLICDLib OpenCL::OpenCL)
+    get_target_property(ICD_LOADER_DIR ${OpenCLICDLib} BINARY_DIR)
 else()
     FetchContent_Declare(OpenCL-ICD-Loader
         GIT_REPOSITORY  "https://github.com/KhronosGroup/OpenCL-ICD-Loader.git"
@@ -26,8 +27,8 @@ else()
     )
     FetchContent_MakeAvailable(OpenCL-ICD-Loader)
     set(OpenCLICDLib OpenCL::OpenCL)
+    FetchContent_GetProperties(OpenCL-ICD-Loader BINARY_DIR ICD_LOADER_DIR)
 endif()
-get_target_property(ICD_LOADER_DIR ${OpenCLICDLib} BINARY_DIR)
 message(STATUS "ICD Loader: ${ICD_LOADER_DIR}")
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter)

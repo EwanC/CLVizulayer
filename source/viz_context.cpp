@@ -21,10 +21,10 @@ VizContext::VizContext() {
     }
   }
 
-  MColor = false;
+  bool Color = false;
   if (char *EnvColor = std::getenv("VIZ_COLOR"); EnvColor) {
     if (0 != std::atoi(EnvColor)) {
-      MColor = true;
+      Color = true;
       VIZ_LOG("VIZ_COLOR - Enabled");
     } else {
       VIZ_LOG("VIZ_COLOR - Disabled");
@@ -40,7 +40,7 @@ VizContext::VizContext() {
     // VizInstance instances in the VizContext.
   } else {
     VIZ_LOG("VIZ_EXT - Disabled");
-    VizInstance *VI = new VizInstance(MColor);
+    VizInstance *VI = new VizInstance(Color);
     VIZ_LOG("VizInstance {} Created", static_cast<void *>(VI));
     MInstances.push_back(VI);
   }
