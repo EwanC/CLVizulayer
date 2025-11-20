@@ -193,7 +193,7 @@ const char *VizDotFile::newColor(VizQueue *VQ) {
   return QueueColor;
 }
 
-void VizDotFile::writeNode(VizNode *Node) {
+void VizDotFile::writeNode(VizNode *Node, bool Verbose) {
   // Don't define again if already define
   if (Node->MDefined) {
     return;
@@ -203,7 +203,7 @@ void VizDotFile::writeNode(VizNode *Node) {
 
   MDotFile << "[label=\"";
   MDotFile << Node->MName;
-  if (Node->MVerbosePrint) {
+  if (Verbose && Node->MVerbosePrint) {
     Node->MVerbosePrint(MDotFile);
   }
   MDotFile << "\"";
@@ -229,8 +229,8 @@ void VizDotFile::writeEdges(const VizNode *Node) {
 }
 
 void VizDotFile::writeSubgraph(
-    const std::set<VizNode *, decltype(&vizNodeCmp)> &Nodes,
-    const char *Label) {
+    const std::set<VizNode *, decltype(&vizNodeCmp)> &Nodes, const char *Label,
+    bool Verbose) {
   if (Nodes.empty()) {
     return;
   }
@@ -244,7 +244,7 @@ void VizDotFile::writeSubgraph(
 
   // Define nodes inside subgraph cluster
   for (auto N : Nodes) {
-    writeNode(N);
+    writeNode(N, Verbose);
   }
   MDotFile << "}\n";
 

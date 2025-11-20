@@ -11,17 +11,21 @@
 #include <cstring>
 #include <stdexcept>
 
-VizInstance::VizInstance(cl_command_buffer_khr CB, bool IsInOrder) {
+VizInstance::VizInstance(cl_command_buffer_khr CB, bool IsInOrder)
+    : MVerbose(false) {
   MCommandBuffer = std::make_unique<VizCB>(CB, IsInOrder);
 }
 
-VizInstance::VizInstance(bool Color, const char *FilePath) {
+VizInstance::VizInstance(bool Color, bool Verbose, const char *FilePath)
+    : MVerbose(Verbose) {
   MDotFile = std::make_unique<VizDotFile>(Color, FilePath);
 }
 
 VizInstance::VizInstance(const cl_dot_graph_flags_ext Flags,
                          const char *FilePath) {
   bool Color = Flags & CL_DOT_GRAPH_COLOR_EXT;
+  MVerbose = Flags & CL_DOT_GRAPH_VERBOSE_EXT;
+
   MDotFile = std::make_unique<VizDotFile>(Color, FilePath);
 }
 
@@ -276,7 +280,7 @@ void VizInstance::flush(std::stack<VizNode *> &NodeStack, const char *Label) {
     }
   }
 
-  MDotFile->writeSubgraph(printNodes, Label);
+  MDotFile->writeSubgraph(printNodes, Label, MVerbose);
 }
 
 VizQueue *VizInstance::getVizQueueForCLQueue(cl_command_queue CQ) const {
@@ -405,7 +409,7 @@ void VizInstance::flushCommandBuffer(
     printNodes.insert(Node);
   }
 
-  DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr");
+  DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr", MVerbose);
 
   // Command-buffer nodes are defined per-flush
   for (auto &Node : MNodes) {

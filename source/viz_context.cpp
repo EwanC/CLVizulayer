@@ -11,10 +11,10 @@ VizContext &getVizContext() {
 }
 
 VizContext::VizContext() {
-  MVerbose = false;
+  bool Verbose = false;
   if (char *EnvVerbose = std::getenv("VIZ_VERBOSE"); EnvVerbose) {
     if (0 != std::atoi(EnvVerbose)) {
-      MVerbose = true;
+      Verbose = true;
       VIZ_LOG("VIZ_VERBOSE - Enabled");
     } else {
       VIZ_LOG("VIZ_VERBOSE - Disabled");
@@ -40,7 +40,7 @@ VizContext::VizContext() {
     // VizInstance instances in the VizContext.
   } else {
     VIZ_LOG("VIZ_EXT - Disabled");
-    VizInstance *VI = new VizInstance(Color);
+    VizInstance *VI = new VizInstance(Color, Verbose);
     VIZ_LOG("VizInstance {} Created", static_cast<void *>(VI));
     MInstances.push_back(VI);
   }
@@ -139,4 +139,11 @@ void VizContext::destroyVizInstance(cl_command_buffer_khr CB) {
     VIZ_LOG("VizInstance {} destroyed for CB {}", static_cast<void *>(VI),
             static_cast<void *>(Itr->first));
   }
+}
+
+bool VizContext::verbose() const {
+  auto Begin = MInstances.begin();
+  auto End = MInstances.end();
+  return std::any_of(Begin, End,
+                     [](VizInstance *VI) { return VI->isVerbose(); });
 }

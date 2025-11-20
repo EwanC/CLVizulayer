@@ -31,7 +31,8 @@ struct VizDotFile {
 
   /// @brief Writes a node definition to dot file if it doesn't already exist
   /// @param[in] Node node to be defined
-  void writeNode(VizNode *Node);
+  /// @param[in] Verbose use verbose printing of node
+  void writeNode(VizNode *Node, bool Verbose);
 
   /// @brief Writes the edge dependencies of a node to dot file
   /// @param[in] Node The node who's edges will be written
@@ -41,8 +42,9 @@ struct VizDotFile {
   /// See https://graphviz.org/Gallery/directed/cluster.html
   /// @param[in] Nodes List of nodes to define in the cluster
   /// @param[in] Label User visible title for the cluster.
+  /// @param[in] Verbose Use verbose printing
   void writeSubgraph(const std::set<VizNode *, decltype(&vizNodeCmp)> &Nodes,
-                     const char *Label);
+                     const char *Label, bool Verbose);
 
   /// Whether to use fill color for nodes
   bool MColor;

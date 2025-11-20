@@ -176,8 +176,8 @@ struct VizContext {
                           const cl_command_buffer_dot_print_flags_ext Flags,
                           const char *FilePath);
 
-  /// @brief Query for if verbose environment variable is set
-  bool verbose() const noexcept { return MVerbose; }
+  /// @brief Query for if any non-command-buffer instance is verbose.
+  bool verbose() const;
 
   /// @brief Query for if extension environment variable is set
   bool useExt() const noexcept { return MExt; }
@@ -205,9 +205,6 @@ struct VizContext {
   clGetCommandBufferInfoKHR_fn MclGetCommandBufferInfoKHRFnPtr = nullptr;
 
 private:
-  /// Verbose environment variable set
-  bool MVerbose;
-
   /// Extension environment variable set
   bool MExt;
 

@@ -23,12 +23,18 @@ struct VizDotFile;
 
 /// @brief Context holding the state of the layer
 struct VizInstance {
-  /// @brief Constructor
+  /// @brief Constructor used when VIZ_EXT=0 for whole application tracing.
   /// @param[in] Color true if color environment variable set, false otherwise
+  /// @param[in] Verbose true if verbose environment variable set, false
+  /// otherwise
   /// @param[in] FilePath User defined path for the DOT file, or nullptr for
   /// layer default.
-  VizInstance(bool Color, const char *FilePath = nullptr);
+  VizInstance(bool Color, bool Verbose, const char *FilePath = nullptr);
 
+  /// @brief Constructor for a cl_dot_graph_ext instance.
+  /// @oaram[in] Flags passed via properties on handle creation.
+  /// @param[in] FilePath User defined path for the DOT file, or nullptr for
+  /// layer default.
   VizInstance(const cl_dot_graph_flags_ext Flags,
               const char *FilePath = nullptr);
 
@@ -113,6 +119,10 @@ struct VizInstance {
   void flushCommandBuffer(const cl_command_buffer_dot_print_flags_ext Flags,
                           const char *FilePath);
 
+  /// @brief Query for whether the instance is using verbose printing
+  /// @return True if verbose, false otherwise
+  bool isVerbose() const { return MVerbose; }
+
 private:
   /// @brief Write nodes and their dependencies to dot file
   /// @detail Nodes will be taken off the stack as they are printed, and
@@ -160,6 +170,9 @@ private:
   /// @param[out] RetSyncPoint The command-buffer sync-point returned from node
   /// creation
   void NodePostCreation(VizNode *Node, cl_sync_point_khr *RetSyncPoint);
+
+  /// Tracks whether to use verbose dot printing
+  bool MVerbose;
 
   /// DOT file used for output
   std::unique_ptr<VizDotFile> MDotFile;
