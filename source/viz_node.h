@@ -11,6 +11,10 @@ struct VizQueue;
 /// @brief Represents a graph node
 struct VizNode {
   /// @brief Constructor for queue enqueued node
+  /// @param[in] VZ The VizQueue the node is created for
+  /// @param[in] Deps List of dependent nodes
+  /// @param[in] Name Name of the entry-point that created the node.
+  /// @param[in] VerbosePrint Optional function for printing verbose information about the node
   VizNode(VizQueue *VQ, std::vector<VizNode *> &&Deps, const char *Name,
           std::function<void(std::ofstream &)> VerbosePrint)
       : MQueue(VQ), MPreds(Deps), MName(Name), MVerbosePrint(VerbosePrint),
@@ -20,6 +24,9 @@ struct VizNode {
   }
 
   /// @brief Constructor for command-buffer node
+  /// @param[in] Deps List of dependent nodes
+  /// @param[in] Name Name of the entry-point that created the node.
+  /// @param[in] VerbosePrint Optional function for printing verbose information about the node
   VizNode(std::vector<VizNode *> &&Deps, const char *Name,
           std::function<void(std::ofstream &)> VerbosePrint)
       : MQueue(nullptr), MPreds(Deps), MName(Name), MVerbosePrint(VerbosePrint),
