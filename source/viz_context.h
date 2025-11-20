@@ -77,16 +77,19 @@ struct VizContext {
   /// VizNode instance.
   /// @param[in] CB OpenCL command-buffer the node was created on
   /// @param[in] Name Entry-point name that created the node
+  /// @param[in] VerbosePrintFunc Function for printing verbose node
+  /// details.
   /// @param[in] Deps Command-buffer command sync-point dependencies
   /// @param[out] RetSyncPoint Command-buffer command returned sync-point
   void createVizNode(cl_command_buffer_khr CB, const char *Name,
+                     std::function<void(std::ofstream &)> VerbosePrintFunc,
                      std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint) {
     std::lock_guard<std::mutex> Lock(MMutex);
 
     auto Itr = MCommandBufferInstanceMap.find(CB);
     assert(Itr != MCommandBufferInstanceMap.end());
-    Itr->second->createVizNode(Name, Deps, RetSyncPoint);
+    Itr->second->createVizNode(Name, VerbosePrintFunc, Deps, RetSyncPoint);
   }
 
   /// @brief Finds the VizInstance for the command-buffer, and allocates a new

@@ -11,7 +11,9 @@
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
 // CHECK-NEXT: label = "cl_command_buffer_khr";
-// CHECK-NEXT: node_0[label="clCommandNDRangeKernelKHR"];
+// CHECK-NEXT: node_0[label="clCommandNDRangeKernelKHR\n
+// CHECK-NEXT: cl_kernel = 0x{{[0-9a-fA-F]+}}
+// CHECK-NEXT: name = no_op"];
 // CHECK-NEXT: }
 // CHECK-EMPTY:
 // CHECK-NEXT: }
@@ -31,7 +33,11 @@ int main() {
       command_buffer, nullptr, nullptr, State.Kernel, 1, nullptr,
       &State.GlobalSize, nullptr, 0, nullptr, nullptr, nullptr);
 
-  Ret = State.clDotPrintCommandBufferEXT(command_buffer, nullptr,
+  cl_command_buffer_dot_print_flags_ext Flags =
+      CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT;
+  cl_command_buffer_dot_print_properties_ext Props[3] = {
+      CL_COMMAND_BUFFER_DOT_PRINT_FLAGS_EXT, Flags, 0};
+  Ret = State.clDotPrintCommandBufferEXT(command_buffer, Props,
                                          VIZ_TEST_FILE_NAME);
   CHECK(Ret);
 

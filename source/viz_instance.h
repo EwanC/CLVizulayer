@@ -64,9 +64,12 @@ struct VizInstance {
 
   /// @brief Allocates a new VizNode instance and stores it in @a MNodes
   /// @param[in] Name Entry-point name that created the node
+  /// @param[in] VerbosePrintFunc Function for printing verbose node
   /// @param[in] Deps cl_khr_command_buffer command dependencies
   /// @param[out] RetSyncPoint Returned sync-point for command
-  void createVizNode(const char *Name, std::span<const cl_sync_point_khr> Deps,
+  void createVizNode(const char *Name,
+                     std::function<void(std::ofstream &)> VerbosePrintFunc,
+                     std::span<const cl_sync_point_khr> Deps,
                      cl_sync_point_khr *RetSyncPoint);
 
   /// @brief Allocates a new VizNode instance representing a barrier command,

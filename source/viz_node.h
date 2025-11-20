@@ -10,7 +10,7 @@ struct VizQueue;
 
 /// @brief Represents a graph node
 struct VizNode {
-  /// @brief Constructor
+  /// @brief Constructor for queue enqueued node
   VizNode(VizQueue *VQ, std::vector<VizNode *> &&Deps, const char *Name,
           std::function<void(std::ofstream &)> VerbosePrint)
       : MQueue(VQ), MPreds(Deps), MName(Name), MVerbosePrint(VerbosePrint),
@@ -19,8 +19,11 @@ struct VizNode {
     MID = ID++;
   }
 
-  VizNode(const char *Name, std::vector<VizNode *> &&Deps)
-      : MQueue(nullptr), MPreds(Deps), MName(Name), MDefined(false) {
+  /// @brief Constructor for command-buffer node
+  VizNode(std::vector<VizNode *> &&Deps, const char *Name,
+          std::function<void(std::ofstream &)> VerbosePrint)
+      : MQueue(nullptr), MPreds(Deps), MName(Name), MVerbosePrint(VerbosePrint),
+        MDefined(false) {
     static int ID = 0;
     MID = ID++;
   }

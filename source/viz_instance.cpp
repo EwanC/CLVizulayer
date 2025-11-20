@@ -91,12 +91,13 @@ void VizInstance::createVizNode(
           static_cast<void *>(VQ));
 }
 
-void VizInstance::createVizNode(const char *Name,
-                                std::span<const cl_sync_point_khr> Deps,
-                                cl_sync_point_khr *RetSyncPoint) {
+void VizInstance::createVizNode(
+    const char *Name, std::function<void(std::ofstream &)> VerbosePrintFunc,
+    std::span<const cl_sync_point_khr> Deps, cl_sync_point_khr *RetSyncPoint) {
   std::vector<VizNode *> DepVizNodes;
   NodePreCreation(Deps, DepVizNodes);
-  VizNode *Node = new VizNode(Name, std::move(DepVizNodes));
+  VizNode *Node =
+      new VizNode(std::move(DepVizNodes), Name, std::move(VerbosePrintFunc));
   NodePostCreation(Node, RetSyncPoint);
 
   VIZ_LOG("Instance {} created node {}", static_cast<void *>(this), Name);
@@ -119,8 +120,8 @@ void VizInstance::createVizBarrierNode(std::span<const cl_sync_point_khr> Deps,
     Leaves.erase(std::remove(Leaves.begin(), Leaves.end(), Dep), Leaves.end());
   }
 
-  VizNode *Node =
-      new VizNode("clCommandBarrierWithWaitListKHR", std::move(DepVizNodes));
+  VizNode *Node = new VizNode(std::move(DepVizNodes),
+                              "clCommandBarrierWithWaitListKHR", {});
   NodePostCreation(Node, RetSyncPoint);
 
   MCommandBuffer->MLastBarrier = Node;
@@ -409,7 +410,8 @@ void VizInstance::flushCommandBuffer(
     printNodes.insert(Node);
   }
 
-  DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr", MVerbose);
+  bool Verbose = Flags & CL_COMMAND_BUFFER_DOT_PRINT_VERBOSE_EXT;
+  DotFile.writeSubgraph(printNodes, "cl_command_buffer_khr", Verbose);
 
   // Command-buffer nodes are defined per-flush
   for (auto &Node : MNodes) {

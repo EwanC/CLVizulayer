@@ -1547,8 +1547,33 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
 
   if (Ret == CL_SUCCESS) {
     try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\ncl_kernel = " << std::hex << kernel << std::dec;
+            Stream << "\\n";
+
+            size_t Size;
+            cl_int Ret = TargetDispatch->clGetKernelInfo(
+                kernel, CL_KERNEL_FUNCTION_NAME, 0, nullptr, &Size);
+
+            if (Ret != CL_SUCCESS) {
+              VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
+              return;
+            }
+
+            std::vector<char> FuncName(Size, '\0');
+            Ret =
+                TargetDispatch->clGetKernelInfo(kernel, CL_KERNEL_FUNCTION_NAME,
+                                                Size, FuncName.data(), nullptr);
+            if (Ret != CL_SUCCESS) {
+              VIZ_ERR("Error calling clGetKernelInfo, err code {}", Ret);
+              return;
+            }
+            Stream << "\nname = " << FuncName.data();
+          };
       Context.createVizNode(
-          command_buffer, "clCommandNDRangeKernelKHR",
+          command_buffer, "clCommandNDRangeKernelKHR", std::move(VerbosePrint),
           std::span(sync_point_wait_list, num_sync_points_in_wait_list),
           sync_point);
     } catch (std::exception &E) {
