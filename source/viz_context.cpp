@@ -3,6 +3,7 @@
 #include "viz_context.h"
 #include "logger.h"
 
+#include <algorithm>
 #include <string>
 
 VizContext &getVizContext() {

@@ -1424,10 +1424,35 @@ cl_int CL_API_CALL clCommandCopyBufferKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandCopyBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
-                        dst_buffer, src_offset, dst_offset, size,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
+                              src_buffer, dst_buffer, src_offset, dst_offset,
+                              size, num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\nsrc_buffer = " << std::hex << src_buffer;
+            Stream << "\\n";
+            Stream << "\ndst_buffer = " << dst_buffer << std::dec;
+            Stream << "\\n";
+            Stream << "\nsrc_offset = " << src_offset;
+            Stream << "\\n";
+            Stream << "\ndst_offset = " << dst_offset;
+            Stream << "\\n";
+            Stream << "\nsize = " << size;
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandCopyBufferKHR", std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandCopyBufferRectKHRShim(
@@ -1442,11 +1467,48 @@ cl_int CL_API_CALL clCommandCopyBufferRectKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandCopyBufferRectKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferRectKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
-                        dst_buffer, src_origin, dst_origin, region,
-                        src_row_pitch, src_slice_pitch, dst_row_pitch,
-                        dst_slice_pitch, num_sync_points_in_wait_list,
-                        sync_point_wait_list, sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(
+      command_buffer, command_queue, properties, src_buffer, dst_buffer,
+      src_origin, dst_origin, region, src_row_pitch, src_slice_pitch,
+      dst_row_pitch, dst_slice_pitch, num_sync_points_in_wait_list,
+      sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\\n";
+            Stream << "\nsrc_buffer = " << std::hex << src_buffer;
+            Stream << "\\n";
+            Stream << "\ndst_buffer = " << dst_buffer << std::dec;
+            Stream << "\\n";
+            Stream << "\nsrc_origin = {" << src_origin[0] << ", ";
+            Stream << src_origin[1] << ", " << src_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\ndst_origin = {" << dst_origin[0] << ", ";
+            Stream << dst_origin[1] << ", " << dst_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\nregion = {" << region[0] << ", ";
+            Stream << region[1] << ", " << region[2] << "}";
+            Stream << "\\n";
+            Stream << "\nsrc_row_pitch = " << src_row_pitch;
+            Stream << "\\n";
+            Stream << "\nsrc_slice_pitch = " << src_slice_pitch;
+            Stream << "\\n";
+            Stream << "\ndst_row_pitch = " << dst_row_pitch;
+            Stream << "\\n";
+            Stream << "\ndst_slice_pitch = " << dst_slice_pitch;
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandCopyBufferRectKHR", std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandCopyBufferToImageKHRShim(
@@ -1459,10 +1521,38 @@ cl_int CL_API_CALL clCommandCopyBufferToImageKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandCopyBufferToImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferToImageKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, src_buffer,
-                        dst_image, src_offset, dst_origin, region,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
+                              src_buffer, dst_image, src_offset, dst_origin,
+                              region, num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\nsrc_buffer = " << std::hex << src_buffer;
+            Stream << "\\n";
+            Stream << "\ndst_image = " << dst_image << std::dec;
+            Stream << "\\n";
+            Stream << "\nsrc_offset = " << src_offset;
+            Stream << "\\n";
+            Stream << "\ndst_origin = {" << dst_origin[0] << ", ";
+            Stream << dst_origin[1] << ", " << dst_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\nregion = {" << region[0] << ", ";
+            Stream << region[1] << ", " << region[2] << "}";
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandCopyBufferToImageKHR",
+          std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandCopyImageKHRShim(
@@ -1475,10 +1565,38 @@ cl_int CL_API_CALL clCommandCopyImageKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandCopyImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyImageKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, src_image,
-                        dst_image, src_origin, dst_origin, region,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
+                              src_image, dst_image, src_origin, dst_origin,
+                              region, num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\nsrc_image = " << std::hex << src_image;
+            Stream << "\\n";
+            Stream << "\ndst_image = " << dst_image << std::dec;
+            Stream << "\\n";
+            Stream << "\nsrc_origin = {" << src_origin[0] << ", ";
+            Stream << src_origin[1] << ", " << src_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\ndst_origin = {" << dst_origin[0] << ", ";
+            Stream << dst_origin[1] << ", " << dst_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\nregion = {" << region[0] << ", ";
+            Stream << region[1] << ", " << region[2] << "}";
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandCopyImageKHR", std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandCopyImageToBufferKHRShim(
@@ -1491,10 +1609,38 @@ cl_int CL_API_CALL clCommandCopyImageToBufferKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandCopyImageToBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyImageToBufferKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, src_image,
-                        dst_buffer, src_origin, region, dst_offset,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
+                              src_image, dst_buffer, src_origin, region,
+                              dst_offset, num_sync_points_in_wait_list,
+                              sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\nsrc_image = " << std::hex << src_image;
+            Stream << "\\n";
+            Stream << "\ndst_buffer = " << dst_buffer << std::dec;
+            Stream << "\\n";
+            Stream << "\nsrc_origin = {" << src_origin[0] << ", ";
+            Stream << src_origin[1] << ", " << src_origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\nregion = {" << region[0] << ", ";
+            Stream << region[1] << ", " << region[2] << "}";
+            Stream << "\\n";
+            Stream << "\ndst_offset = " << dst_offset;
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandCopyImageToBufferKHR",
+          std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandFillBufferKHRShim(
@@ -1507,10 +1653,35 @@ cl_int CL_API_CALL clCommandFillBufferKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandFillBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandFillBufferKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, buffer,
-                        pattern, pattern_size, offset, size,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret =
+      TargetFunction(command_buffer, command_queue, properties, buffer, pattern,
+                     pattern_size, offset, size, num_sync_points_in_wait_list,
+                     sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\ncl_mem = " << std::hex << buffer;
+            Stream << "\\n";
+            Stream << "\npattern = " << pattern << std::dec;
+            Stream << "\\n";
+            Stream << "\npattern_size = " << pattern_size;
+            Stream << "\\n";
+            Stream << "\noffset = " << offset;
+            Stream << "\\n";
+            Stream << "\nsize = " << size;
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandFillBufferKHR", std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandFillImageKHRShim(
@@ -1523,10 +1694,35 @@ cl_int CL_API_CALL clCommandFillImageKHRShim(
   auto &Context = getVizContext();
   assert(Context.MclCommandFillImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandFillImageKHRFnPtr;
-  return TargetFunction(command_buffer, command_queue, properties, image,
-                        fill_color, origin, region,
-                        num_sync_points_in_wait_list, sync_point_wait_list,
-                        sync_point, mutable_handle);
+  cl_int Ret =
+      TargetFunction(command_buffer, command_queue, properties, image,
+                     fill_color, origin, region, num_sync_points_in_wait_list,
+                     sync_point_wait_list, sync_point, mutable_handle);
+  if (Ret == CL_SUCCESS) {
+    try {
+      std::function<void(std::ofstream &)> VerbosePrint =
+          [=](std::ofstream &Stream) {
+            Stream << "\\n";
+            Stream << "\ncl_mem = " << std::hex << image << std::dec;
+            Stream << "\\n";
+            Stream << "\norigin = {" << origin[0] << ", ";
+            Stream << origin[1] << ", " << origin[2] << "}";
+            Stream << "\\n";
+            Stream << "\nregion = {" << region[0] << ", ";
+            Stream << region[1] << ", " << region[2] << "}";
+            Stream << "\\n";
+            Stream << "\ncolor ptr = " << std::hex << fill_color << std::dec;
+          };
+
+      Context.createVizNode(
+          command_buffer, "clCommandFillImageKHR", std::move(VerbosePrint),
+          std::span(sync_point_wait_list, num_sync_points_in_wait_list),
+          sync_point);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Viz instance: {}", E.what());
+    }
+  }
+  return Ret;
 }
 
 cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
