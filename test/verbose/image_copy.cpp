@@ -17,7 +17,6 @@
 // CHECK-NEXT: src_origin = {1, 0, 0}
 // CHECK-NEXT: dst_origin = {1, 0, 0}
 // CHECK-NEXT: region = {2, 2, 1}"];
-
 // CHECK-NEXT: }
 // CHECK-EMPTY:
 // CHECK-NEXT: }
