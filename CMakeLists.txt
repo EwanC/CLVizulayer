@@ -1,7 +1,7 @@
 # Copyright (c) 2025 Ewan Crawford
 
 cmake_minimum_required(VERSION 3.27 FATAL_ERROR)
-project(CLVizulayer VERSION 1.0.0)
+project(CLVizulayer VERSION 2.0.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
