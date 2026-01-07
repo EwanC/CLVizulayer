@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Ewan Crawford
+// Copyright (c) 2025-2026 Ewan Crawford
 
 // RUN: %build -o %t
 // RUN: cd %T && VIZ_EXT=1 %t

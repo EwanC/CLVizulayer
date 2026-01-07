@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Ewan Crawford
+# Copyright (c) 2025-2026 Ewan Crawford
 
 if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
     add_compile_options(/WX /EHsc)

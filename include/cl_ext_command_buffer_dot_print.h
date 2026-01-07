@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Ewan Crawford
+// Copyright (c) 2025-2026 Ewan Crawford
 #ifndef CL_EXT_COMMAND_BUFFER_DOT_PRINT_
 #define CL_EXT_COMMAND_BUFFER_DOT_PRINT_
 

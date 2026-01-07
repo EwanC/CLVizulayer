@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Ewan Crawford
+// Copyright (c) 2025-2026 Ewan Crawford
 
 // RUN: %build -DVIZ_TEST_FILE_NAME1=\"%T/1_%basename_t.dot\" \
 // RUN: -DVIZ_TEST_FILE_NAME2=\"%T/2_%basename_t.dot\" -o %t

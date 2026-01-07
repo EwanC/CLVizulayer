@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Ewan Crawford
+# Copyright (c) 2025-2026 Ewan Crawford
 
 find_program(FileCheck NAMES "filecheck" "FileCheck")
 if (NOT FileCheck)

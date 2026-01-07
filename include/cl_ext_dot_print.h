@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Ewan Crawford
+// Copyright (c) 2025-2026 Ewan Crawford
 #ifndef CL_EXT_DOT_GRAPH_
 #define CL_EXT_DOT_GRAPH_
 
