@@ -287,7 +287,7 @@ void VizInstance::flush(std::stack<VizNode *> &NodeStack, const char *Label) {
 VizQueue *VizInstance::getVizQueueForCLQueue(cl_command_queue CQ) const {
   // If using the fine grained extension, then not all CL queues
   // may be getting tracked for recording.
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   if (Context.useExt()) {
     auto VQItr = MQueueMap.find(CQ);
     if (VQItr == MQueueMap.end()) {

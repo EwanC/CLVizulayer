@@ -20,7 +20,7 @@ struct _cl_dot_graph_ext {
   _cl_dot_graph_ext(std::span<const cl_command_queue> CLQueueList,
                     const cl_dot_graph_flags_ext Flags, const char *FilePath)
       : MRefCount(1) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     MInstance = Context.createVizInstance(CLQueueList, Flags, FilePath);
   }
 
@@ -35,7 +35,7 @@ struct _cl_dot_graph_ext {
     MRefCount.fetch_sub(1, std::memory_order_relaxed);
     if (MRefCount.load(std::memory_order_relaxed) == 0) {
       // VizContext owns the VizInstance allocation
-      auto &Context = getVizContext();
+      auto &Context = viz::getVizContext();
       Context.destroyVizInstance(MInstance);
 
       delete this;

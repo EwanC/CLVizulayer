@@ -4,12 +4,42 @@
 #include "logger.h"
 
 #include <algorithm>
+#include <cassert>
 #include <string>
 
-VizContext &getVizContext() {
+namespace viz {
+
+// Global variable pointing to a singleton instance of VizContext that is
+// initialized from either a static variable in the case of `clInitLayer()`
+// or a heap allocation in the case of `clInitLayerWithProperties()` with
+// `clDeinitLayer`.
+VizContext *GlobalVizContext = nullptr;
+
+void staticInitContext() {
   static VizContext Context;
-  return Context;
+  GlobalVizContext = &Context;
+  VIZ_LOG("VizContext {} created using static variable.",
+          static_cast<void *>(GlobalVizContext));
 }
+
+void heapInitContext() {
+  GlobalVizContext = new VizContext;
+  VIZ_LOG("VizContext {} created using heap allocation.",
+          static_cast<void *>(GlobalVizContext));
+}
+
+void heapFreeContext() {
+  delete GlobalVizContext;
+  VIZ_LOG("Freed {} VizContext heap allocation.",
+          static_cast<void *>(GlobalVizContext));
+  GlobalVizContext = nullptr;
+}
+
+VizContext &getVizContext() {
+  assert(viz::GlobalVizContext != nullptr);
+  return *viz::GlobalVizContext;
+}
+} // namespace viz
 
 VizContext::VizContext() {
   bool Verbose = false;

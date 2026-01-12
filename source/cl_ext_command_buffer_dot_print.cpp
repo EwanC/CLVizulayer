@@ -31,7 +31,7 @@ CL_API_ENTRY cl_int CL_API_CALL clDotPrintCommandBufferEXT(
       CurrProp += 2;
     }
   }
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   try {
     Context.flushCommandBuffer(command_buffer, Flags, file_path);
   } catch (std::exception &E) {

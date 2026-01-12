@@ -224,6 +224,29 @@ private:
   std::mutex MMutex;
 };
 
-/// Get the singleton instance of the context
-/// @return Reference to the context instance
+namespace viz {
+/// Initializes the global variable holding the pointer to the singleton
+/// VizContext instance with the address of a static VizContext variable
+/// that will live for the duration of the application. Expected to be called by
+/// `clinitlayer()`.
+void staticInitContext();
+
+/// Initializes the global variable holding the pointer to the singleton
+/// VizContext instance with the pointer of a heap allocated instance that
+/// should be freed during teardown. Expected to be called by
+/// `clInitLayerWithProperties` on ICD loaders that support cl_loade_layers
+/// 1.0.1.
+void heapInitContext();
+
+/// Frees heap allocation pointed to by the global variable holding the
+/// pointer to the singleton VizContext instance, then sets the global variable
+/// to zero. Expectde to be called by `clDeinitLayer` on ICD loaders that
+/// support cl_loade_layers
+/// 1.0.1.
+void heapFreeContext();
+
+/// Get the context pointed to by the global variable holding the singleton
+/// VizContext instance.
+/// @return Reference to the singleton context instance
 VizContext &getVizContext();
+} // namespace viz

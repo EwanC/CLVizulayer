@@ -52,29 +52,95 @@ const struct _cl_icd_dispatch *TargetDispatch;
 
 static void _init_dispatch();
 
-CL_API_ENTRY cl_int CL_API_CALL
-clInitLayer(cl_uint num_entries, const struct _cl_icd_dispatch *target_dispatch,
-            cl_uint *num_entries_out,
-            const struct _cl_icd_dispatch **layer_dispatch_ret) {
+namespace {
+cl_int validateInitLayer(cl_uint num_entries,
+                         const struct _cl_icd_dispatch *target_dispatch,
+                         cl_uint *num_entries_ret,
+                         const struct _cl_icd_dispatch **layer_dispatch_ret,
+                         const cl_layer_properties *properties = nullptr) {
   // Spec error case:
   // CL_INVALID_VALUE if target_dispatch is a NULL value, or num_entries_ret is
   // a NULL value, or layer_dispatch_ret is a NULL value.
-  if (!target_dispatch || !num_entries_out || !layer_dispatch_ret) {
+  if (!target_dispatch || !num_entries_ret || !layer_dispatch_ret) {
     return CL_INVALID_VALUE;
   }
 
-  /* Check that the loader does not provide us with a dispatch table
-   * smaller than the one we've been compiled with. */
+  // Check that the loader does not provide us with a dispatch table
+  // smaller than the one we've been compiled with.
   constexpr size_t ShimLayerSize =
       sizeof(ShimDispatch) / sizeof(ShimDispatch.clEnqueueNDRangeKernel);
   if (num_entries < ShimLayerSize) {
     return CL_INVALID_VALUE;
   }
 
+  // No properties are currently defined by the extension, so do
+  // simple validation to check user is not trying to pass something.
+  if (properties && *properties != CL_LAYER_PROPERTIES_LIST_END) {
+    return CL_INVALID_PROPERTY;
+  }
+
+  return CL_SUCCESS;
+}
+
+void initDispatchTable(const struct _cl_icd_dispatch *target_dispatch,
+                       cl_uint *num_entries_ret,
+                       const struct _cl_icd_dispatch **layer_dispatch_ret) {
   TargetDispatch = target_dispatch;
   _init_dispatch();
   *layer_dispatch_ret = &ShimDispatch;
-  *num_entries_out = ShimLayerSize;
+
+  constexpr size_t ShimLayerSize =
+      sizeof(ShimDispatch) / sizeof(ShimDispatch.clEnqueueNDRangeKernel);
+  *num_entries_ret = ShimLayerSize;
+}
+} // namespace
+
+CL_API_ENTRY cl_int CL_API_CALL
+clInitLayer(cl_uint num_entries, const struct _cl_icd_dispatch *target_dispatch,
+            cl_uint *num_entries_ret,
+            const struct _cl_icd_dispatch **layer_dispatch_ret) {
+  // Check parameters meet valid usage conditions
+  auto Err = validateInitLayer(num_entries, target_dispatch, num_entries_ret,
+                               layer_dispatch_ret);
+  if (Err != CL_SUCCESS) {
+    return Err;
+  }
+
+  // Initialize the layer dispatch table
+  initDispatchTable(target_dispatch, num_entries_ret, layer_dispatch_ret);
+
+  // Initialize the global VizContext instance using a static variable that
+  // will live for the lifetime of the application.
+  viz::staticInitContext();
+
+  return CL_SUCCESS;
+}
+
+CL_API_ENTRY cl_int CL_API_CALL clInitLayerWithProperties(
+    cl_uint num_entries, const cl_icd_dispatch *target_dispatch,
+    cl_uint *num_entries_ret, const cl_icd_dispatch **layer_dispatch_ret,
+    const cl_layer_properties *properties) {
+  // Check parameters meet valid usage conditions
+  auto Err = validateInitLayer(num_entries, target_dispatch, num_entries_ret,
+                               layer_dispatch_ret, properties);
+  if (Err != CL_SUCCESS) {
+    return Err;
+  }
+
+  // Initialize the layer dispatch table
+  initDispatchTable(target_dispatch, num_entries_ret, layer_dispatch_ret);
+
+  // Initialize the global VizContext instance using a heap allocation that
+  // will need to be manually freed during teardown.
+  viz::heapInitContext();
+
+  return CL_SUCCESS;
+}
+
+CL_API_ENTRY cl_int CL_API_CALL clDeinitLayer(void) {
+  // Free the global VizContext instance that was heap allocated
+  // with clInitLayerWithProperties().
+  viz::heapFreeContext();
   return CL_SUCCESS;
 }
 
@@ -88,7 +154,7 @@ cl_int clEnqueueNDRangeKernelShim(
       local_work_size, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     std::function<void(std::ofstream &)> VerbosePrint{};
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       if (Context.verbose()) {
         VerbosePrint = [=](std::ofstream &Stream) {
@@ -133,7 +199,7 @@ cl_int clEnqueueTaskShim(cl_command_queue command_queue, cl_kernel kernel,
       command_queue, kernel, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     std::function<void(std::ofstream &)> VerbosePrint{};
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       if (Context.verbose()) {
         VerbosePrint = [=](std::ofstream &Stream) {
@@ -180,7 +246,7 @@ cl_int clEnqueueNativeKernelShim(
       command_queue, user_func, args, cb_args, num_mem_objects, mem_list,
       args_mem_loc, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizNode(command_queue, "clEnqueueNativeKernel", {},
                             std::span(event_wait_list, num_events_in_wait_list),
@@ -200,7 +266,7 @@ clCreateCommandQueueShim(cl_context Context, cl_device_id device,
   cl_command_queue CQ = TargetDispatch->clCreateCommandQueue(
       Context, device, properties, errcode_ret);
   if (CQ != nullptr) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     const bool IsInOrder =
         (properties & CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE) == 0;
     try {
@@ -220,7 +286,7 @@ clCreateCommandQueueWithPropertiesShim(cl_context Context, cl_device_id device,
   cl_command_queue CQ = TargetDispatch->clCreateCommandQueueWithProperties(
       Context, device, properties, errcode_ret);
   if (CQ != nullptr) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
 
     bool IsInOrder = true;
     if (properties) {
@@ -245,7 +311,7 @@ clCreateCommandQueueWithPropertiesShim(cl_context Context, cl_device_id device,
 
 cl_int clFinishShim(cl_command_queue command_queue) {
   cl_int Ret = TargetDispatch->clFinish(command_queue);
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   try {
     Context.flushQueue(command_queue, "clFinish()", false);
   } catch (std::exception &E) {
@@ -256,7 +322,7 @@ cl_int clFinishShim(cl_command_queue command_queue) {
 
 cl_int clReleaseCommandQueueShim(cl_command_queue command_queue) {
   cl_int Ret = TargetDispatch->clReleaseCommandQueue(command_queue);
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   try {
     Context.flushQueue(command_queue, "clReleaseCommandQueue()", false);
   } catch (std::exception &E) {
@@ -268,7 +334,7 @@ cl_int clReleaseCommandQueueShim(cl_command_queue command_queue) {
 cl_int clEnqueueBarrierShim(cl_command_queue command_queue) {
   cl_int Ret = TargetDispatch->clEnqueueBarrier(command_queue);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizBarrierNode(command_queue, false,
                                    std::span<const cl_event>(), nullptr);
@@ -287,7 +353,7 @@ cl_int clEnqueueBarrierWithWaitListShim(cl_command_queue command_queue,
   cl_int Ret = TargetDispatch->clEnqueueBarrierWithWaitList(
       command_queue, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizBarrierNode(
           command_queue, true,
@@ -306,7 +372,7 @@ cl_int clEnqueueWaitForEventsShim(cl_command_queue command_queue,
   cl_int Ret = TargetDispatch->clEnqueueWaitForEvents(command_queue, num_events,
                                                       event_list);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizNode(command_queue, "clEnqueueWaitForEvents", {},
                             std::span(event_list, num_events), nullptr);
@@ -320,7 +386,7 @@ cl_int clEnqueueWaitForEventsShim(cl_command_queue command_queue,
 cl_int clEnqueueMarkerShim(cl_command_queue command_queue, cl_event *event) {
   cl_int Ret = TargetDispatch->clEnqueueMarker(command_queue, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizMarkerNode(command_queue, event);
     } catch (std::exception &E) {
@@ -337,7 +403,7 @@ cl_int clEnqueueMarkerWithWaitListShim(cl_command_queue command_queue,
   cl_int Ret = TargetDispatch->clEnqueueMarkerWithWaitList(
       command_queue, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       Context.createVizMarkerNode(
           command_queue, std::span(event_wait_list, num_events_in_wait_list),
@@ -359,7 +425,7 @@ cl_int clEnqueueFillBufferShim(cl_command_queue command_queue, cl_mem buffer,
       command_queue, buffer, pattern, pattern_size, offset, size,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -398,7 +464,7 @@ cl_int clEnqueueCopyBufferShim(cl_command_queue command_queue,
       command_queue, src_buffer, dst_buffer, src_offset, dst_offset, size,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -437,7 +503,7 @@ cl_int clEnqueueReadBufferShim(cl_command_queue command_queue, cl_mem buffer,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
     std::function<void(std::ofstream &)> VerbosePrint{};
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     try {
       if (Context.verbose()) {
         VerbosePrint = [=](std::ofstream &Stream) {
@@ -478,7 +544,7 @@ cl_int clEnqueueWriteBufferShim(cl_command_queue command_queue, cl_mem buffer,
       command_queue, buffer, blocking_write, offset, size, ptr,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -521,7 +587,7 @@ cl_int clEnqueueCopyBufferRectShim(
       src_row_pitch, src_slice_pitch, dst_row_pitch, dst_slice_pitch,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -574,7 +640,7 @@ clEnqueueReadBufferRectShim(cl_command_queue command_queue, cl_mem buffer,
       buffer_row_pitch, buffer_slice_pitch, host_row_pitch, host_slice_pitch,
       ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -630,7 +696,7 @@ cl_int clEnqueueWriteBufferRectShim(
       buffer_row_pitch, buffer_slice_pitch, host_row_pitch, host_slice_pitch,
       ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -685,7 +751,7 @@ void *clEnqueueMapBufferShim(cl_command_queue command_queue, cl_mem buffer,
       command_queue, buffer, blocking_map, map_flags, offset, size,
       num_events_in_wait_list, event_wait_list, event, &Ret);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -731,7 +797,7 @@ cl_int clEnqueueFillImageShim(cl_command_queue command_queue, cl_mem image,
       command_queue, image, fill_color, origin, region, num_events_in_wait_list,
       event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -769,7 +835,7 @@ cl_int clEnqueueCopyImageShim(cl_command_queue command_queue, cl_mem src_image,
       command_queue, src_image, dst_image, src_origin, dst_origin, region,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -811,7 +877,7 @@ cl_int clEnqueueCopyImageToBufferShim(cl_command_queue command_queue,
       command_queue, src_image, dst_buffer, src_origin, region, dst_offset,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -850,7 +916,7 @@ cl_int clEnqueueCopyBufferToImageShim(
       command_queue, src_buffer, dst_image, src_offset, dst_origin, region,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -893,7 +959,7 @@ void *clEnqueueMapImageShim(cl_command_queue command_queue, cl_mem image,
       image_row_pitch, image_slice_pitch, num_events_in_wait_list,
       event_wait_list, event, &Ret);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -946,7 +1012,7 @@ cl_int clEnqueueReadImageShim(cl_command_queue command_queue, cl_mem image,
       command_queue, image, blocking_read, origin, region, row_pitch,
       slice_pitch, ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -994,7 +1060,7 @@ cl_int clEnqueueWriteImageShim(cl_command_queue command_queue, cl_mem image,
       command_queue, image, blocking_write, origin, region, input_row_pitch,
       input_slice_pitch, ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1040,7 +1106,7 @@ cl_int clEnqueueUnmapMemObjectShim(cl_command_queue command_queue,
       command_queue, memobj, mapped_ptr, num_events_in_wait_list,
       event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1073,7 +1139,7 @@ cl_int clEnqueueMigrateMemObjectsShim(cl_command_queue command_queue,
       command_queue, num_mem_objects, mem_objects, flags,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1108,7 +1174,7 @@ cl_int clEnqueueSVMFreeShim(
       command_queue, num_svm_pointers, svm_pointers, pfn_free_func, user_data,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1146,7 +1212,7 @@ cl_int clEnqueueSVMMemcpyShim(cl_command_queue command_queue,
       command_queue, blocking_copy, dst_ptr, src_ptr, size,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1184,7 +1250,7 @@ cl_int clEnqueueSVMMemFillShim(cl_command_queue command_queue, void *svm_ptr,
       command_queue, svm_ptr, pattern, pattern_size, size,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1218,7 +1284,7 @@ cl_int clEnqueueSVMMapShim(cl_command_queue command_queue, cl_bool blocking_map,
       command_queue, blocking_map, flags, svm_ptr, size,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1253,7 +1319,7 @@ cl_int clEnqueueSVMUnmapShim(cl_command_queue command_queue, void *svm_ptr,
   cl_int Ret = TargetDispatch->clEnqueueSVMUnmap(
       command_queue, svm_ptr, num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1282,7 +1348,7 @@ clEnqueueSVMMigrateMemShim(cl_command_queue command_queue,
       command_queue, num_svm_pointers, svm_pointers, sizes, flags,
       num_events_in_wait_list, event_wait_list, event);
   if (Ret == CL_SUCCESS) {
-    auto &Context = getVizContext();
+    auto &Context = viz::getVizContext();
     std::function<void(std::ofstream &)> VerbosePrint{};
     try {
       if (Context.verbose()) {
@@ -1309,7 +1375,7 @@ clEnqueueSVMMigrateMemShim(cl_command_queue command_queue,
 
 cl_int clWaitForEventsShim(cl_uint num_events, const cl_event *event_list) {
   cl_int Ret = TargetDispatch->clWaitForEvents(num_events, event_list);
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   try {
     Context.flushEvents(std::span(event_list, num_events));
   } catch (std::exception &E) {
@@ -1323,7 +1389,7 @@ cl_command_buffer_khr
 clCreateCommandBufferKHRShim(cl_uint num_queues, const cl_command_queue *queues,
                              const cl_command_buffer_properties_khr *properties,
                              cl_int *errcode_ret) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCreateCommandBufferKHRFnPtr);
 
   auto &TargetFunction = Context.MclCreateCommandBufferKHRFnPtr;
@@ -1349,7 +1415,7 @@ cl_int clEnqueueCommandBufferKHRShim(cl_uint num_queues,
                                      cl_uint num_events_in_wait_list,
                                      const cl_event *event_wait_list,
                                      cl_event *event) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclEnqueueCommandBufferKHRFnPtr);
   auto &TargetFunction = Context.MclEnqueueCommandBufferKHRFnPtr;
   assert(Context.MclGetCommandBufferInfoKHRFnPtr);
@@ -1394,7 +1460,7 @@ cl_int CL_API_CALL clCommandBarrierWithWaitListKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandBarrierWithWaitListKHRFnPtr);
   auto &TargetFunction = Context.MclCommandBarrierWithWaitListKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
@@ -1421,7 +1487,7 @@ cl_int CL_API_CALL clCommandCopyBufferKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandCopyBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
@@ -1464,7 +1530,7 @@ cl_int CL_API_CALL clCommandCopyBufferRectKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandCopyBufferRectKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferRectKHRFnPtr;
   cl_int Ret = TargetFunction(
@@ -1518,7 +1584,7 @@ cl_int CL_API_CALL clCommandCopyBufferToImageKHRShim(
     const size_t *region, cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandCopyBufferToImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyBufferToImageKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
@@ -1562,7 +1628,7 @@ cl_int CL_API_CALL clCommandCopyImageKHRShim(
     const size_t *region, cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandCopyImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyImageKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
@@ -1606,7 +1672,7 @@ cl_int CL_API_CALL clCommandCopyImageToBufferKHRShim(
     size_t dst_offset, cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandCopyImageToBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandCopyImageToBufferKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties,
@@ -1650,7 +1716,7 @@ cl_int CL_API_CALL clCommandFillBufferKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandFillBufferKHRFnPtr);
   auto &TargetFunction = Context.MclCommandFillBufferKHRFnPtr;
   cl_int Ret =
@@ -1691,7 +1757,7 @@ cl_int CL_API_CALL clCommandFillImageKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandFillImageKHRFnPtr);
   auto &TargetFunction = Context.MclCommandFillImageKHRFnPtr;
   cl_int Ret =
@@ -1733,7 +1799,7 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
     cl_uint num_sync_points_in_wait_list,
     const cl_sync_point_khr *sync_point_wait_list,
     cl_sync_point_khr *sync_point, cl_mutable_command_khr *mutable_handle) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclCommandNDRangeKernelKHRFnPtr);
   auto &TargetFunction = Context.MclCommandNDRangeKernelKHRFnPtr;
   cl_int Ret = TargetFunction(command_buffer, command_queue, properties, kernel,
@@ -1780,7 +1846,7 @@ cl_int CL_API_CALL clCommandNDRangeKernelKHRShim(
 }
 
 cl_int clReleaseCommandBufferKHRShim(cl_command_buffer_khr command_buffer) {
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   assert(Context.MclReleaseCommandBufferKHRFnPtr);
   auto &ReleaseFunction = Context.MclReleaseCommandBufferKHRFnPtr;
   assert(Context.MclGetCommandBufferInfoKHRFnPtr);
@@ -1820,7 +1886,7 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     return (void *)FUNC;                                                       \
   }
 
-  auto &Context = getVizContext();
+  auto &Context = viz::getVizContext();
   if (Context.useExt()) {
     GET_EXTENSION_FUNCTION(clCreateDotGraphEXT);
     GET_EXTENSION_FUNCTION(clReleaseDotGraphEXT);
@@ -1874,7 +1940,7 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
                            size_t param_value_size, void *param_value,
                            size_t *param_value_size_ret) {
 
-  if (auto &Context = getVizContext(); !Context.useExt()) {
+  if (auto &Context = viz::getVizContext(); !Context.useExt()) {
     return TargetDispatch->clGetDeviceInfo(device, param_name, param_value_size,
                                            param_value, param_value_size_ret);
   }
@@ -1971,7 +2037,7 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
                              cl_platform_info param_name,
                              size_t param_value_size, void *param_value,
                              size_t *param_value_size_ret) {
-  if (auto &Context = getVizContext(); !Context.useExt()) {
+  if (auto &Context = viz::getVizContext(); !Context.useExt()) {
     return TargetDispatch->clGetPlatformInfo(platform, param_name,
                                              param_value_size, param_value,
                                              param_value_size_ret);
