@@ -53,7 +53,7 @@ digraph CLVizulayer {
 }
 ```
 
-That can be rendered as: ![kernel diamond dependencies](images/diamond.png)
+That can be rendered as: ![kernel diamond dependencies](images/diamond.svg)
 
 *For more information on OpenCL Layers see [The OpenCL Layers Tutorial](https://github.com/Kerilk/OpenCL-Layers-Tutorial).*
 
