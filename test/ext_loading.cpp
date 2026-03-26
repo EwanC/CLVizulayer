@@ -4,7 +4,7 @@
 // RUN: VIZ_DOT_FILE=%T/%basename_t.dot %t 2> %T/%basename_t.cerr
 // RUN: FileCheck --input_file %T/%basename_t.cerr %s
 
-// CHECK:Warning clEnqueueMemFillINTEL not tracked in dot graph layer
+// CHECK:Warning clEnqueueSignalSemaphores not tracked in dot graph layer
 
 #include "common.h"
 
@@ -14,9 +14,9 @@
 int main() {
   CLState State;
 
-  auto Func = reinterpret_cast<clEnqueueCommandBufferKHR_fn>(
+  auto Func = reinterpret_cast<clEnqueueSignalSemaphoresKHR_fn>(
       clGetExtensionFunctionAddressForPlatform(State.PlatformId,
-                                               "clEnqueueMemFillINTEL"));
+                                               "clEnqueueSignalSemaphores"));
 
   return 0;
 }

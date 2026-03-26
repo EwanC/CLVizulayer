@@ -1,6 +1,6 @@
 // Copyright (c) 2025-2026 Ewan Crawford
 
-// REQUIRES: svm-support
+// REQUIRES: intel-usm
 
 // RUN: %build -o %t
 // RUN: VIZ_DOT_FILE=%T/%basename_t.dot %t
@@ -13,7 +13,7 @@
 // CHECK-NEXT: label = "clReleaseCommandQueue()";
 // CHECK-NEXT: node_0[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_1[label="clEnqueueNDRangeKernel"];
-// CHECK-NEXT: node_2[label="clEnqueueSVMMigrateMem"];
+// CHECK-NEXT: node_2[label="clEnqueueMemFillINTEL"];
 // CHECK-NEXT: node_3[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_4[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: }
@@ -38,11 +38,10 @@ int main() {
                                &Events[0]);
   CHECK(Ret);
 
-  const void *SVMPtrs[2] = {State.SVMA, State.SVMB};
-  const size_t Sizes[2] = {State.AllocSize, State.AllocSize};
-  Ret = clEnqueueSVMMigrateMem(State.OutOfOrderQueue, 2, SVMPtrs, Sizes,
-                               CL_MIGRATE_MEM_OBJECT_HOST, 1, &Events[0],
-                               &Events[1]);
+  cl_uint Pattern = 42;
+  Ret = State.clEnqueueMemFillINTEL(State.OutOfOrderQueue, State.USMA, &Pattern,
+                                    sizeof(Pattern), State.AllocSize, 1,
+                                    &Events[0], &Events[1]);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,

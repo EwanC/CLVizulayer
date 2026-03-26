@@ -110,4 +110,6 @@ for line in clinfo_sp.stdout.splitlines():
     if device_exts:
         if "cl_khr_command_buffer" in device_exts.group(1):
             config.available_features.add("command-buffer")
+        if "cl_intel_unified_shared_memory" in device_exts.group(1):
+            config.available_features.add("intel-usm")
         break

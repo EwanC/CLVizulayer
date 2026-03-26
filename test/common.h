@@ -51,6 +51,8 @@ struct CLState {
   cl_mem ImageB = nullptr;
   void *SVMA = nullptr;
   void *SVMB = nullptr;
+  void *USMA = nullptr;
+  void *USMB = nullptr;
 
   clCreateDotGraphEXT_fn clCreateDotGraphEXT = nullptr;
   clReleaseDotGraphEXT_fn clReleaseDotGraphEXT = nullptr;
@@ -70,6 +72,15 @@ struct CLState {
   clCommandNDRangeKernelKHR_fn clCommandNDRangeKernelKHR = nullptr;
   clEnqueueCommandBufferKHR_fn clEnqueueCommandBufferKHR = nullptr;
   clFinalizeCommandBufferKHR_fn clFinalizeCommandBufferKHR = nullptr;
+
+  // Intel USM
+  clEnqueueMemFillINTEL_fn clEnqueueMemFillINTEL = nullptr;
+  clEnqueueMemcpyINTEL_fn clEnqueueMemcpyINTEL = nullptr;
+  clEnqueueMemAdviseINTEL_fn clEnqueueMemAdviseINTEL = nullptr;
+  clEnqueueMigrateMemINTEL_fn clEnqueueMigrateMemINTEL = nullptr;
+  clMemBlockingFreeINTEL_fn clMemBlockingFreeINTEL = nullptr;
+  clMemFreeINTEL_fn clMemFreeINTEL = nullptr;
+  clDeviceMemAllocINTEL_fn clDeviceMemAllocINTEL = nullptr;
 };
 
 CLState::CLState(bool ExtensionEnabled) {
@@ -161,8 +172,8 @@ CLState::CLState(bool ExtensionEnabled) {
                         DeviceExtensions.data(), nullptr);
   CHECK(Ret);
 
-  if (std::string ExtensionStr(DeviceExtensions.data());
-      ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
+  std::string ExtensionStr(DeviceExtensions.data());
+  if (ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
       std::string::npos) {
     if (ExtensionEnabled) {
       GET_EXTENSION_ADDRESS(clDotPrintCommandBufferEXT);
@@ -181,6 +192,29 @@ CLState::CLState(bool ExtensionEnabled) {
     GET_EXTENSION_ADDRESS(clEnqueueCommandBufferKHR);
     GET_EXTENSION_ADDRESS(clFinalizeCommandBufferKHR);
   }
+
+  if (ExtensionStr.find(CL_INTEL_UNIFIED_SHARED_MEMORY_EXTENSION_NAME) !=
+      std::string::npos) {
+    GET_EXTENSION_ADDRESS(clEnqueueMemFillINTEL);
+    GET_EXTENSION_ADDRESS(clEnqueueMemcpyINTEL);
+    GET_EXTENSION_ADDRESS(clEnqueueMemAdviseINTEL);
+    GET_EXTENSION_ADDRESS(clEnqueueMigrateMemINTEL);
+    GET_EXTENSION_ADDRESS(clMemFreeINTEL);
+    GET_EXTENSION_ADDRESS(clDeviceMemAllocINTEL);
+
+    // Device USM will be the best supported
+    USMA = clDeviceMemAllocINTEL(Context, Device, nullptr, AllocSize,
+                                 0 /* default align */, &Ret);
+    CHECK(Ret);
+    USMB = clDeviceMemAllocINTEL(Context, Device, nullptr, AllocSize,
+                                 0 /* default align */, &Ret);
+    CHECK(Ret);
+    if (!USMA || !USMB) {
+      throw std::runtime_error(
+          std::string("OpenCL error: clDeviceMemAllocINTEL failed"));
+    }
+  }
+
 #undef GET_EXTENSION_FUNCTION_ADDRESS
 }
 
@@ -215,6 +249,13 @@ CLState::~CLState() {
   if (SVMB) {
     clSVMFree(Context, SVMB);
   }
+  if (USMA) {
+    clMemFreeINTEL(Context, USMA);
+  }
+  if (USMB) {
+    clMemFreeINTEL(Context, USMB);
+  }
+
   if (Context) {
     clReleaseContext(Context);
   }

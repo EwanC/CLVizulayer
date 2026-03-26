@@ -1,6 +1,6 @@
 // Copyright (c) 2025-2026 Ewan Crawford
 
-// REQUIRES: svm-support
+// REQUIRES: intel-usm
 
 // RUN: %build -o %t
 // RUN: VIZ_VERBOSE=1 VIZ_DOT_FILE=%T/%basename_t.dot %t
@@ -14,7 +14,7 @@
 // CHECK-NEXT: node_0[label="clEnqueueNDRangeKernel
 // CHECK-NEXT: cl_kernel = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: name = no_op"];
-// CHECK-NEXT: node_1[label="clEnqueueSVMMemcpy
+// CHECK-NEXT: node_1[label="clEnqueueMemcpyINTEL
 // CHECK-NEXT: blocking = False
 // CHECK-NEXT: dst_ptr = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: src_ptr = 0x{{[0-9a-fA-F]+}}
@@ -40,8 +40,9 @@ int main() {
                                       nullptr, &Events[0]);
   CHECK(Ret);
 
-  Ret = clEnqueueSVMMemcpy(State.OutOfOrderQueue, CL_FALSE, State.SVMB,
-                           State.SVMA, State.AllocSize, 1, Events, &Events[1]);
+  Ret = State.clEnqueueMemcpyINTEL(State.OutOfOrderQueue, CL_FALSE, State.SVMB,
+                                   State.SVMA, State.AllocSize, 1, Events,
+                                   &Events[1]);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,

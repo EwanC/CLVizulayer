@@ -1,8 +1,11 @@
 // Copyright (c) 2025-2026 Ewan Crawford
 
-// REQUIRES: svm-support
+// REQUIRES: intel-usm
 
-// RUN: %build -o %t
+// Intel CPU doesn't like advice flag, but other vendors accept it
+// XFAIL: intel-usm
+
+// RUN: %build -g -O0 -o %t
 // RUN: VIZ_DOT_FILE=%T/%basename_t.dot %t
 // RUN: FileCheck --input_file %T/%basename_t.dot %s
 
@@ -13,7 +16,7 @@
 // CHECK-NEXT: label = "clReleaseCommandQueue()";
 // CHECK-NEXT: node_0[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_1[label="clEnqueueNDRangeKernel"];
-// CHECK-NEXT: node_2[label="clEnqueueSVMMigrateMem"];
+// CHECK-NEXT: node_2[label="clEnqueueMigrateMemINTEL"];
 // CHECK-NEXT: node_3[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_4[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: }
@@ -38,11 +41,9 @@ int main() {
                                &Events[0]);
   CHECK(Ret);
 
-  const void *SVMPtrs[2] = {State.SVMA, State.SVMB};
-  const size_t Sizes[2] = {State.AllocSize, State.AllocSize};
-  Ret = clEnqueueSVMMigrateMem(State.OutOfOrderQueue, 2, SVMPtrs, Sizes,
-                               CL_MIGRATE_MEM_OBJECT_HOST, 1, &Events[0],
-                               &Events[1]);
+  Ret = State.clEnqueueMigrateMemINTEL(State.OutOfOrderQueue, State.USMA,
+                                       State.AllocSize, 0, 1, &Events[0],
+                                       &Events[1]);
   CHECK(Ret);
 
   Ret = clEnqueueNDRangeKernel(State.OutOfOrderQueue, State.Kernel, 1, nullptr,

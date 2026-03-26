@@ -207,6 +207,13 @@ struct VizContext {
   clEnqueueCommandBufferKHR_fn MclEnqueueCommandBufferKHRFnPtr = nullptr;
   clGetCommandBufferInfoKHR_fn MclGetCommandBufferInfoKHRFnPtr = nullptr;
 
+  // Intel USM
+  clEnqueueMemFillINTEL_fn MclEnqueueMemFillINTELFnPtr = nullptr;
+  clEnqueueMemcpyINTEL_fn MclEnqueueMemcpyINTELFnPtr = nullptr;
+  clEnqueueMemAdviseINTEL_fn MclEnqueueMemAdviseINTELFnPtr = nullptr;
+  clEnqueueMigrateMemINTEL_fn MclEnqueueMigrateMemINTELFnPtr = nullptr;
+  clMemBlockingFreeINTEL_fn MclMemBlockingFreeINTELFnPtr = nullptr;
+
 private:
   /// Extension environment variable set
   bool MExt;

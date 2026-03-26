@@ -1373,6 +1373,177 @@ clEnqueueSVMMigrateMemShim(cl_command_queue command_queue,
   return Ret;
 }
 
+cl_int clMemBlockingFreeINTELShim(cl_context context, void *ptr) {
+  auto &Context = viz::getVizContext();
+  assert(Context.MclMemBlockingFreeINTELFnPtr);
+  auto &FreeFunction = Context.MclMemBlockingFreeINTELFnPtr;
+
+  cl_int Ret = FreeFunction(context, ptr);
+  if (Ret == CL_SUCCESS) {
+    // https://github.com/EwanC/CLVizulayer/issues/4
+    VIZ_ERR("Error tracking clMemBlockingFreeINTEL blocking behavior not yet "
+            "supported");
+  }
+
+  return Ret;
+}
+
+cl_int clEnqueueMemFillINTELShim(cl_command_queue command_queue, void *dst_ptr,
+                                 const void *pattern, size_t pattern_size,
+                                 size_t size, cl_uint num_events_in_wait_list,
+                                 const cl_event *event_wait_list,
+                                 cl_event *event) {
+  auto &Context = viz::getVizContext();
+  assert(Context.MclEnqueueMemFillINTELFnPtr);
+  auto &FillFunction = Context.MclEnqueueMemFillINTELFnPtr;
+  cl_int Ret = FillFunction(command_queue, dst_ptr, pattern, pattern_size, size,
+                            num_events_in_wait_list, event_wait_list, event);
+  if (Ret == CL_SUCCESS) {
+    auto &Context = viz::getVizContext();
+    std::function<void(std::ofstream &)> VerbosePrint{};
+    try {
+      if (Context.verbose()) {
+        VerbosePrint = [=](std::ofstream &Stream) {
+          Stream << "\\n";
+          Stream << "\ndst_ptr = " << std::hex << dst_ptr;
+          Stream << "\\n";
+          Stream << "\npattern = " << pattern << std::dec;
+          Stream << "\\n";
+          Stream << "\npattern_size = " << pattern_size;
+          Stream << "\\n";
+          Stream << "\nsize = " << size;
+        };
+      }
+
+      Context.createVizNode(
+          command_queue, "clEnqueueMemFillINTEL", VerbosePrint,
+          std::span(event_wait_list, num_events_in_wait_list), event);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Intel USM fill node: {}", E.what());
+    }
+  }
+
+  return Ret;
+}
+
+cl_int clEnqueueMemcpyINTELShim(cl_command_queue command_queue,
+                                cl_bool blocking, void *dst_ptr,
+                                const void *src_ptr, size_t size,
+                                cl_uint num_events_in_wait_list,
+                                const cl_event *event_wait_list,
+                                cl_event *event) {
+  auto &Context = viz::getVizContext();
+  assert(Context.MclEnqueueMemcpyINTELFnPtr);
+  auto &MemcpyFunction = Context.MclEnqueueMemcpyINTELFnPtr;
+  cl_int Ret = MemcpyFunction(command_queue, blocking, dst_ptr, src_ptr, size,
+                              num_events_in_wait_list, event_wait_list, event);
+
+  if (Ret == CL_SUCCESS) {
+    auto &Context = viz::getVizContext();
+    std::function<void(std::ofstream &)> VerbosePrint{};
+    try {
+      if (Context.verbose()) {
+        VerbosePrint = [=](std::ofstream &Stream) {
+          Stream << "\\n";
+          Stream << "\nblocking = " << (blocking ? "True" : "False");
+          Stream << "\\n";
+          Stream << "\ndst_ptr = " << std::hex << dst_ptr;
+          Stream << "\\n";
+          Stream << "\nsrc_ptr = " << src_ptr << std::dec;
+          Stream << "\\n";
+          Stream << "\nsize = " << size;
+        };
+      }
+
+      Context.createVizNode(command_queue, "clEnqueueMemcpyINTEL", VerbosePrint,
+                            std::span(event_wait_list, num_events_in_wait_list),
+                            event);
+      if (blocking) {
+        Context.flushQueue(command_queue, "clEnqueueMemcpyINTEL()", true);
+      }
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Intel USM memcpy node: {}", E.what());
+    }
+  }
+
+  return Ret;
+}
+
+cl_int clEnqueueMigrateMemINTELShim(cl_command_queue command_queue,
+                                    const void *ptr, size_t size,
+                                    cl_mem_migration_flags flags,
+                                    cl_uint num_events_in_wait_list,
+                                    const cl_event *event_wait_list,
+                                    cl_event *event) {
+  auto &Context = viz::getVizContext();
+  assert(Context.MclEnqueueMigrateMemINTELFnPtr);
+  auto &MigrateFunction = Context.MclEnqueueMigrateMemINTELFnPtr;
+  cl_int Ret = MigrateFunction(command_queue, ptr, size, flags,
+                               num_events_in_wait_list, event_wait_list, event);
+  if (Ret == CL_SUCCESS) {
+    auto &Context = viz::getVizContext();
+    std::function<void(std::ofstream &)> VerbosePrint{};
+    try {
+      if (Context.verbose()) {
+        VerbosePrint = [=](std::ofstream &Stream) {
+          Stream << "\\n";
+          Stream << "\nptr = " << std::hex << ptr;
+          Stream << "\\n";
+          Stream << "\nflags = " << flags << std::dec;
+          Stream << "\\n";
+          Stream << "\nsize = " << size;
+          Stream << "\\n";
+        };
+      }
+      Context.createVizNode(
+          command_queue, "clEnqueueMemMigrateINTEL", VerbosePrint,
+          std::span(event_wait_list, num_events_in_wait_list), event);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Intel USM migrate node: {}", E.what());
+    }
+  }
+
+  return Ret;
+}
+
+cl_int clEnqueueMemAdviseINTELShim(cl_command_queue command_queue,
+                                   const void *ptr, size_t size,
+                                   cl_mem_advice_intel advice,
+                                   cl_uint num_events_in_wait_list,
+                                   const cl_event *event_wait_list,
+                                   cl_event *event) {
+  auto &Context = viz::getVizContext();
+  assert(Context.MclEnqueueMemAdviseINTELFnPtr);
+  auto &AdviseFunction = Context.MclEnqueueMemAdviseINTELFnPtr;
+  cl_int Ret = AdviseFunction(command_queue, ptr, size, advice,
+                              num_events_in_wait_list, event_wait_list, event);
+
+  if (Ret == CL_SUCCESS) {
+    auto &Context = viz::getVizContext();
+    std::function<void(std::ofstream &)> VerbosePrint{};
+    try {
+      if (Context.verbose()) {
+        VerbosePrint = [=](std::ofstream &Stream) {
+          Stream << "\\n";
+          Stream << "\nptr = " << std::hex << ptr << std::dec;
+          Stream << "\\n";
+          Stream << "\nsize = " << size;
+          Stream << "\\n";
+          Stream << "\nadvice = " << std::hex << advice << std::dec;
+          Stream << "\\n";
+        };
+      }
+      Context.createVizNode(
+          command_queue, "clEnqueueMemAdviseINTEL", VerbosePrint,
+          std::span(event_wait_list, num_events_in_wait_list), event);
+    } catch (std::exception &E) {
+      VIZ_ERR("Error creating Intel USM Advise node: {}", E.what());
+    }
+  }
+
+  return Ret;
+}
+
 cl_int clWaitForEventsShim(cl_uint num_events, const cl_event *event_list) {
   cl_int Ret = TargetDispatch->clWaitForEvents(num_events, event_list);
   auto &Context = viz::getVizContext();
@@ -1895,7 +2066,6 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
   }
 #undef GET_EXTENSION_FUNCTION
 
-#if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
 #define GET_SHIM(FUNC)                                                         \
   if (0 == strcmp(funcname, #FUNC)) {                                          \
     if (!Context.M##FUNC##FnPtr) {                                             \
@@ -1903,6 +2073,14 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     }                                                                          \
     return (void *)FUNC##Shim;                                                 \
   }
+
+  GET_SHIM(clEnqueueMemFillINTEL);
+  GET_SHIM(clEnqueueMemcpyINTEL);
+  GET_SHIM(clEnqueueMemAdviseINTEL);
+  GET_SHIM(clEnqueueMigrateMemINTEL);
+  GET_SHIM(clMemBlockingFreeINTEL);
+
+#if CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION >= CL_MAKE_VERSION(0, 9, 8)
   // Make sure we have the command-buffer info query function pointer, that
   // we use in the command-buffer release and enqueue shim implementation.
   if (!Context.MclGetCommandBufferInfoKHRFnPtr) {
@@ -1925,9 +2103,9 @@ void *clGetExtensionFunctionAddressForPlatformShim(cl_platform_id platform,
     GET_SHIM(clCommandNDRangeKernelKHR);
     GET_SHIM(clReleaseCommandBufferKHR);
   }
-#undef GET_SHIM
 
 #endif // CL_KHR_COMMAND_BUFFER_EXTENSION_VERSION
+#undef GET_SHIM
 
   const char *EnqueuePrefix = "clEnqueue";
   if (0 == strncmp(funcname, EnqueuePrefix, strlen(EnqueuePrefix))) {
