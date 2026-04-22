@@ -1,9 +1,9 @@
 // Copyright (c) 2025-2026 Ewan Crawford
-= cl_ext_dot_print
+= cl_ext_dot_graph
 
 == Name Strings
 
-`cl_ext_dot_print`
+`cl_ext_dot_graph`
 
 == Contact
 
@@ -197,4 +197,5 @@ successfully. Otherwise, it returns one of the following errors:
 | Version | Date       | Author        | Changes
 | 0.1.0   | 2025-07-17 | Ewan Crawford | *Initial revision*
 | 0.2.0   | 2025-11-14 | Ewan Crawford | *Add verbose and color flags*
+| 0.3.0   | 2026-04-22 | Ewan Crawford | *Rename to cl_ext_dot_graph*
 |====

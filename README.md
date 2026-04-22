@@ -127,11 +127,11 @@ project (see [doc directory](doc)) will be reported and the layer will not
 trace the full application DAG, and instead rely on the user utilizing the
 more explicit DOT graph printing extension APIs inside their application.
 
-### cl_ext_dot_print
+### cl_ext_dot_graph
 
 Tracing the device commands at the application level can be too noisy for
 non-trivial applications. To give users finer grained control over what
-is captured in the DOT graph the [cl_ext_dot_print](doc/cl_ext_dot_print.asciidoc)
+is captured in the DOT graph the [cl_ext_dot_graph](doc/cl_ext_dot_graph.asciidoc)
 extension has been defined. This allows users to modify their application to
 mark what queues they want to capture and for what commands.
 

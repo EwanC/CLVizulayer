@@ -29,9 +29,9 @@ int main() {
     return 0;
   }
 
-  const char *CBDotGraphExtName = "cl_ext_command_buffer_dot_graph";
+  const char *CBDotGraphExtName = "cl_ext_command_buffer_dot_print";
   if (PlatformExtString.find(CBDotGraphExtName) == std::string::npos) {
-    throw std::runtime_error("Could not find cl_ext_command_buffer_dot_graph "
+    throw std::runtime_error("Could not find cl_ext_command_buffer_dot_print "
                              "in CL_PLATFORM_EXTENSIONS");
   }
 
@@ -49,9 +49,9 @@ int main() {
   bool Found = false;
   for (const auto &Ext : PlatformExtWithVer) {
     if (strcmp(Ext.name, CBDotGraphExtName) == 0) {
-      if (Ext.version != CL_MAKE_VERSION(0, 1, 0)) {
+      if (Ext.version != CL_MAKE_VERSION(0, 2, 0)) {
         throw std::runtime_error(
-            "Expected cl_ext_command_buffer_dot_graph version 0.1.0");
+            "Expected cl_ext_command_buffer_dot_graph version 0.2.0");
       }
 
       Found = true;

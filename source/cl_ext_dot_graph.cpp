@@ -1,7 +1,7 @@
 // Copyright (c) 2025-2026 Ewan Crawford
 
 #define CL_ENABLE_BETA_EXTENSIONS
-#include "cl_ext_dot_print.h"
+#include "cl_ext_dot_graph.h"
 
 #include <atomic>
 #include <span>

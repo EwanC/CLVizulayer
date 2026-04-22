@@ -40,8 +40,8 @@ int main() {
   bool Found = false;
   for (const auto &Ext : DeviceExtWithVer) {
     if (strcmp(Ext.name, "cl_ext_dot_graph") == 0) {
-      if (Ext.version != CL_MAKE_VERSION(0, 1, 0)) {
-        throw std::runtime_error("Expected cl_ext_dot_graph version 0.1.0");
+      if (Ext.version != CL_MAKE_VERSION(0, 3, 0)) {
+        throw std::runtime_error("Expected cl_ext_dot_graph version 0.3.0");
       }
 
       Found = true;

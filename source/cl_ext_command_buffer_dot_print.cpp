@@ -3,7 +3,6 @@
 #define CL_ENABLE_BETA_EXTENSIONS
 
 #include "cl_ext_command_buffer_dot_print.h"
-#include "cl_ext_dot_print.h"
 
 #include "logger.h"
 #include "viz_context.h"

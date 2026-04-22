@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "cl_ext_command_buffer_dot_print.h"
-#include "cl_ext_dot_print.h"
+#include "cl_ext_dot_graph.h"
 
 #define CHECK(Ret)                                                             \
   if (Ret != CL_SUCCESS) {                                                     \

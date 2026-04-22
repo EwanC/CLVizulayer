@@ -10,7 +10,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "clFinish()";
 // CHECK-NEXT: node_0[label="clEnqueueMemFillINTEL
 // CHECK-NEXT: dst_ptr = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: pattern = 0x{{[0-9a-fA-F]+}}
@@ -30,6 +30,8 @@ int main() {
       State.OutOfOrderQueue, State.SVMA, &Pattern, sizeof(Pattern),
       State.AllocSize, 0, nullptr, nullptr);
   CHECK(Ret);
+
+  CHECK(clFinish(State.OutOfOrderQueue));
 
   return 0;
 }

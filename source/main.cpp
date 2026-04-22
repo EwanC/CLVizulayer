@@ -3,7 +3,7 @@
 #define CL_ENABLE_BETA_EXTENSIONS
 
 #include "cl_ext_command_buffer_dot_print.h"
-#include "cl_ext_dot_print.h"
+#include "cl_ext_dot_graph.h"
 #include "io.h"
 #include "logger.h"
 #include "viz_context.h"
@@ -2126,8 +2126,8 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
     if (ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
         std::string::npos) {
       ExtensionStr += (ExtensionStr.back() == ' ')
-                          ? "cl_ext_command_buffer_dot_graph "
-                          : " cl_ext_command_buffer_dot_graph";
+                          ? "cl_ext_command_buffer_dot_print "
+                          : " cl_ext_command_buffer_dot_print";
     }
 
     ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
@@ -2162,9 +2162,9 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
 
         // Set name
         memset(CBDotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_graph");
+        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_print");
         // Set version
-        CBDotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+        CBDotGraphExt.version = CL_MAKE_VERSION(0, 2, 0);
         DeviceExtensions.push_back(CBDotGraphExt);
 
         break;
@@ -2176,7 +2176,7 @@ cl_int clGetDeviceInfoShim(cl_device_id device, cl_device_info param_name,
     memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
     strcpy(DotGraphExt.name, "cl_ext_dot_graph");
     // Set version
-    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+    DotGraphExt.version = CL_MAKE_VERSION(0, 3, 0);
     DeviceExtensions.push_back(DotGraphExt);
 
     // Copy back to user
@@ -2223,8 +2223,8 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
     if (ExtensionStr.find(CL_KHR_COMMAND_BUFFER_EXTENSION_NAME) !=
         std::string::npos) {
       ExtensionStr += (ExtensionStr.back() == ' ')
-                          ? "cl_ext_command_buffer_dot_graph "
-                          : " cl_ext_command_buffer_dot_graph";
+                          ? "cl_ext_command_buffer_dot_print "
+                          : " cl_ext_command_buffer_dot_print";
     }
 
     ExtensionStr += (ExtensionStr.back() == ' ') ? "cl_ext_dot_graph "
@@ -2260,9 +2260,9 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
 
         // Set name
         memset(CBDotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
-        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_graph");
+        strcpy(CBDotGraphExt.name, "cl_ext_command_buffer_dot_print");
         // Set version
-        CBDotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+        CBDotGraphExt.version = CL_MAKE_VERSION(0, 2, 0);
         PlatformExtensions.push_back(CBDotGraphExt);
 
         break;
@@ -2274,7 +2274,7 @@ cl_int clGetPlatformInfoShim(cl_platform_id platform,
     memset(DotGraphExt.name, 0, CL_NAME_VERSION_MAX_NAME_SIZE);
     strcpy(DotGraphExt.name, "cl_ext_dot_graph");
     // Set version
-    DotGraphExt.version = CL_MAKE_VERSION(0, 1, 0);
+    DotGraphExt.version = CL_MAKE_VERSION(0, 3, 0);
     PlatformExtensions.push_back(DotGraphExt);
 
     // Copy back to user

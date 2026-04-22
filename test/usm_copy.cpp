@@ -16,7 +16,7 @@
 // CHECK-NEXT: }
 // CHECK-NEXT: node_0 -> node_1
 // CHECK-NEXT: subgraph cluster_1 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "Viz instance teardown";
 // CHECK-NEXT: node_2[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: }
 // CHECK-NEXT: node_1 -> node_2
