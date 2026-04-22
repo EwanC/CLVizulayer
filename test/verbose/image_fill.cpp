@@ -10,7 +10,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "clFinish()";
 // CHECK-NEXT: node_0[label="clEnqueueFillImage
 // CHECK-NEXT: cl_mem = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: origin = {1, 1, 0}
@@ -30,6 +30,9 @@ int main() {
   size_t Region[3] = {2, 2, 1};
   cl_int Ret = clEnqueueFillImage(State.OutOfOrderQueue, State.ImageA, &Color,
                                   Origin, Region, 0, nullptr, nullptr);
+  CHECK(Ret);
+
+  Ret = clFinish(State.OutOfOrderQueue);
   CHECK(Ret);
 
   return 0;

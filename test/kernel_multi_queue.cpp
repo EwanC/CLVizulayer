@@ -17,18 +17,12 @@
 // CHECK-NEXT: node_1 -> node_2
 // CHECK-NEXT: node_0 -> node_2
 // CHECK-NEXT: subgraph cluster_1 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "Viz instance teardown";
+// CHECK-NEXT: node_3[label="clEnqueueTask"];
 // CHECK-NEXT: node_4[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: }
 // CHECK-NEXT: node_2 -> node_4
-// CHECK-NEXT: node_0 -> node_4 [label="blocking host wait"
-// CHECK-SAME: ltail=cluster_0 lhead=cluster_1];
-// CHECK-NEXT: subgraph cluster_2 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
-// CHECK-NEXT: node_3[label="clEnqueueTask"];
-// CHECK-NEXT: }
-// CHECK-NEXT: node_4 -> node_3 [label="blocking host wait"
-// CHECK-SAME: ltail=cluster_1 lhead=cluster_2];
+// CHECK-NEXT: node_0 -> node_3 [label="blocking host wait"
 // CHECK-EMPTY:
 // CHECK-NEXT: }
 

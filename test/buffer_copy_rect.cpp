@@ -8,7 +8,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "Viz instance teardown";
 // CHECK-NEXT: node_0[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_1[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: node_2[label="clEnqueueCopyBufferRect"];

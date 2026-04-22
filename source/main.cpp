@@ -320,17 +320,6 @@ cl_int clFinishShim(cl_command_queue command_queue) {
   return Ret;
 }
 
-cl_int clReleaseCommandQueueShim(cl_command_queue command_queue) {
-  cl_int Ret = TargetDispatch->clReleaseCommandQueue(command_queue);
-  auto &Context = viz::getVizContext();
-  try {
-    Context.flushQueue(command_queue, "clReleaseCommandQueue()", false);
-  } catch (std::exception &E) {
-    VIZ_ERR("Error flushing VizQueue: {}", E.what());
-  }
-  return Ret;
-}
-
 cl_int clEnqueueBarrierShim(cl_command_queue command_queue) {
   cl_int Ret = TargetDispatch->clEnqueueBarrier(command_queue);
   if (Ret == CL_SUCCESS) {
@@ -2320,7 +2309,6 @@ static void _init_dispatch() {
   ShimDispatch.clCreateCommandQueue = &clCreateCommandQueueShim;
   ShimDispatch.clCreateCommandQueueWithProperties =
       &clCreateCommandQueueWithPropertiesShim;
-  ShimDispatch.clReleaseCommandQueue = &clReleaseCommandQueueShim;
   ShimDispatch.clFinish = &clFinishShim;
 
   // event entry-points

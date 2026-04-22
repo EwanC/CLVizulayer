@@ -18,7 +18,7 @@
 // CHECK-NEXT: node_0 -> node_1 [label="blocking host wait"
 // CHECK-SAME: ltail=cluster_0 lhead=cluster_1];
 // CHECK-NEXT: subgraph cluster_2 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "Viz instance teardown";
 // CHECK-NEXT: node_2[label="clEnqueueNDRangeKernel"];
 // CHECK-NEXT: }
 // CHECK-NEXT: node_1 -> node_2 [label="blocking host wait"

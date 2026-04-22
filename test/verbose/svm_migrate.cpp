@@ -10,7 +10,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "clFinish()";
 // CHECK-NEXT: node_0[label="clEnqueueSVMMigrateMem
 // CHECK-NEXT: svm_ptr = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: size = 32
@@ -31,6 +31,9 @@ int main() {
   cl_int Ret =
       clEnqueueSVMMigrateMem(State.OutOfOrderQueue, 2, SVMPtrs, Sizes,
                              CL_MIGRATE_MEM_OBJECT_HOST, 0, nullptr, nullptr);
+  CHECK(Ret);
+
+  Ret = clFinish(State.OutOfOrderQueue);
   CHECK(Ret);
 
   return 0;

@@ -10,7 +10,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "clFinish()";
 // CHECK-NEXT: node_0[label="clEnqueueCopyImage
 // CHECK-NEXT: src_image = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: dst_image = 0x{{[0-9a-fA-F]+}}
@@ -32,5 +32,9 @@ int main() {
       clEnqueueCopyImage(State.OutOfOrderQueue, State.ImageA, State.ImageB,
                          Origin, Origin, Region, 0, nullptr, nullptr);
   CHECK(Ret);
+
+  Ret = clFinish(State.OutOfOrderQueue);
+  CHECK(Ret);
+
   return 0;
 }

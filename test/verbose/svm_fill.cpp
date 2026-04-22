@@ -10,7 +10,7 @@
 // CHECK-NEXT: compound=true
 // CHECK-NEXT: node [style=bold]
 // CHECK-NEXT: subgraph cluster_0 {
-// CHECK-NEXT: label = "clReleaseCommandQueue()";
+// CHECK-NEXT: label = "clFinish()";
 // CHECK-NEXT: node_0[label="clEnqueueSVMMemFill
 // CHECK-NEXT: svm_ptr = 0x{{[0-9a-fA-F]+}}
 // CHECK-NEXT: pattern = 0x{{[0-9a-fA-F]+}}
@@ -29,6 +29,9 @@ int main() {
   cl_int Ret = clEnqueueSVMMemFill(State.OutOfOrderQueue, State.SVMA, &Pattern,
                                    sizeof(Pattern), State.AllocSize, 0, nullptr,
                                    nullptr);
+  CHECK(Ret);
+
+  Ret = clFinish(State.OutOfOrderQueue);
   CHECK(Ret);
 
   return 0;

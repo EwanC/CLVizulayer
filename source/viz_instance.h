@@ -111,8 +111,7 @@ struct VizInstance {
   /// @param[in] CQ Command-queue being flushed
   /// @param[in] Label Name of OpenCL entry-point that caused flush
   /// @param[in] IsBlockingCommand True if flush comes a user submitting a
-  /// blocking device command, false if call came from clReleaseCommandQueue()
-  /// or clFinish().
+  /// blocking device command, false if call came from clFinish().
   void flushQueue(cl_command_queue CQ, const char *Label,
                   bool IsBlockingCommand);
 

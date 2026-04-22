@@ -1,5 +1,7 @@
 // Copyright (c) 2025-2026 Ewan Crawford
 
+// REQUIRES: command-buffer
+
 // RUN: %build -DVIZ_TEST_FILE_NAME=\"%T/%basename_t.dot\" -o %t
 // RUN: VIZ_EXT=1 %t
 

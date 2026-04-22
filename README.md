@@ -153,6 +153,10 @@ For variables marked Bool, `0` is OFF and a non-zero value is ON.
 | `VIZ_VERBOSE`  | Enable verbose output. (Bool)                       | `0`     |
 | `VIZ_EXT`      | Enable [extension behavior](#extensions). (Bool)    | `0`     |
 
+Note that the verbose implementation relies on using `clFooGetInfo` queries on
+OpenCL objects, so verbose printing done at the time of application teardown may
+not produce correct values as OpenCL objects may no longer be valid. Instead prefer
+to make a blocking call for in-flight commands to finish before the application exits.
 
 ## Tests
 

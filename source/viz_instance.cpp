@@ -251,7 +251,7 @@ void VizInstance::flushQueue(cl_command_queue CQ, const char *Label,
 
   std::stack<VizNode *> NodeStack;
   if (!IsBlockingCommand) {
-    // From clReleaseCommandQueue() or clFinish() - find all leaves
+    // From clFinish() - find all leaves
     auto &Leaves = VQ->MLeaves;
     for (auto &Leaf : Leaves) {
       NodeStack.push(Leaf);
