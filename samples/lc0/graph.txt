@@ -1,0 +1,2994 @@
+┌−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−┐
+╎        cl_command_buffer_khr         ╎
+╎                                      ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c96d81c8    ┃ ╎
+╎ ┃    name = global_avg_pooling     ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e56078    ┃ ╎
+╎ ┃         name = apply_se          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c98033c8    ┃ ╎
+╎ ┃       name = in_transform        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9f35bf8    ┃ ╎
+╎ ┃ name = out_transform_fused_bn_in ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97bd808    ┃ ╎
+╎ ┃       name = XgemmBatched        ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c97f80b8    ┃ ╎
+╎ ┃  name = out_transform_fused_bn   ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c996a708    ┃ ╎
+╎ ┃         name = policymap         ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e494d8    ┃ ╎
+╎ ┃         name = convolve1         ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9804758    ┃ ╎
+╎ ┃         name = merge_bn          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9e494d8    ┃ ╎
+╎ ┃         name = convolve1         ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9804758    ┃ ╎
+╎ ┃         name = merge_bn          ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎   │                                  ╎
+╎   │                                  ╎
+╎   ▼                                  ╎
+╎ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ╎
+╎ ┃    clCommandNDRangeKernelKHR     ┃ ╎
+╎ ┃    cl_kernel = 0x5982c9756828    ┃ ╎
+╎ ┃           name = Xgemv           ┃ ╎
+╎ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ ╎
+╎                                      ╎
+└−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−┘

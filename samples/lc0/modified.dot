@@ -1,0 +1,809 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "clFinish()";
+node_0[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 28672\n
+ptr = 0x63b7d8fea750"];
+node_1[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 7432\n
+mapped_ptr = 0x72e287fa2000"];
+node_2[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 512\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_3[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 512\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_0 -> node_1
+node_1 -> node_2
+node_2 -> node_3
+subgraph cluster_1 {
+label = "clFinish()";
+node_4[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_5[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_6[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_7[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 57344\n
+ptr = 0x63b7d901aa70"];
+node_8[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 14864\n
+mapped_ptr = 0x72e287fa2000"];
+node_9[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 1024\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_10[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 1024\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_3 -> node_4
+node_4 -> node_5
+node_5 -> node_6
+node_6 -> node_7
+node_7 -> node_8
+node_8 -> node_9
+node_9 -> node_10
+node_0 -> node_4 [label="blocking host wait" ltail=cluster_0 lhead=cluster_1];
+subgraph cluster_2 {
+label = "clFinish()";
+node_11[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_12[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_13[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_14[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 86016\n
+ptr = 0x63b7d8ab18d0"];
+node_15[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 22296\n
+mapped_ptr = 0x72e287fa2000"];
+node_16[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 1536\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_17[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 1536\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_10 -> node_11
+node_11 -> node_12
+node_12 -> node_13
+node_13 -> node_14
+node_14 -> node_15
+node_15 -> node_16
+node_16 -> node_17
+node_4 -> node_11 [label="blocking host wait" ltail=cluster_1 lhead=cluster_2];
+subgraph cluster_3 {
+label = "clFinish()";
+node_18[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_19[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_20[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_21[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 114688\n
+ptr = 0x63b7d9c24e70"];
+node_22[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 29728\n
+mapped_ptr = 0x72e287fa2000"];
+node_23[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 2048\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_24[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 2048\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_17 -> node_18
+node_18 -> node_19
+node_19 -> node_20
+node_20 -> node_21
+node_21 -> node_22
+node_22 -> node_23
+node_23 -> node_24
+node_11 -> node_18 [label="blocking host wait" ltail=cluster_2 lhead=cluster_3];
+subgraph cluster_4 {
+label = "clFinish()";
+node_25[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_26[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_27[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_28[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 143360\n
+ptr = 0x63b7d9d45460"];
+node_29[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 37160\n
+mapped_ptr = 0x72e287fa2000"];
+node_30[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 2560\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_31[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 2560\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_24 -> node_25
+node_25 -> node_26
+node_26 -> node_27
+node_27 -> node_28
+node_28 -> node_29
+node_29 -> node_30
+node_30 -> node_31
+node_18 -> node_25 [label="blocking host wait" ltail=cluster_3 lhead=cluster_4];
+subgraph cluster_5 {
+label = "clFinish()";
+node_32[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_33[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_34[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_35[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 172032\n
+ptr = 0x63b7da5e2440"];
+node_36[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 44592\n
+mapped_ptr = 0x72e287fa2000"];
+node_37[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 3072\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_38[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 3072\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_31 -> node_32
+node_32 -> node_33
+node_33 -> node_34
+node_34 -> node_35
+node_35 -> node_36
+node_36 -> node_37
+node_37 -> node_38
+node_25 -> node_32 [label="blocking host wait" ltail=cluster_4 lhead=cluster_5];
+subgraph cluster_6 {
+label = "clFinish()";
+node_39[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_40[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_41[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_42[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 200704\n
+ptr = 0x63b7da702800"];
+node_43[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 52024\n
+mapped_ptr = 0x72e287fa2000"];
+node_44[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 3584\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_45[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 3584\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_38 -> node_39
+node_39 -> node_40
+node_40 -> node_41
+node_41 -> node_42
+node_42 -> node_43
+node_43 -> node_44
+node_44 -> node_45
+node_32 -> node_39 [label="blocking host wait" ltail=cluster_5 lhead=cluster_6];
+subgraph cluster_7 {
+label = "clFinish()";
+node_46[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_47[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_48[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_49[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 229376\n
+ptr = 0x63b7da822c80"];
+node_50[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 59456\n
+mapped_ptr = 0x72e287fa2000"];
+node_51[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 4096\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_52[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 4096\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_45 -> node_46
+node_46 -> node_47
+node_47 -> node_48
+node_48 -> node_49
+node_49 -> node_50
+node_50 -> node_51
+node_51 -> node_52
+node_39 -> node_46 [label="blocking host wait" ltail=cluster_6 lhead=cluster_7];
+subgraph cluster_8 {
+label = "clFinish()";
+node_53[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_54[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_55[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_56[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 258048\n
+ptr = 0x63b7da9433d0"];
+node_57[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 66888\n
+mapped_ptr = 0x72e287fa2000"];
+node_58[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 4608\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_59[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 4608\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_52 -> node_53
+node_53 -> node_54
+node_54 -> node_55
+node_55 -> node_56
+node_56 -> node_57
+node_57 -> node_58
+node_58 -> node_59
+node_46 -> node_53 [label="blocking host wait" ltail=cluster_7 lhead=cluster_8];
+subgraph cluster_9 {
+label = "clFinish()";
+node_60[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_61[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_62[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_63[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 286720\n
+ptr = 0x63b7daa63b50"];
+node_64[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 74320\n
+mapped_ptr = 0x72e287fa2000"];
+node_65[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 5120\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_66[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 5120\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_59 -> node_60
+node_60 -> node_61
+node_61 -> node_62
+node_62 -> node_63
+node_63 -> node_64
+node_64 -> node_65
+node_65 -> node_66
+node_53 -> node_60 [label="blocking host wait" ltail=cluster_8 lhead=cluster_9];
+subgraph cluster_10 {
+label = "clFinish()";
+node_67[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_68[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_69[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_70[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 315392\n
+ptr = 0x63b7dab84090"];
+node_71[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 81752\n
+mapped_ptr = 0x72e287fa2000"];
+node_72[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 5632\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_73[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 5632\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_66 -> node_67
+node_67 -> node_68
+node_68 -> node_69
+node_69 -> node_70
+node_70 -> node_71
+node_71 -> node_72
+node_72 -> node_73
+node_60 -> node_67 [label="blocking host wait" ltail=cluster_9 lhead=cluster_10];
+subgraph cluster_11 {
+label = "clFinish()";
+node_74[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_75[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_76[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_77[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 344064\n
+ptr = 0x63b7daca49e0"];
+node_78[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 89184\n
+mapped_ptr = 0x72e287fa2000"];
+node_79[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 6144\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_80[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 6144\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_73 -> node_74
+node_74 -> node_75
+node_75 -> node_76
+node_76 -> node_77
+node_77 -> node_78
+node_78 -> node_79
+node_79 -> node_80
+node_67 -> node_74 [label="blocking host wait" ltail=cluster_10 lhead=cluster_11];
+subgraph cluster_12 {
+label = "clFinish()";
+node_81[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_82[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_83[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_84[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 372736\n
+ptr = 0x63b7dadc54e0"];
+node_85[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 96616\n
+mapped_ptr = 0x72e287fa2000"];
+node_86[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 6656\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_87[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 6656\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_80 -> node_81
+node_81 -> node_82
+node_82 -> node_83
+node_83 -> node_84
+node_84 -> node_85
+node_85 -> node_86
+node_86 -> node_87
+node_74 -> node_81 [label="blocking host wait" ltail=cluster_11 lhead=cluster_12];
+subgraph cluster_13 {
+label = "clFinish()";
+node_88[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_89[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_90[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_91[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 401408\n
+ptr = 0x63b7daee6310"];
+node_92[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 104048\n
+mapped_ptr = 0x72e287fa2000"];
+node_93[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 7168\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_94[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 7168\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_87 -> node_88
+node_88 -> node_89
+node_89 -> node_90
+node_90 -> node_91
+node_91 -> node_92
+node_92 -> node_93
+node_93 -> node_94
+node_81 -> node_88 [label="blocking host wait" ltail=cluster_12 lhead=cluster_13];
+subgraph cluster_14 {
+label = "clFinish()";
+node_95[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_96[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_97[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_98[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 430080\n
+ptr = 0x63b7db006ea0"];
+node_99[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 111480\n
+mapped_ptr = 0x72e287fa2000"];
+node_100[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 7680\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_101[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 7680\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_94 -> node_95
+node_95 -> node_96
+node_96 -> node_97
+node_97 -> node_98
+node_98 -> node_99
+node_99 -> node_100
+node_100 -> node_101
+node_88 -> node_95 [label="blocking host wait" ltail=cluster_13 lhead=cluster_14];
+subgraph cluster_15 {
+label = "clFinish()";
+node_102[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_103[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_104[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_105[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 458752\n
+ptr = 0x63b7db127480"];
+node_106[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 118912\n
+mapped_ptr = 0x72e287fa2000"];
+node_107[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 8192\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_108[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 8192\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_101 -> node_102
+node_102 -> node_103
+node_103 -> node_104
+node_104 -> node_105
+node_105 -> node_106
+node_106 -> node_107
+node_107 -> node_108
+node_95 -> node_102 [label="blocking host wait" ltail=cluster_14 lhead=cluster_15];
+subgraph cluster_16 {
+label = "clFinish()";
+node_109[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_110[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_111[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+node_112[label="clEnqueueWriteBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbdd38\n
+offset = 0\n
+size = 28672\n
+ptr = 0x72e1c0040f90"];
+node_113[label="clEnqueueCommandBufferKHR\n
+cl_command_buffer_khr = 0x63b7d6c3fc08"];
+node_114[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbf6d8\n
+map_flags = 1\n
+offset = 0\n
+size = 7432\n
+mapped_ptr = 0x72e287fa2000"];
+node_115[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fbfd48\n
+map_flags = 1\n
+offset = 0\n
+size = 512\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_116[label="clEnqueueMapBuffer\n
+blocking = False\n
+buffer = 0x63b7d8fc03b8\n
+map_flags = 1\n
+offset = 0\n
+size = 512\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_108 -> node_109
+node_109 -> node_110
+node_110 -> node_111
+node_111 -> node_112
+node_112 -> node_113
+node_113 -> node_114
+node_114 -> node_115
+node_115 -> node_116
+node_102 -> node_109 [label="blocking host wait" ltail=cluster_15 lhead=cluster_16];
+subgraph cluster_17 {
+label = "Viz instance teardown";
+node_117[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbf6d8\n
+mapped_ptr = 0x72e287fa2000"];
+node_118[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fbfd48\n
+mapped_ptr = 0x72e2ab5ed000"];
+node_119[label="clEnqueueUnmapMemObject\n
+memobj = 0x63b7d8fc03b8\n
+mapped_ptr = 0x72e2ab5eb000"];
+}
+node_116 -> node_117
+node_117 -> node_118
+node_118 -> node_119
+node_109 -> node_117 [label="blocking host wait" ltail=cluster_16 lhead=cluster_17];
+
+}

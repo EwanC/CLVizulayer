@@ -1,1157 +1,1157 @@
 digraph CLVizulayer {
 compound=true
-node [style=filled]
+node [style=bold]
 subgraph cluster_0 {
 label = "clFinish()";
 node_0[label="clEnqueueWriteBuffer\n
 blocking = False\n
-buffer = 0x71c044007b40\n
+buffer = 0x7c63480146f8\n
 offset = 0\n
 size = 28672\n
-ptr = 0x71c045052080", color="aliceblue"];
+ptr = 0x7c634804aeb0"];
 node_1[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_2[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_3[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_4[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_5[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_6[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_7[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_8[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_9[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_10[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_11[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_12[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_13[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_14[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_15[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_16[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_17[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_18[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_19[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_20[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_21[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_22[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_23[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_24[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_25[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_26[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_27[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_28[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_29[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_30[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_31[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_32[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_33[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_34[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_35[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_36[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_37[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_38[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_39[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_40[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_41[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_42[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_43[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_44[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_45[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_46[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_47[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_48[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_49[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_50[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_51[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_52[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_53[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_54[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_55[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_56[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_57[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_58[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_59[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_60[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_61[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_62[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_63[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_64[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_65[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_66[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_67[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_68[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_69[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_70[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_71[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_72[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_73[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_74[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_75[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_76[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_77[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_78[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_79[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_80[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_81[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_82[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_83[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_84[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_85[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_86[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_87[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_88[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_89[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_90[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_91[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_92[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_93[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_94[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_95[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_96[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_97[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_98[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_99[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_100[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_101[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_102[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_103[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_104[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_105[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_106[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_107[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_108[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_109[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_110[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_111[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_112[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_113[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_114[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_115[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_116[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_117[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_118[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_119[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_120[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_121[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_122[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_123[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_124[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_125[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_126[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_127[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_128[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_129[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_130[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_131[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_132[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_133[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_134[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_135[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_136[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_137[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_138[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_139[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_140[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_141[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_142[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_143[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_144[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_145[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_146[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_147[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_148[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_149[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_150[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_151[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_152[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_153[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_154[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_155[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_156[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_157[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_158[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_159[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_160[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_161[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_162[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_163[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_164[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_165[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_166[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_167[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_168[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_169[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_170[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_171[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_172[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_173[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_174[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_175[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_176[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_177[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_178[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_179[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_180[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_181[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_182[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_183[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_184[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_185[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_186[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_187[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_188[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_189[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_190[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_191[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_192[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_193[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_194[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_195[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_196[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_197[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_198[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_199[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_200[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_201[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_202[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_203[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_204[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_205[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_206[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_207[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_208[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_209[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_210[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_211[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_212[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_213[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_214[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_215[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_216[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_217[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_218[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_219[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_220[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_221[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_222[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_223[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_224[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_225[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_226[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_227[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_228[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_229[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_230[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_231[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_232[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_233[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_234[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_235[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_236[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_237[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_238[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_239[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_240[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_241[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_242[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_243[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_244[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_245[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_246[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_247[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_248[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_249[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_250[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_251[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_252[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_253[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_254[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_255[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_256[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_257[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_258[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_259[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_260[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_261[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_262[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_263[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_264[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_265[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_266[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_267[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_268[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_269[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_270[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_271[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_272[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_273[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_274[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_275[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_276[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_277[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_278[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_279[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_280[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_281[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_282[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_283[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_284[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_285[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_286[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_287[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_288[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_289[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_290[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_291[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_292[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_293[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_294[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_295[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_296[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_297[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_298[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_299[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_300[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_301[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_302[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_303[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_304[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_305[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_306[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_307[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_308[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_309[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_310[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_311[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_312[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_313[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_314[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_315[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_316[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_317[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_318[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_319[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_320[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_321[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_322[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_323[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_324[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_325[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_326[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_327[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_328[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_329[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_330[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_331[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_332[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_333[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_334[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_335[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_336[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_337[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_338[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_339[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_340[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_341[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_342[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_343[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_344[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_345[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_346[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_347[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_348[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_349[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_350[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_351[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_352[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_353[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_354[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_355[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_356[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_357[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_358[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_359[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006810\n
-name = global_avg_pooling", color="aliceblue"];
+cl_kernel = 0x7c6348011538\n
+name = global_avg_pooling"];
 node_360[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_361[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_362[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006990\n
-name = apply_se", color="aliceblue"];
+cl_kernel = 0x7c6348011c08\n
+name = apply_se"];
 node_363[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005f30\n
-name = in_transform", color="aliceblue"];
+cl_kernel = 0x7c6348005928\n
+name = in_transform"];
 node_364[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_365[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006540\n
-name = out_transform_fused_bn_in", color="aliceblue"];
+cl_kernel = 0x7c6348007998\n
+name = out_transform_fused_bn_in"];
 node_366[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006110\n
-name = XgemmBatched", color="aliceblue"];
+cl_kernel = 0x7c6348006308\n
+name = XgemmBatched"];
 node_367[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006320\n
-name = out_transform_fused_bn", color="aliceblue"];
+cl_kernel = 0x7c6348006e68\n
+name = out_transform_fused_bn"];
 node_368[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006b70\n
-name = policymap", color="aliceblue"];
+cl_kernel = 0x7c63480126b8\n
+name = policymap"];
 node_369[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044003bf0\n
-name = convolve1", color="aliceblue"];
+cl_kernel = 0x7c63480043f8\n
+name = convolve1"];
 node_370[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005d70\n
-name = merge_bn", color="aliceblue"];
+cl_kernel = 0x7c6348004f38\n
+name = merge_bn"];
 node_371[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_372[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044003bf0\n
-name = convolve1", color="aliceblue"];
+cl_kernel = 0x7c63480043f8\n
+name = convolve1"];
 node_373[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044005d70\n
-name = merge_bn", color="aliceblue"];
+cl_kernel = 0x7c6348004f38\n
+name = merge_bn"];
 node_374[label="clEnqueueNDRangeKernel\n
-cl_kernel = 0x71c044006da0\n
-name = Xgemv", color="aliceblue"];
+cl_kernel = 0x7c6348013298\n
+name = Xgemv"];
 node_375[label="clEnqueueMapBuffer\n
 blocking = False\n
-buffer = 0x71c0440086c0\n
+buffer = 0x7c63480160b8\n
 map_flags = 1\n
 offset = 0\n
 size = 7432\n
-mapped_ptr = 0x71c045014480", color="aliceblue"];
+mapped_ptr = 0x7c6404a62000"];
 node_376[label="clEnqueueMapBuffer\n
 blocking = False\n
-buffer = 0x71c0440089a0\n
+buffer = 0x7c6348016728\n
 map_flags = 1\n
 offset = 0\n
 size = 512\n
-mapped_ptr = 0x71c045031580", color="aliceblue"];
+mapped_ptr = 0x7c6427ded000"];
 node_377[label="clEnqueueMapBuffer\n
 blocking = False\n
-buffer = 0x71c044008c80\n
+buffer = 0x7c6348016d98\n
 map_flags = 1\n
 offset = 0\n
 size = 512\n
-mapped_ptr = 0x71c045033600", color="aliceblue"];
+mapped_ptr = 0x7c6427deb000"];
 }
 node_0 -> node_1
 node_1 -> node_2
@@ -1531,16 +1531,16 @@ node_374 -> node_375
 node_375 -> node_376
 node_376 -> node_377
 subgraph cluster_1 {
-label = "clReleaseCommandQueue()";
+label = "Viz instance teardown";
 node_378[label="clEnqueueUnmapMemObject\n
-memobj = 0x71c0440086c0\n
-mapped_ptr = 0x71c045014480", color="aliceblue"];
+memobj = 0x7c63480160b8\n
+mapped_ptr = 0x7c6404a62000"];
 node_379[label="clEnqueueUnmapMemObject\n
-memobj = 0x71c0440089a0\n
-mapped_ptr = 0x71c045031580", color="aliceblue"];
+memobj = 0x7c6348016728\n
+mapped_ptr = 0x7c6427ded000"];
 node_380[label="clEnqueueUnmapMemObject\n
-memobj = 0x71c044008c80\n
-mapped_ptr = 0x71c045033600", color="aliceblue"];
+memobj = 0x7c6348016d98\n
+mapped_ptr = 0x7c6427deb000"];
 }
 node_377 -> node_378
 node_378 -> node_379

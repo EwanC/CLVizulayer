@@ -1,0 +1,1503 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "cl_command_buffer_khr";
+node_0[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_1[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_2[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_3[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_4[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_5[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_6[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_7[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_8[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_9[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_10[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_11[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_12[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_13[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_14[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_15[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_16[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_17[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_18[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_19[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_20[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_21[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_22[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_23[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_24[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_25[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_26[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_27[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_28[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_29[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_30[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_31[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_32[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_33[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_34[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_35[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_36[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_37[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_38[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_39[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_40[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_41[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_42[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_43[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_44[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_45[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_46[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_47[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_48[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_49[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_50[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_51[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_52[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_53[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_54[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_55[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_56[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_57[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_58[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_59[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_60[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_61[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_62[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_63[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_64[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_65[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_66[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_67[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_68[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_69[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_70[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_71[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_72[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_73[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_74[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_75[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_76[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_77[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_78[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_79[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_80[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_81[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_82[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_83[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_84[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_85[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_86[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_87[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_88[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_89[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_90[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_91[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_92[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_93[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_94[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_95[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_96[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_97[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_98[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_99[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_100[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_101[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_102[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_103[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_104[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_105[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_106[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_107[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_108[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_109[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_110[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_111[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_112[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_113[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_114[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_115[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_116[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_117[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_118[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_119[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_120[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_121[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_122[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_123[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_124[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_125[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_126[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_127[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_128[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_129[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_130[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_131[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_132[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_133[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_134[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_135[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_136[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_137[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_138[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_139[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_140[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_141[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_142[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_143[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_144[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_145[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_146[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_147[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_148[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_149[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_150[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_151[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_152[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_153[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_154[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_155[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_156[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_157[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_158[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_159[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_160[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_161[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_162[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_163[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_164[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_165[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_166[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_167[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_168[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_169[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_170[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_171[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_172[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_173[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_174[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_175[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_176[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_177[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_178[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_179[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_180[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_181[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_182[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_183[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_184[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_185[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_186[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_187[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_188[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_189[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_190[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_191[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_192[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_193[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_194[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_195[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_196[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_197[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_198[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_199[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_200[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_201[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_202[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_203[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_204[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_205[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_206[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_207[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_208[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_209[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_210[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_211[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_212[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_213[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_214[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_215[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_216[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_217[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_218[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_219[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_220[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_221[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_222[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_223[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_224[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_225[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_226[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_227[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_228[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_229[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_230[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_231[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_232[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_233[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_234[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_235[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_236[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_237[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_238[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_239[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_240[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_241[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_242[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_243[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_244[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_245[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_246[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_247[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_248[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_249[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_250[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_251[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_252[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_253[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_254[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_255[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_256[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_257[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_258[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_259[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_260[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_261[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_262[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_263[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_264[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_265[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_266[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_267[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_268[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_269[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_270[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_271[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_272[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_273[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_274[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_275[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_276[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_277[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_278[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_279[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_280[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_281[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_282[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_283[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_284[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_285[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_286[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_287[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_288[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_289[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_290[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_291[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_292[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_293[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_294[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_295[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_296[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_297[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_298[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_299[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_300[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_301[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_302[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_303[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_304[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_305[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_306[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_307[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_308[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_309[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_310[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_311[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_312[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_313[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_314[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_315[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_316[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_317[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_318[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_319[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_320[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_321[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_322[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_323[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_324[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_325[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_326[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_327[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_328[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_329[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_330[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_331[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_332[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_333[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_334[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_335[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_336[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_337[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_338[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_339[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_340[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_341[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_342[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_343[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_344[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_345[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_346[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_347[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_348[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_349[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_350[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_351[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_352[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_353[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_354[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_355[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_356[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_357[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_358[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c96d81c8\n
+name = global_avg_pooling"];
+node_359[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_360[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_361[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e56078\n
+name = apply_se"];
+node_362[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c98033c8\n
+name = in_transform"];
+node_363[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_364[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9f35bf8\n
+name = out_transform_fused_bn_in"];
+node_365[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97bd808\n
+name = XgemmBatched"];
+node_366[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c97f80b8\n
+name = out_transform_fused_bn"];
+node_367[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c996a708\n
+name = policymap"];
+node_368[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e494d8\n
+name = convolve1"];
+node_369[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9804758\n
+name = merge_bn"];
+node_370[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+node_371[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9e494d8\n
+name = convolve1"];
+node_372[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9804758\n
+name = merge_bn"];
+node_373[label="clCommandNDRangeKernelKHR\n
+cl_kernel = 0x5982c9756828\n
+name = Xgemv"];
+}
+node_0 -> node_1
+node_1 -> node_2
+node_2 -> node_3
+node_3 -> node_4
+node_4 -> node_5
+node_5 -> node_6
+node_6 -> node_7
+node_7 -> node_8
+node_8 -> node_9
+node_9 -> node_10
+node_10 -> node_11
+node_11 -> node_12
+node_12 -> node_13
+node_13 -> node_14
+node_14 -> node_15
+node_15 -> node_16
+node_16 -> node_17
+node_17 -> node_18
+node_18 -> node_19
+node_19 -> node_20
+node_20 -> node_21
+node_21 -> node_22
+node_22 -> node_23
+node_23 -> node_24
+node_24 -> node_25
+node_25 -> node_26
+node_26 -> node_27
+node_27 -> node_28
+node_28 -> node_29
+node_29 -> node_30
+node_30 -> node_31
+node_31 -> node_32
+node_32 -> node_33
+node_33 -> node_34
+node_34 -> node_35
+node_35 -> node_36
+node_36 -> node_37
+node_37 -> node_38
+node_38 -> node_39
+node_39 -> node_40
+node_40 -> node_41
+node_41 -> node_42
+node_42 -> node_43
+node_43 -> node_44
+node_44 -> node_45
+node_45 -> node_46
+node_46 -> node_47
+node_47 -> node_48
+node_48 -> node_49
+node_49 -> node_50
+node_50 -> node_51
+node_51 -> node_52
+node_52 -> node_53
+node_53 -> node_54
+node_54 -> node_55
+node_55 -> node_56
+node_56 -> node_57
+node_57 -> node_58
+node_58 -> node_59
+node_59 -> node_60
+node_60 -> node_61
+node_61 -> node_62
+node_62 -> node_63
+node_63 -> node_64
+node_64 -> node_65
+node_65 -> node_66
+node_66 -> node_67
+node_67 -> node_68
+node_68 -> node_69
+node_69 -> node_70
+node_70 -> node_71
+node_71 -> node_72
+node_72 -> node_73
+node_73 -> node_74
+node_74 -> node_75
+node_75 -> node_76
+node_76 -> node_77
+node_77 -> node_78
+node_78 -> node_79
+node_79 -> node_80
+node_80 -> node_81
+node_81 -> node_82
+node_82 -> node_83
+node_83 -> node_84
+node_84 -> node_85
+node_85 -> node_86
+node_86 -> node_87
+node_87 -> node_88
+node_88 -> node_89
+node_89 -> node_90
+node_90 -> node_91
+node_91 -> node_92
+node_92 -> node_93
+node_93 -> node_94
+node_94 -> node_95
+node_95 -> node_96
+node_96 -> node_97
+node_97 -> node_98
+node_98 -> node_99
+node_99 -> node_100
+node_100 -> node_101
+node_101 -> node_102
+node_102 -> node_103
+node_103 -> node_104
+node_104 -> node_105
+node_105 -> node_106
+node_106 -> node_107
+node_107 -> node_108
+node_108 -> node_109
+node_109 -> node_110
+node_110 -> node_111
+node_111 -> node_112
+node_112 -> node_113
+node_113 -> node_114
+node_114 -> node_115
+node_115 -> node_116
+node_116 -> node_117
+node_117 -> node_118
+node_118 -> node_119
+node_119 -> node_120
+node_120 -> node_121
+node_121 -> node_122
+node_122 -> node_123
+node_123 -> node_124
+node_124 -> node_125
+node_125 -> node_126
+node_126 -> node_127
+node_127 -> node_128
+node_128 -> node_129
+node_129 -> node_130
+node_130 -> node_131
+node_131 -> node_132
+node_132 -> node_133
+node_133 -> node_134
+node_134 -> node_135
+node_135 -> node_136
+node_136 -> node_137
+node_137 -> node_138
+node_138 -> node_139
+node_139 -> node_140
+node_140 -> node_141
+node_141 -> node_142
+node_142 -> node_143
+node_143 -> node_144
+node_144 -> node_145
+node_145 -> node_146
+node_146 -> node_147
+node_147 -> node_148
+node_148 -> node_149
+node_149 -> node_150
+node_150 -> node_151
+node_151 -> node_152
+node_152 -> node_153
+node_153 -> node_154
+node_154 -> node_155
+node_155 -> node_156
+node_156 -> node_157
+node_157 -> node_158
+node_158 -> node_159
+node_159 -> node_160
+node_160 -> node_161
+node_161 -> node_162
+node_162 -> node_163
+node_163 -> node_164
+node_164 -> node_165
+node_165 -> node_166
+node_166 -> node_167
+node_167 -> node_168
+node_168 -> node_169
+node_169 -> node_170
+node_170 -> node_171
+node_171 -> node_172
+node_172 -> node_173
+node_173 -> node_174
+node_174 -> node_175
+node_175 -> node_176
+node_176 -> node_177
+node_177 -> node_178
+node_178 -> node_179
+node_179 -> node_180
+node_180 -> node_181
+node_181 -> node_182
+node_182 -> node_183
+node_183 -> node_184
+node_184 -> node_185
+node_185 -> node_186
+node_186 -> node_187
+node_187 -> node_188
+node_188 -> node_189
+node_189 -> node_190
+node_190 -> node_191
+node_191 -> node_192
+node_192 -> node_193
+node_193 -> node_194
+node_194 -> node_195
+node_195 -> node_196
+node_196 -> node_197
+node_197 -> node_198
+node_198 -> node_199
+node_199 -> node_200
+node_200 -> node_201
+node_201 -> node_202
+node_202 -> node_203
+node_203 -> node_204
+node_204 -> node_205
+node_205 -> node_206
+node_206 -> node_207
+node_207 -> node_208
+node_208 -> node_209
+node_209 -> node_210
+node_210 -> node_211
+node_211 -> node_212
+node_212 -> node_213
+node_213 -> node_214
+node_214 -> node_215
+node_215 -> node_216
+node_216 -> node_217
+node_217 -> node_218
+node_218 -> node_219
+node_219 -> node_220
+node_220 -> node_221
+node_221 -> node_222
+node_222 -> node_223
+node_223 -> node_224
+node_224 -> node_225
+node_225 -> node_226
+node_226 -> node_227
+node_227 -> node_228
+node_228 -> node_229
+node_229 -> node_230
+node_230 -> node_231
+node_231 -> node_232
+node_232 -> node_233
+node_233 -> node_234
+node_234 -> node_235
+node_235 -> node_236
+node_236 -> node_237
+node_237 -> node_238
+node_238 -> node_239
+node_239 -> node_240
+node_240 -> node_241
+node_241 -> node_242
+node_242 -> node_243
+node_243 -> node_244
+node_244 -> node_245
+node_245 -> node_246
+node_246 -> node_247
+node_247 -> node_248
+node_248 -> node_249
+node_249 -> node_250
+node_250 -> node_251
+node_251 -> node_252
+node_252 -> node_253
+node_253 -> node_254
+node_254 -> node_255
+node_255 -> node_256
+node_256 -> node_257
+node_257 -> node_258
+node_258 -> node_259
+node_259 -> node_260
+node_260 -> node_261
+node_261 -> node_262
+node_262 -> node_263
+node_263 -> node_264
+node_264 -> node_265
+node_265 -> node_266
+node_266 -> node_267
+node_267 -> node_268
+node_268 -> node_269
+node_269 -> node_270
+node_270 -> node_271
+node_271 -> node_272
+node_272 -> node_273
+node_273 -> node_274
+node_274 -> node_275
+node_275 -> node_276
+node_276 -> node_277
+node_277 -> node_278
+node_278 -> node_279
+node_279 -> node_280
+node_280 -> node_281
+node_281 -> node_282
+node_282 -> node_283
+node_283 -> node_284
+node_284 -> node_285
+node_285 -> node_286
+node_286 -> node_287
+node_287 -> node_288
+node_288 -> node_289
+node_289 -> node_290
+node_290 -> node_291
+node_291 -> node_292
+node_292 -> node_293
+node_293 -> node_294
+node_294 -> node_295
+node_295 -> node_296
+node_296 -> node_297
+node_297 -> node_298
+node_298 -> node_299
+node_299 -> node_300
+node_300 -> node_301
+node_301 -> node_302
+node_302 -> node_303
+node_303 -> node_304
+node_304 -> node_305
+node_305 -> node_306
+node_306 -> node_307
+node_307 -> node_308
+node_308 -> node_309
+node_309 -> node_310
+node_310 -> node_311
+node_311 -> node_312
+node_312 -> node_313
+node_313 -> node_314
+node_314 -> node_315
+node_315 -> node_316
+node_316 -> node_317
+node_317 -> node_318
+node_318 -> node_319
+node_319 -> node_320
+node_320 -> node_321
+node_321 -> node_322
+node_322 -> node_323
+node_323 -> node_324
+node_324 -> node_325
+node_325 -> node_326
+node_326 -> node_327
+node_327 -> node_328
+node_328 -> node_329
+node_329 -> node_330
+node_330 -> node_331
+node_331 -> node_332
+node_332 -> node_333
+node_333 -> node_334
+node_334 -> node_335
+node_335 -> node_336
+node_336 -> node_337
+node_337 -> node_338
+node_338 -> node_339
+node_339 -> node_340
+node_340 -> node_341
+node_341 -> node_342
+node_342 -> node_343
+node_343 -> node_344
+node_344 -> node_345
+node_345 -> node_346
+node_346 -> node_347
+node_347 -> node_348
+node_348 -> node_349
+node_349 -> node_350
+node_350 -> node_351
+node_351 -> node_352
+node_352 -> node_353
+node_353 -> node_354
+node_354 -> node_355
+node_355 -> node_356
+node_356 -> node_357
+node_357 -> node_358
+node_358 -> node_359
+node_359 -> node_360
+node_360 -> node_361
+node_361 -> node_362
+node_362 -> node_363
+node_363 -> node_364
+node_364 -> node_365
+node_365 -> node_366
+node_366 -> node_367
+node_367 -> node_368
+node_368 -> node_369
+node_369 -> node_370
+node_370 -> node_371
+node_371 -> node_372
+node_372 -> node_373
+
+}
