@@ -23,16 +23,15 @@ int main() {
 
   CHECK(clRetainCommandQueue(State.InOrderQueue));
 
-  cl_int Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1,
-                                      nullptr, &State.GlobalSize, nullptr, 0,
-                                      nullptr, nullptr);
+  cl_int Ret =
+      clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1, nullptr,
+                             &State.GlobalSize, nullptr, 0, nullptr, nullptr);
   CHECK(Ret);
 
   CHECK(clReleaseCommandQueue(State.InOrderQueue));
 
-  Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1,
-                                      nullptr, &State.GlobalSize, nullptr, 0,
-                                      nullptr, nullptr);
+  Ret = clEnqueueNDRangeKernel(State.InOrderQueue, State.Kernel, 1, nullptr,
+                               &State.GlobalSize, nullptr, 0, nullptr, nullptr);
   CHECK(Ret);
 
   return 0;
