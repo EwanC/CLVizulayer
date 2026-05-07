@@ -13,7 +13,6 @@ steps to keep the total number of OpenCL commands small:
 ```sh
 $ cd grappa-1.5k-6.1M_rc0.9/0012
 $ gmx grompp -f ../rf.mdp -c conf.gro -p topol.top -o rf.tpr
-$ cd 0012
 $ OPENCL_LAYERS=libCLVizuLayer.so  gmx mdrun -s rf.tpr -nobackup -noconfout -pin on -nsteps 10
 ```
 

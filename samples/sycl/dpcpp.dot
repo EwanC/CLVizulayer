@@ -1,0 +1,18 @@
+digraph CLVizulayer {
+compound=true
+node [style=bold]
+subgraph cluster_0 {
+label = "clWaitForEvents()";
+node_0[label="clEnqueueNDRangeKernel\n
+cl_kernel = 0x275ec8b8\n
+name = _ZTSZZ4mainENKUlRN4sycl3_V17handlerEE_clES2_EUlvE_"];
+node_1[label="clEnqueueReadBuffer\n
+blocking = False\n
+buffer = 0x2623a068\n
+offset = 0\n
+size = 16\n
+ptr = 0x7ffe29f29d20"];
+}
+node_0 -> node_1
+
+}

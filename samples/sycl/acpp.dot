@@ -1,0 +1,28 @@
+digraph CLVizulayer {
+compound=true
+node [style=filled]
+subgraph cluster_0 {
+label = "clWaitForEvents()";
+node_0[label="clEnqueueMemcpyINTEL", color="darkorchid1"];
+node_1[label="clEnqueueMemcpyINTEL", color="darkorchid1"];
+node_2[label="clEnqueueMemcpyINTEL", color="darkorchid1"];
+node_3[label="clEnqueueBarrierWithWaitList", color="aqua"];
+node_4[label="clEnqueueNDRangeKernel", color="aqua"];
+}
+node_0 -> node_1
+node_1 -> node_2
+node_2 -> node_3
+node_3 -> node_4
+node_3 -> node_4
+subgraph cluster_1 {
+label = "clWaitForEvents()";
+node_5[label="clEnqueueBarrierWithWaitList", color="darkorchid1"];
+node_6[label="clEnqueueMemcpyINTEL", color="darkorchid1"];
+}
+node_4 -> node_5
+node_2 -> node_5
+node_5 -> node_6
+node_5 -> node_6
+node_0 -> node_5 [label="blocking host wait" ltail=cluster_0 lhead=cluster_1];
+
+}

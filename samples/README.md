@@ -11,3 +11,5 @@ network to keep the number of nodes in the graph to a reasonable size.
 4. [Llama.cpp](llama)
 5. [CLBlast](CLBlast)
 6. [LAMMPS](lammps)
+7. [SYCL Vector Add](sycl)
+8. [Shamrock](shamrock)
