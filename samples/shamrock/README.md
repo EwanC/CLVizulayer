@@ -10,3 +10,16 @@ $ OPENCL_LAYERS=$HOME\libCLVizuLayer.so VIZ_COLOR=1 ./shamrock --sycl-cfg 0:0 --
 
 This creates [shamrock.dot](shamrock.dot) file which can be rendered as
 ![shamrock.svg](../../images/shamrock.svg)
+
+## Tred
+
+Graphviz `tred` is a tool installed as part of the standard Graphviz execution for performing the
+transitive reduction graph algorithm. This creates an output DOT graph from the input DOT graph
+that has the same reachability with the fewest number of edges.
+
+```sh
+tred shamrock.dot > shamrock_tred.dot
+```
+
+This creates [shamrock_tred.dot](shamrock_tred.dot) file which can be rendered as
+![shamrock_tred.svg](../../images/shamrock_tred.svg)
